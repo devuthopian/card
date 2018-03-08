@@ -1,0 +1,30 @@
+/* my code */
+.module_holder{
+	width: 200px;
+	height: 250px;
+	background-color: #cfe2f3;
+	color: #000;
+	/*padding: 20px;*/
+	border: 2px solid #000;
+}
+
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.label-info {
+    background-color: #5bc0de;
+}
+
+.bootstrap-tagsinput{
+    width: 100% !important;
+}
