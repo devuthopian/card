@@ -31,7 +31,7 @@
         </li>
         <li>
             <span data-toggle="dropdown" class="logo">
-                <img src="{{ URL::asset('public/images/misbits-logo.png') }}"  alt="">
+                <img src="{{ URL::asset('images/misbits-logo.png') }}"  alt="">
             </span>
             <ul class="dropdown-menu">
                 <li>
