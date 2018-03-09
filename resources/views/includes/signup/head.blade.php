@@ -14,5 +14,6 @@
 <link rel="stylesheet" href="{{ URL::asset('assets/vendor/css/style.css') }}" />
 <link rel="stylesheet" href="{{ URL::asset('assets/vendor/css/invite.css') }}" />
 <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap.css') }}" />
-<link rel="stylesheet" href="{{ URL::asset('assets/fontawesome.css') }}" />
-<link rel="stylesheet" href="{{ URL::asset('assets/fontawesome-all.css') }}" />
+<link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-social.css') }}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">

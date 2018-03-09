@@ -50,10 +50,17 @@
 
                    <p>Already Registered? <a href="<?php echo url('login') ?>">Login</a></p>
 
+                   <!-- Facebook -->
+                    <a href="<?php echo url('auth/facebook') ?>" class="btn btn-social-icon btn-facebook"><i class="fab fa-facebook-f"></i></a>
 
-                    <a href="<?php echo url('auth/facebook') ?>" class="btn btn-default btn-md">Log in with Facebook</a>
-                   <!--  <a href="<?php echo url('auth/twitter') ?>" class="btn btn-default btn-md">Log in with Twitter</a>
-                     -->
+                    <!-- Twitter -->
+                    <a href="<?php echo url('auth/twitter') ?>" class="btn btn-social-icon btn-twitter"><i class="fab fa-twitter"></i></a>
+
+                    <!-- Google -->
+                    <a href="<?php echo url('auth/google') ?>" class="btn btn-social-icon btn-google"><i class="fab fa-google"></i></a>
+
+                    <!-- Instagram -->
+                    <a href="<?php echo url('auth/twitter') ?>" class="btn btn-social-icon btn-instagram"><i class="fab fa-instagram"></i></a>
 
                </form>
              </div>

@@ -43,6 +43,19 @@
                         </div>
 
                         <p>Not Registered? <a href="<?php echo url('register') ?>">Create an account</a>  <span><a href="<?php echo url('password/reset') ?>">Forgot Password</a></span> </p>
+
+                        <!-- Facebook -->
+                        <a href="<?php echo url('auth/facebook') ?>" class="btn btn-social-icon btn-facebook"><i class="fab fa-facebook-f"></i></a>
+                        
+                        <!-- Twitter -->
+                        <a href="<?php echo url('auth/twitter') ?>" class="btn btn-social-icon btn-twitter"><i class="fab fa-twitter"></i></a>
+
+                        <!-- Google -->
+                        <a href="<?php echo url('auth/google') ?>" class="btn btn-social-icon btn-google"><i class="fab fa-google"></i></a>
+
+                        <!-- Instagram -->
+                        <a href="<?php echo url('auth/twitter') ?>" class="btn btn-social-icon btn-instagram"><i class="fab fa-instagram"></i></a>
+
                    </form>
                  </div>
              </div>
