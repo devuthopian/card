@@ -29,6 +29,9 @@
 
                             <input type="submit" value="Register">
 
+                            <!-- <a href="<?php echo url('auth/facebook') ?>" class="btn btn-default btn-md">Log in with Facebook</a>
+                            <a href="<?php echo url('auth/twitter') ?>?id=<?php echo $user->id ?>" class="btn btn-default btn-md">Log in with Twitter</a> -->
+                            
                         </div>
                    </form>
                  </div>

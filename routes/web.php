@@ -20,6 +20,13 @@ Route::group(['middleware' => ['guest']], function () {
 	Route::get('/configureUserInfo/{user}', 'InviteController@configureUserInfo');
 	Route::post('/configureUserInfo/{user}', 'InviteController@configureUserInfo');
 	Route::post('/registerName/{invitation_id}', 'InviteController@registerName');
+
+
+	// Social Login
+	Route::get('auth/{provider}', 'Auth\SocialAccountController@redirectToProvider');
+	Route::get('auth/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
+
+
 });
 
 Auth::routes();
