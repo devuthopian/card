@@ -29,6 +29,7 @@
     <?php 
     $invitationObj = $inviteReturnArr['data'];
     $userProfileObj = $invitationObj->user_profile;
+    $userResultObj = $userProfileObj->user;
     ?>
     <!-- Page Content -->
     <section>
@@ -42,8 +43,8 @@
               {{ Form::open(array('url' => 'registerName/'.$invitation_id, 'id' => 'registerName')) }}
                 
                   
-                     <div class="name"><p><?php echo '@'; ?>{{$userProfileObj->name}} </p></div>
-                     <div class="heading">Invited you to join <br><span>{{$userProfileObj->name}}'s Club</span></div>
+                     <div class="name"><p>{{$userResultObj->name}} </p></div>
+                     <div class="heading">Invited you to join <br><span>{{$userProfileObj->name}} Club</span></div>
                      <div class="next">
                        <p>What should people call you</p>
                        <input class="text_box" type="text" name="name" id="name" />

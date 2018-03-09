@@ -16,3 +16,7 @@ ALTER TABLE `card` CHANGE `image` `image` VARCHAR(255) CHARACTER SET utf8mb4 COL
 -- 7 March 2017
 ALTER TABLE `users` CHANGE `reference_user_id` `reference_profile_id` INT(11) NULL DEFAULT NULL; 
 ALTER TABLE `users` ADD `invitation_id` INT NULL AFTER `reference_unique_id`;
+
+
+ALTER TABLE `card` CHANGE `description` `description` VARCHAR(10000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;
+ALTER TABLE `user_profiles` CHANGE `description` `description` VARCHAR(10000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;
