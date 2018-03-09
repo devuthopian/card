@@ -11,6 +11,7 @@ use Validator;
 use Carbon\Carbon;
 
 use App\User;
+use App\Card;
 use App\UserProfile;
 use App\Invitation;
 
@@ -42,7 +43,15 @@ class ProfilesController extends Controller
             return redirect('user/index/'.$default_profile_id);
         }
 
+        $profile_id = $profile->id;
+
+        $cardObj = new Card;
+        $cardsObj = $cardObj->where('user_profile_id', $profile_id)
+                            ->orderBy('created_at', 'desc')
+                            ->paginate(10);
+
         $data['profile'] = $profile;
+        $data['cardsObj'] = $cardsObj;
         return view('users.profile.index', $data);
     }
 

@@ -31,6 +31,11 @@
                 @include('users.profile.partials.cards')
 
             </div>
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    {!! $cardsObj->render() !!}
+                </div>
+            </div>
             <!--end row-->
         </div>
         
@@ -54,5 +59,5 @@
 </body>
 @endsection
 @section('scripts')
-<script src="{{ asset('js/users/profile/index.js') }}"></script>
+<script src="{{ asset('public/js/users/profile/index.js') }}"></script>
 @endsection

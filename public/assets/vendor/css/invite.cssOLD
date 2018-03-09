@@ -432,10 +432,10 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
   display: flex;
 }
 .first_inner{
-  background-color: rgba(249, 220, 57, 0.80);
+  background-color: #e5bc2be3;
 }
 .second_inner{
-  background-color: rgba(0, 0, 0, 0.70);
+  background-color: #1a1816d9;
   padding-bottom: 22px;
   min-height: 416px !important;
 }
