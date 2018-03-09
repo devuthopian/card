@@ -35,6 +35,11 @@ class User extends Authenticatable
         return $this->hasOne('App\UserProfile');
     }
 
+    // linked accounts
+    public function accounts(){
+        return $this->hasMany('App\LinkedSocialAccount');
+    }
+
     /**
      * Get user profiles
      */
