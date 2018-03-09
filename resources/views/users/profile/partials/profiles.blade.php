@@ -5,7 +5,15 @@
         <div class="col-sm-6 col-md-4 block-container" id="profile_<?php echo $userProfile->id ?>">
             <div class="pop_up">
                 <h2> {{$userProfile->name}}</h2>
-                <img src="{{ URL::asset('uploads/user/profile') }}/{{$userProfile->profile_image}}" alt="" style="min-height: 400px;">
+                
+
+                <?php if(!empty($userProfile->profile_image)){ ?>
+                    <img src="{{ URL::asset('public/uploads/user/profile') }}/{{$userProfile->profile_image}}" alt="" style="min-height: 400px;">
+                <?php }else{ ?>
+                    <img src="{{ URL::asset('public/images/avtar.jpg') }}" alt="" style="min-height: 400px;">
+                <?php } ?>
+
+
                 <div class="content_caption">
                     <h4> <span>{{$userProfile->description}}</span></h4>
                 </div>

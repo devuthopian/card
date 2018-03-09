@@ -5,6 +5,7 @@ namespace App\Services;
 //use Laravel\Socialite\Contracts\User as ProviderUser;
 use App\LinkedSocialAccount;
 use App\User;
+use App\UserProfile;
 
 class SocialAccountService
 {
@@ -22,11 +23,23 @@ class SocialAccountService
         } else {
             $user = User::where('email', $providerUser->getEmail())->first();
 
-            if (! $user) {
+            if (empty($user->email)) {
                 $user = User::create([
                     'email' => $providerUser->getEmail(),
                     'name'  => $providerUser->getName()
                 ]);
+
+
+                ### User Profile
+                $userProfileObj = new UserProfile;
+                $userProfileArr['user_id'] = $user->id;
+                $userProfileArr['name'] = $user->name;
+                $userProfileArr['profile_image'] = '';
+                $userProfileArr['description'] = '';
+                $userProfileArr['is_default'] = 1;
+                $userResultObj = $userProfileObj->create($userProfileArr);
+
+
             }
 
             $user->accounts()->create([

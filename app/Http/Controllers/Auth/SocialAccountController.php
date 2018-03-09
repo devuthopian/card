@@ -43,16 +43,6 @@ class SocialAccountController extends Controller
             $user,
             $provider
         );
-
-        ### User Profile
-        $userProfileObj = new UserProfile;
-        $userProfileArr['user_id'] = $authUser->id;
-        $userProfileArr['name'] = $authUser->name;
-        $userProfileArr['profile_image'] = '';
-        $userProfileArr['description'] = '';
-        $userProfileArr['is_default'] = 1;
-        $userResultObj = $userProfileObj->create($userProfileArr);
-
         
         $result = auth()->login($authUser, true);
         return redirect('user/index');
