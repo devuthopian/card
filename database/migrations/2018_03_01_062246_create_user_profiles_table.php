@@ -18,7 +18,7 @@ class CreateUserProfilesTable extends Migration
             $table->integer('user_id');
             $table->string('name');
             $table->string('profile_image');
-            $table->string('description');
+            $table->string('description', 10000);
             $table->tinyInteger('is_default')->nullable();
             $table->softDeletes();
             $table->timestamps();

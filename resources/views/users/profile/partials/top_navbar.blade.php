@@ -30,7 +30,9 @@
             <a href="#" class="fas fa-search"></a>
         </li>
         <li>
-            <img src="{{ URL::asset('images/misbits-logo.png') }}" data-toggle="dropdown" class="logo" alt="">
+            <span data-toggle="dropdown" class="logo">
+                <img src="{{ URL::asset('images/misbits-logo.png') }}"  alt="">
+            </span>
             <ul class="dropdown-menu">
                 <li>
                     <a href="<?php echo url('user/profile/myProfiles') ?>">

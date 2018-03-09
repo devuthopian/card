@@ -28,7 +28,7 @@
               $profile_image = $profile->profile_image;
               ?>
               <div id="imageBlock">
-                <img src="{{ URL::asset('public/uploads/user/profile/') }}/{{$profile_image}}" width="100px" /><br><br>
+                <img src="{{ URL::asset('uploads/user/profile/') }}/{{$profile_image}}" width="100px" /><br><br>
                 <a href="javascript:void(0)" onclick="return editProfileImage()"><i class="fa fa-edit"></i> Change</a>
               </div>
             <?php } ?>

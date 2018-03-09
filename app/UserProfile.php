@@ -25,6 +25,10 @@ class UserProfile extends Model
         return $this->hasMany('App\Invitation', 'profile_id');
     }
 
+    public function user() {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
 
     ### Removed Card
     function remove($requestArr){

@@ -145,14 +145,14 @@ p{
     color: #ffde00;
 }
 .navbar-right li {
-    margin: 0 10px;
+    margin: 0 15px;
     position: relative;
 }
 .navbar-right li:nth-child(2):after {
     content: "\f107 ";
     font-family: FontAwesome;
     position: absolute;
-    right: -12px;
+    right: -20px;
     top: 16px;    
     color: #ffde00;
     font-size: 20px;
@@ -719,18 +719,12 @@ p{
     margin: 10px 0;
     border-radius: 4px;
 }
-
 .profile_cont select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     margin: 10px 0;
     border-radius: 4px;
-}
-
-.modal-header h5 {
-    padding: 10px 20px;
-    margin: 0 20px;
 }
 
 .profile_cont textarea {
@@ -749,11 +743,18 @@ p{
     border: 1px solid #f9dc39;
     border-radius: 4px;
 }
+.profile_cont input[type="submit"]:hover {
+    background: #333;
+    color: #fff;
+}
 
 .profile_cont label {
     width: 100%;
 }
-
+.modal-header h5 {
+    padding: 10px 20px;
+    margin: 0 20px;
+}
 label {
     display: inline-block;
     max-width: 100%;
@@ -766,7 +767,7 @@ label {
 /* Invite Popup */
 .invite_link_cont {
   max-width: 450px;
-  margin: 8% auto;
+  margin: 15% auto;
   font-size: 18px;
   background-color: #fff;
   padding:0;
@@ -811,26 +812,31 @@ label {
   max-width: 450px;
   margin: 10px auto;
   background-color: #1a1816d9;
-  border: 2px solid #fff;
-  padding: 20px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 0px 0;
   color: #fff;
   position: relative;
   text-align: center;
+  box-shadow: 3px 1px 15px #666;
 }
 .pop_up h2 {
-  background-color: #333;
-  padding: 10px 20px;
-  color: #fff;
-  text-align: center;
-  font-size: 18px;
+    padding: 20px 20px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 .pop_up h2 span {
   color: #333;
   font-size: 18px;
   font-weight: bold;
   position: absolute;
-  left: 10px;
-  top: 15px;
+  left: 0px;
+  top: 0px;
   background: url(../../../images/bg_icon.png);
   background-repeat: no-repeat;
   width: 100px;
@@ -839,10 +845,14 @@ label {
   padding: 30px 20px
 }
 .pop_up img {
-  width: 70%;
+    width: 100%;
+    height: 500px !important;
 }
 .pop_up .content_caption {
-  text-align: left;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 .pop_up .content_caption h3 {
   font-size: 22px;
@@ -875,10 +885,15 @@ label {
     bottom: 10px;
     margin-left: -10px;
 }
+.pop_up .content_caption .card_description {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 0 0 15px 0;
+}
 .pop_up .content_caption h4 {
   font-size: 20px;
-  background: #333;
   padding: 10px 20px;
+  border-top: 2px solid #f9dc39;
+  border-bottom: 2px solid #f9dc39;
 }
 .pop_up .content_caption h4 span {
   font-size: 14px;
@@ -887,6 +902,7 @@ label {
 .pop_up .content_caption p {
   font-size: 16px;
   padding: 0 20px;
+  margin-right: 0;
 }
 @media screen and (max-width: 480px) {
 .pop_up {
@@ -971,8 +987,10 @@ label {
 
 .navbar-right .dropdown-menu {
  background-color: #333;
- width: 250px;
+ width: 280px;
  padding: 15px 0;
+ margin-top: -1px !important;
+ right: -15px;
 }
 .navbar-right .dropdown-menu li {
     padding: 10px 0;
@@ -984,7 +1002,12 @@ label {
 .navbar-right .dropdown-menu a:hover {
  background-color: transparent;
 }
-
+.navbar-right .dropdown-menu a span {
+    font-size: 14px;
+    float: right;
+    position: relative;
+    top: 4px;
+}
 /* Tracking, Tracker and Setting page */
 .tracking_cont {
  width: 100%;
@@ -1045,11 +1068,63 @@ label {
    right: 10px;
    top: 5px;
 }
-
+.pop_up h2 strong {
+    font-weight: normal;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px 20px;
+    border-radius: 15px;
+    box-shadow: 0 0px 14px 5px #ffd308;
+}
+.navbar-right .dropdown-menu li:last-child {
+    border-top: 1px solid #292929;
+}
+.bootbox .modal-content {
+    overflow: hidden;
+}
+.bootbox .modal-body {
+    background: #333;
+    color: #ffde00;
+    text-align: center;
+}
+.bootbox .bootbox-body {
+   font-size: 26px;
+   padding: 10px 0;
+}
+.bootbox .modal-footer {
+    border-top: 1px solid #333;
+    text-align: center;
+    padding: 30px 0;
+}
+.bootbox .close {
+    color: #fff;
+    opacity: 1;
+}
+@media (min-width: 768px) {
+.bootbox .modal-dialog {
+    width: 360px;
+    top: 50%;
+    margin-top: -100px;
+}
+}
 @media (max-width: 767px) {
 .pop_up img {
     min-height: 100% !important;
     height: 100% !important
+}
+.navbar-right li img {
+    margin-left: 15px;
+}
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+    background: transparent !important;
+}
+.navbar-right li {
+    width: 100%;
+}
+.navbar-right .dropdown-menu {
+    width: 96% !important;
+}
+.navbar-right li:nth-child(2):after {
+    right: 10px;
 }
 }
 @media (max-width: 480px) {
@@ -1085,4 +1160,8 @@ label {
     text-align: center;
     margin: 10px 0;
 }
+}
+
+.no_capitalization{
+    text-transform: none !important;
 }
