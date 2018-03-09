@@ -50,6 +50,11 @@
 
                    <p>Already Registered? <a href="<?php echo url('login') ?>">Login</a></p>
 
+
+                    <a href="<?php echo url('auth/facebook') ?>" class="btn btn-default btn-md">Log in with Facebook</a>
+                   <!--  <a href="<?php echo url('auth/twitter') ?>" class="btn btn-default btn-md">Log in with Twitter</a>
+                     -->
+
                </form>
              </div>
          </div>

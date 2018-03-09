@@ -8,7 +8,7 @@ use App\User;
 
 class SocialAccountService
 {
-    public function findOrCreate($socialLoginUserId, $providerUser, $provider)
+    public function findOrCreate($providerUser, $provider)
     {
 
         $account = LinkedSocialAccount::where('provider_name', $provider)
@@ -23,9 +23,9 @@ class SocialAccountService
             $user = User::where('email', $providerUser->getEmail())->first();
 
             if (! $user) {
-                $user = User::where('id', $socialLoginUserId)->update([  
-                    'email' => $providerUser->getEmail()
-                    /*'name'  => $providerUser->getName(),*/
+                $user = User::create([
+                    'email' => $providerUser->getEmail(),
+                    'name'  => $providerUser->getName()
                 ]);
             }
 

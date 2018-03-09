@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Auth;
 use Socialite;
 
 use App\Services\SocialAccountService;
+
+use App\UserProfile;
 
 class SocialAccountController extends Controller
 {
@@ -18,7 +20,6 @@ class SocialAccountController extends Controller
      */
     public function redirectToProvider(Request $request, $provider)
     {
-    	$request->session()->put('socialLoginUserId',$request->id);
         return Socialite::driver($provider)->redirect();
     }
 
@@ -31,7 +32,6 @@ class SocialAccountController extends Controller
     public function handleProviderCallback(Request $request, $provider)
     {
     	$accountService = new SocialAccountService;
-    	$socialLoginUserId = $request->session()->get('socialLoginUserId');
 
         try {
             $user = Socialite::with($provider)->user();
@@ -40,13 +40,21 @@ class SocialAccountController extends Controller
         }
 
         $authUser = $accountService->findOrCreate(
-        	$socialLoginUserId,
             $user,
             $provider
         );
 
-        auth()->login($authUser, true);
+        ### User Profile
+        $userProfileObj = new UserProfile;
+        $userProfileArr['user_id'] = $authUser->id;
+        $userProfileArr['name'] = $authUser->name;
+        $userProfileArr['profile_image'] = '';
+        $userProfileArr['description'] = '';
+        $userProfileArr['is_default'] = 1;
+        $userResultObj = $userProfileObj->create($userProfileArr);
 
-        return redirect()->to('/home');
+        
+        $result = auth()->login($authUser, true);
+        return redirect('user/index');
     }
 }
