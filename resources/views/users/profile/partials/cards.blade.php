@@ -21,7 +21,7 @@
                 <div class="content_caption">
                     <h3><span>F</span> Tier 1</h3>
                     <div class="card_description">
-                        <h4>Rewards <span>The holder reviews news 10 minuts later</span></h4>
+                        <h4><strong>Rewards</strong> <span>The holder reviews news 10 minuts later</span></h4>
                         <p>{{$card->description}}</p>
                     </div>
                 </div>
