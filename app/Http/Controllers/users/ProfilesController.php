@@ -203,7 +203,7 @@ class ProfilesController extends Controller
         $logged_user_id = Auth::id();
         $userObj = new User;
         $data['userResultObj'] = $userObj->where('id', $logged_user_id)->first();
-        return view('users.profile.tracking2', $data);
+        return view('users.profile.tracking', $data);
     }
 
     // Tracker

@@ -47,8 +47,29 @@ class User extends Authenticatable
         return $this->hasMany('App\UserProfile')->orderBy('id', 'asc');
     }
 
+    /**
+     * Get default user profile
+     */
+    public function default_user_profile() {
+        return $this->hasOne('App\UserProfile')->where('is_default',1)->orderBy('id', 'asc');
+    }
+
     public function reference_user_profile() {
         return $this->belongsTo('App\UserProfile', 'reference_profile_id');
+    }
+
+    /**
+     * Get cards
+     */
+    public function cards() {
+        return $this->hasMany('App\Card', 'created_by');
+    }
+
+    /**
+     * Get cards
+     */
+    public function released_cards() {
+        return $this->hasMany('App\Card', 'created_by')->where('is_released', 1);
     }
 
     public function updateProfile($requestArr, $profileImageObj){

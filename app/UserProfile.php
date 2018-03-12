@@ -29,6 +29,13 @@ class UserProfile extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
+    /**
+     * Get cards
+     */
+    public function released_cards() {
+        return $this->hasMany('App\Card')->where('is_released', 1);
+    }
+
 
     ### Removed Card
     function remove($requestArr){

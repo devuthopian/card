@@ -46,7 +46,7 @@
                 <!--end card-bottom-->
             </div>
             <!--end card-content-->
-            <img src="{{ URL::asset('public/uploads/card/') }}/{{$card->image}}">
+            <img src="{{ URL::asset('uploads/card/') }}/{{$card->image}}">
 
             <!-- Options -->
             <div class="hover_pop">
