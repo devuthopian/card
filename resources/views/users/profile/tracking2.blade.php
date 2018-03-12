@@ -15,7 +15,7 @@
                 <!-- HTML -->
                     <div class="tracking_cont">
                 <div class="tracker_head">
-                   <img src="{{ URL::asset('public/images/profile_img1.png') }}" alt="">
+                   <img src="{{ URL::asset('images/profile_img1.png') }}" alt="">
                    <h1>Mr Mage is Tracking</h1>
                    <h2>28 <span>Tracking</span></h2>
                 </div>
@@ -23,7 +23,7 @@
                    <div class="head_sec_cont">
                    <span class="dropdown_icon" data-toggle="collapse" data-target="#demo1"><i class="fas fa-angle-down"></i></span>
                     <div class="head_sec_img">
-                        <img src="{{ URL::asset('public/images/profile_img2.png') }}" alt="">
+                        <img src="{{ URL::asset('images/profile_img2.png') }}" alt="">
                     </div>
                     <div class="head_sec_name">
                         <h2>Jane Austen</h2>
@@ -39,25 +39,25 @@
                     <div id="demo1" class="collapse">
                         <div class="n_cards">
                             <span class="n_cards_title">Fan Forever</span>
-                            <img src="{{ URL::asset('public/images/header-img.jpg') }}" alt="">
-                            <span class="n_cards_img" ><img src="{{ URL::asset('public/images/acquired.png') }}" alt=""></span>
+                            <img src="{{ URL::asset('images/header-img.jpg') }}" alt="">
+                            <span class="n_cards_img" ><img src="{{ URL::asset('images/acquired.png') }}" alt=""></span>
                         </div>
                         <div class="n_cards">
                             <span class="n_cards_title">Fan Forever</span>
-                            <img src="{{ URL::asset('public/images/header-img.jpg') }}" alt="">
-                            <span class="n_cards_img" ><img src="{{ URL::asset('public/images/acquired.png') }}" alt=""></span>
+                            <img src="{{ URL::asset('images/header-img.jpg') }}" alt="">
+                            <span class="n_cards_img" ><img src="{{ URL::asset('images/acquired.png') }}" alt=""></span>
                         </div>
                         <div class="n_cards">
                             <span class="n_cards_title">Fan Forever</span>
-                            <img src="{{ URL::asset('public/images/header-img.jpg') }}" alt="">
-                            <span class="n_cards_img" ><img src="{{ URL::asset('public/images/acquired.png') }}" alt=""></span>
+                            <img src="{{ URL::asset('images/header-img.jpg') }}" alt="">
+                            <span class="n_cards_img" ><img src="{{ URL::asset('images/acquired.png') }}" alt=""></span>
                         </div>
                     </div>
                 </div>
                    <div class="head_sec_cont">
                    <span class="dropdown_icon" data-toggle="collapse" data-target="#demo2"><i class="fas fa-angle-down"></i></span>
                     <div class="head_sec_img">
-                        <img src="{{ URL::asset('public/images/profile_img2.png') }}" alt="">
+                        <img src="{{ URL::asset('images/profile_img2.png') }}" alt="">
                     </div>
                     <div class="head_sec_name">
                         <h2>Jane Austen</h2>
@@ -72,20 +72,20 @@
                     <div id="demo2" class="collapse">
                         <div class="n_cards">
                             <span class="n_cards_title">Fan Forever</span>
-                            <img src="{{ URL::asset('public/images/header-img.jpg') }}" alt="">
-                            <span class="n_cards_img" ><img src="public/images/acquired.png" alt=""></span>
+                            <img src="{{ URL::asset('images/header-img.jpg') }}" alt="">
+                            <span class="n_cards_img" ><img src="images/acquired.png" alt=""></span>
                         </div>
                         <div class="n_cards">
                             <span class="n_cards_title">Fan Forever</span>
-                            <img src="{{ URL::asset('public/images/header-img.jpg') }}" alt="">
-                            <span class="n_cards_img" ><img src="public/images/acquired.png" alt=""></span>
+                            <img src="{{ URL::asset('images/header-img.jpg') }}" alt="">
+                            <span class="n_cards_img" ><img src="images/acquired.png" alt=""></span>
                         </div>
                     </div>
                 </div>
                    <div class="head_sec_cont">
                    <span class="dropdown_icon" data-toggle="collapse" data-target="#demo3"><i class="fas fa-angle-down"></i></span>
                     <div class="head_sec_img">
-                        <img src="{{ URL::asset('public/images/profile_img2.png') }}" alt="">
+                        <img src="{{ URL::asset('images/profile_img2.png') }}" alt="">
                     </div>
                     <div class="head_sec_name">
                         <h2>Jane Austen</h2>
@@ -104,7 +104,7 @@
                    <div class="head_sec_cont">
                    <span class="dropdown_icon" data-toggle="collapse" data-target="#demo4"><i class="fas fa-angle-down"></i></span>
                     <div class="head_sec_img">
-                        <img src="{{ URL::asset('public/images/profile_img2.png') }}" alt="">
+                        <img src="{{ URL::asset('images/profile_img2.png') }}" alt="">
                     </div>
                     <div class="head_sec_name">
                         <h2>Jane Austen</h2>
