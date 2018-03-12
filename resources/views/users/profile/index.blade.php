@@ -59,5 +59,5 @@
 </body>
 @endsection
 @section('scripts')
-<script src="{{ asset('public/js/users/profile/index.js') }}"></script>
+<script src="{{ asset('js/users/profile/index.js') }}"></script>
 @endsection

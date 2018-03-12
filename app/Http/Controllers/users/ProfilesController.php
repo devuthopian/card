@@ -195,7 +195,15 @@ class ProfilesController extends Controller
         $logged_user_id = Auth::id();
         $userObj = new User;
         $data['userResultObj'] = $userObj->where('id', $logged_user_id)->first();
-        return view('users.profile.tracking', $data);
+        return view('users.profile.tracking2', $data);
+    }
+
+    // Tracking
+    public function tracking2(Request $request){
+        $logged_user_id = Auth::id();
+        $userObj = new User;
+        $data['userResultObj'] = $userObj->where('id', $logged_user_id)->first();
+        return view('users.profile.tracking2', $data);
     }
 
     // Tracker

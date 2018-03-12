@@ -14,7 +14,7 @@
         <div class="col-sm-6 col-md-3 block-container <?php echo $margin_class; ?>" id="card_<?php echo $card->id ?>">
             <div class="pop_up">
                 <h2><span>Bonus + 50</span> <strong>{{$card->card_name}}</strong></h2>
-                <img src="{{ URL::asset('public/uploads/card/') }}/{{$card->image}}" alt="" style="height: 400px !important;">
+                <img src="{{ URL::asset('uploads/card/') }}/{{$card->image}}" alt="" style="height: 400px !important;">
                 <div class="content_caption">
                     <h3><span>F</span> Tier 1</h3>
                     <div class="card_description">

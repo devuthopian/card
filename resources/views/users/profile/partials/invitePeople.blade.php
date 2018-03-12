@@ -5,7 +5,7 @@
       <div class="col-sm-12 second_inner">
         <div class="invite_link_cont">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="no_capitalization">Invite People to {{$profile->name}} Attic <br> Share this link to let people access this profile</h4>
+          <h4 class="no_capitalization">Invite People to {{$profile->name}} <br> Share this link to let people access this profile</h4>
           <div class="hed">
             <input type="text" name="inviteUrl" id="inviteUrl" value="<?php echo url('share'); ?>?id=<?php echo $profile->id ?>" readonly><input type="button" value="COPY" onclick="copyInviteLink()">
             <p>Invites expire in one day by default</p>

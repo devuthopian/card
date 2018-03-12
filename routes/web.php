@@ -52,6 +52,7 @@ Route::group(['middleware' => ['web']], function () {
 
 	// Tracking and Tracker
 	Route::get('/user/profile/tracking', 'users\ProfilesController@tracking');
+	Route::get('/user/profile/tracking2', 'users\ProfilesController@tracking2');
 	Route::get('/user/profile/tracker', 'users\ProfilesController@tracker');
 
 
