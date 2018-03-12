@@ -44,7 +44,7 @@
                 
                   
                      <div class="name"><p>{{$userResultObj->name}} </p></div>
-                     <div class="heading">Invited you to join <br><span>{{$userProfileObj->name}} Club</span></div>
+                     <div class="heading">Invited you to join <br><span>{{$userProfileObj->name}}</span></div>
                      <div class="next">
                        <p>What should people call you</p>
                        <input class="text_box" type="text" name="name" id="name" />
