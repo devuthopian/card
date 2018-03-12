@@ -5,7 +5,7 @@
         <div class="main">          
             <div class="col-sm-4 first_inner">
                 <img src="{{ URL::asset('images/logo1.png') }}" class="logo" alt="">
-                <img src="{{ URL::asset('images/code.jpg') }}" class="code" alt="">
+                <img src="{{ URL::asset('images/code.png') }}" class="code" alt="">
             </div>
              <div class="col-sm-8 second_inner">
                  <div class="login_cont">
