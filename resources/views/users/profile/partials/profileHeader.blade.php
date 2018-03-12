@@ -1,6 +1,6 @@
 <div class="header">
     <div class="header-top"
-style="background-image: url({{ URL::asset('images/header-background.jpg') }}); ">
+style="background-image: url({{ URL::asset('public/images/header-background.jpg') }}); ">
         <div class="header-content left">
             <div class="header-right right">
                 <!-- <a href="#" class="verify-btn">verify</a>
@@ -8,9 +8,9 @@ style="background-image: url({{ URL::asset('images/header-background.jpg') }}); 
                 <div class="header-image">
                     <?php $profile_image = $profile->profile_image; ?>
                     <?php if(!empty($profile_image)){ ?>
-                        <img src="{{ URL::asset('uploads/user/profile/') }}/{{$profile_image}}">
+                        <img src="{{ URL::asset('public/uploads/user/profile/') }}/{{$profile_image}}">
                     <?php }else{ ?>
-                        <img src="{{ URL::asset('images/avtar.jpg') }}">
+                        <img src="{{ URL::asset('public/images/avtar.jpg') }}">
                     <?php } ?>
                 </div>
             </div>
@@ -24,6 +24,7 @@ style="background-image: url({{ URL::asset('images/header-background.jpg') }}); 
                     <p>market cap: 500 MBC</p>
                     <p>bonuses: 50,000</p>
                 </div>
+    @if($profile->user->id == Auth::id())
     <p>&nbsp;</p>
     <p>
         &nbsp;&nbsp;<a class="btn btn-primary" data-toggle="modal" href="javascript:void(0)" onclick="generateInviteLink()">
@@ -35,6 +36,7 @@ style="background-image: url({{ URL::asset('images/header-background.jpg') }}); 
             edit profile
         </a>
     </p>
+    @endif
                 <!--end user-name-->
             </div>
             <!--end header-details-->

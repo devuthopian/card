@@ -27,11 +27,19 @@ class InviteController extends Controller
     }
 
     public function index(Request $request){
+
+        $logged_user_id = Auth::id();
+        
         $invitationObj = new Invitation;
         $inviteIdArr = explode('_', $request->id);
         if(count($inviteIdArr)!=2){
             return redirect('login');
         }
+        
+        if(!empty($logged_user_id)){
+            return redirect('user/index/'.$inviteIdArr[0]);
+        }
+        
         $data['invitation_id'] = $request->id;
         $data['inviteReturnArr'] = $invitationObj->validateInviteLink($request->id);
         return view('invite.index', $data);

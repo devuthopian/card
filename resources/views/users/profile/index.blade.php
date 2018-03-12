@@ -16,9 +16,11 @@
             @include('users.profile.partials.profileHeader')
 
             <div class="button_cont">
+                @if($profile->user->id == Auth::id())
                <div class="button_left">
                  <a href="javascript:void(0)" onclick="openCreateCardPopup()">New Card</a>
                </div>
+               @endif
                <div class="button_right">
                  <a href="#">Sort by owner</a>
                  <a href="#">Newest</a>
@@ -59,5 +61,5 @@
 </body>
 @endsection
 @section('scripts')
-<script src="{{ asset('js/users/profile/index.js') }}"></script>
+<script src="{{ asset('public/js/users/profile/index.js') }}"></script>
 @endsection

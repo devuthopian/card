@@ -15,8 +15,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::group(['middleware' => ['guest']], function () {
 	Route::get('/share', 'InviteController@index');
+Route::group(['middleware' => ['guest']], function () {
+	
 	Route::get('/configureUserInfo/{user}', 'InviteController@configureUserInfo');
 	Route::post('/configureUserInfo/{user}', 'InviteController@configureUserInfo');
 	Route::post('/registerName/{invitation_id}', 'InviteController@registerName');
