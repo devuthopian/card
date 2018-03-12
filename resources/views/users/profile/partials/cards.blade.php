@@ -22,7 +22,7 @@
                         </p>
                     </div>
                     <p class="card-title">{{$card->card_name}}</p>
-                    <p class="card-points right" style="display: none">AP300</p>
+                    <p class="card-points right">AP300</p>
                 </div>
                 <!--end card-top-->
                 <div class="card-bottom">
@@ -46,7 +46,7 @@
                 <!--end card-bottom-->
             </div>
             <!--end card-content-->
-            <img src="{{ URL::asset('uploads/card/') }}/{{$card->image}}">
+            <img src="{{ URL::asset('public/uploads/card/') }}/{{$card->image}}">
 
             <!-- Options -->
             <div class="hover_pop">

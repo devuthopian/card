@@ -7,7 +7,6 @@
                 <div class="card-top">
                     
                     <p class="card-title">{{$userProfile->name}}</p>
-                    <p class="card-points right" style="display: none">AP300</p>
                 </div>
                 <!--end card-top-->
                 <div class="card-bottom">
@@ -24,9 +23,9 @@
             </div>
             <!--end card-content-->
             <?php if(!empty($userProfile->profile_image)){ ?>
-                <img src="{{ URL::asset('uploads/user/profile') }}/{{$userProfile->profile_image}}" alt="" />
+                <img src="{{ URL::asset('public/uploads/user/profile') }}/{{$userProfile->profile_image}}" alt="" />
             <?php }else{ ?>
-                <img src="{{ URL::asset('images/avtar.jpg') }}" alt="" />
+                <img src="{{ URL::asset('public/images/avtar.jpg') }}" alt="" />
             <?php } ?>
 
             <!-- Options -->
