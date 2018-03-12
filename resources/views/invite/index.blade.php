@@ -41,19 +41,26 @@
             </div>
             <div class="col-sm-8 second_inner">
               {{ Form::open(array('url' => 'registerName/'.$invitation_id, 'id' => 'registerName')) }}
-                
                   
-                     <div class="name"><p>{{$userResultObj->name}} </p></div>
-                     <div class="heading">Invited you to join <br><span>{{$userProfileObj->name}}</span></div>
+                      <div class="name"><p>{{$userResultObj->name}} </p></div>
+                      <div class="heading">
+                        <h2 class="text-uppercase">
+                            Invited you to join<br>
+                            {{$userProfileObj->name}}
+                        </h2>
+                      </div>
                      <div class="next">
-                       <p>What should people call you</p>
+                       <p>What should people call you?</p>
                        <input class="text_box" type="text" name="name" id="name" />
                        <a href="javascript:void(0)" onclick="registerName()"><img src="{{ URL::asset('images/play.png') }}" class="play" alt=""></a>
                      </div>
-                     <div class="signing">
-                     <p>By Signing up.you agree to Misbites Terms of Services and Privacy policy.</p>
+                     <div class="signing text-center">
+                      <p>
+                        By signing up, you agree to Misbits <br>
+                        Terms of Service and Privacy Policy.
+                      </p>
                      <div class="last_inner">
-                     <h2> If You registred before, login</h2>
+                     <h2 class="no_capitalization"> If you registered before, login</h2>
                        <a href="<?php echo url('login') ?>"><img src="{{ URL::asset('images/botom.png') }}" class="play-botom" alt=""></a>
                        </div>
                      </div>
@@ -62,9 +69,6 @@
         </div>
       </div>
       <script type="text/javascript">
-        
-
-        
 
         function checkInvitationUrl(base_url){
             var code = {!! json_encode($inviteReturnArr['code']) !!}
