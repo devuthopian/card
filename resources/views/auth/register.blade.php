@@ -60,7 +60,7 @@
                     <a href="<?php echo url('auth/google') ?>" class="btn btn-social-icon btn-google"><i class="fab fa-google"></i></a>
 
                     <!-- Instagram -->
-                    <a href="<?php echo url('auth/instagram') ?>" class="btn btn-social-icon btn-instagram hide"><i class="fab fa-instagram"></i></a>
+                    <a href="<?php echo url('auth/instagram') ?>" class="btn btn-social-icon btn-instagram"><i class="fab fa-instagram"></i></a>
 
                </form>
              </div>
