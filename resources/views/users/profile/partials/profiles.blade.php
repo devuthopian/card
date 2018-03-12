@@ -1,50 +1,58 @@
 <?php $userProfilesObj = $userDetailsObj->user_profiles; ?>
 @if(count($userProfilesObj)>0)
-<?php $i=0; ?>
+<div class="row card-parent">
     @foreach ($userProfilesObj as $key => $userProfile)
-        <div class="col-sm-6 col-md-4 block-container" id="profile_<?php echo $userProfile->id ?>">
-            <div class="pop_up">
-                <h2> {{$userProfile->name}}</h2>
-                
-
-                <?php if(!empty($userProfile->profile_image)){ ?>
-                    <img src="{{ URL::asset('uploads/user/profile') }}/{{$userProfile->profile_image}}" alt="" style="min-height: 400px;">
-                <?php }else{ ?>
-                    <img src="{{ URL::asset('images/avtar.jpg') }}" alt="" style="min-height: 400px;">
-                <?php } ?>
-
-
-                <div class="content_caption">
-                    <h4> <span>{{$userProfile->description}}</span></h4>
+        <div class="card bordered shadowed" id="profile_<?php echo $userProfile->id ?>">
+            <div class="card-content">
+                <div class="card-top">
+                    
+                    <p class="card-title">{{$userProfile->name}}</p>
+                    <p class="card-points right" style="display: none">AP300</p>
                 </div>
-                <div class="hover_pop">
-                    <ul>
-                        <li>&nbsp;</li>
-                        <li><a href="<?php echo url('user/index', $userProfile->id) ?>">View</a></li>
-
-                        <?php $setDefaultClass = $removeProfileClass = ''; ?>
-                        @if(!empty($userProfile->is_default))
-                        <?php $setDefaultClass = $removeProfileClass = 'hide'; ?>
+                <!--end card-top-->
+                <div class="card-bottom">
+                    <p>
+                        @if(strlen($userProfile->description)>100)
+                        <?php $description = substr($userProfile->description,0,100).'.....';  ?>
+                        @else
+                        <?php $description = $userProfile->description; ?>
                         @endif
-                        
-                        @if(count($userProfilesObj)>1)
-                        <li id="removeProfileButton<?php echo $userProfile->id ?>" class="{{$removeProfileClass}} removeProfileButtons">
-                            <a href="javascript:void()" onclick="removeProfile('<?php echo $userProfile->id ?>')">Remove</a>
-                        </li>
-                        @endif
-                        <li id="defaultProfileButton<?php echo $userProfile->id ?>" class="{{$setDefaultClass}} setDefaultButtons">
-                            <a href="javascript:void()" onclick="setDefaultProfile('<?php echo $userProfile->id ?>')">Set Default</a>
-                        </li>
-                        
-                    </ul>
+                        {{$description}}
+                    </p>
                 </div>
+                <!--end card-bottom-->
+            </div>
+            <!--end card-content-->
+            <?php if(!empty($userProfile->profile_image)){ ?>
+                <img src="{{ URL::asset('uploads/user/profile') }}/{{$userProfile->profile_image}}" alt="" />
+            <?php }else{ ?>
+                <img src="{{ URL::asset('images/avtar.jpg') }}" alt="" />
+            <?php } ?>
+
+            <!-- Options -->
+            <div class="hover_pop">
+                <ul>
+                    <li>&nbsp;</li>
+                    <li><a href="<?php echo url('user/index', $userProfile->id) ?>">View</a></li>
+
+                    <?php $setDefaultClass = $removeProfileClass = ''; ?>
+                    @if(!empty($userProfile->is_default))
+                    <?php $setDefaultClass = $removeProfileClass = 'hide'; ?>
+                    @endif
+                    
+                    @if(count($userProfilesObj)>1)
+                    <li id="removeProfileButton<?php echo $userProfile->id ?>" class="{{$removeProfileClass}} removeProfileButtons">
+                        <a href="javascript:void()" onclick="removeProfile('<?php echo $userProfile->id ?>')">Remove</a>
+                    </li>
+                    @endif
+                    <li id="defaultProfileButton<?php echo $userProfile->id ?>" class="{{$setDefaultClass}} setDefaultButtons">
+                        <a href="javascript:void()" onclick="setDefaultProfile('<?php echo $userProfile->id ?>')">Set Default</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <?php $i++; ?>
-        @if($i%3==0)
-        <div class="clearfix"></div>
-        @endif
     @endforeach
+</div>
 @else
     <div class="text-center">Profiles not available</div>
 @endif

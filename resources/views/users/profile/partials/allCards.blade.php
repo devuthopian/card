@@ -1,27 +1,51 @@
+<br><br>
 @if(count($cards)>0)
-<?php $i=0; ?>
+<div class="row card-parent">
     @foreach ($cards as $key => $card)
-        <div class="col-sm-6 col-md-4 block-container" id="card_<?php echo $card->id ?>">
-            <div class="pop_up">
-                <h2><span>Bonus + 50</span> {{$card->card_name}}</h2>
-                <img src="{{ URL::asset('uploads/card/') }}/{{$card->image}}" alt="" style="height: 400px;">
-                <div class="content_caption">
-                    <h3><span>F</span> Tier 1</h3>
-                    <h4>Rewards <span>The holder reviews news 10 minuts later</span></h4>
-                    <p>{{$card->description}}</p>
+        <div class="card bordered shadowed" id="card_<?php echo $card->id ?>">
+            <div class="card-content">
+                <div class="card-top">
+                    <div class="rosette left">
+                        <p>
+                            Bonus +50
+                        </p>
+                    </div>
+                    <p class="card-title">{{$card->card_name}}</p>
+                    <p class="card-points right" style="display: none">AP300</p>
                 </div>
-                <div class="hover_pop">
-                    <ul>
-                        <li><a href="javascript:void()" onclick="zoomImage('<?php echo $card->image ?>')">Zoom</a></li>
-                    </ul>
+                <!--end card-top-->
+                <div class="card-bottom">
+                    <div class="row">
+                        <div class="card-icon left">f</div>
+                        <span class="card-points right">Tier1</span>
+                    </div>
+                    <p class="row">
+                        <b class="left">Rewards</b>
+                        <span class="left">Receive news 10 minutes early Receive news 10 minutes early Receive news 10 minutes earlysReceive news 10 minutes early</span>
+                    </p>
+                    <p>
+                        @if(strlen($card->description)>100)
+                        <?php $description = substr($card->description,0,100).'.....';  ?>
+                        @else
+                        <?php $description = $card->description; ?>
+                        @endif
+                        {{$description}}
+                    </p>
                 </div>
+                <!--end card-bottom-->
+            </div>
+            <!--end card-content-->
+            <img src="{{ URL::asset('uploads/card/') }}/{{$card->image}}">
+
+            <!-- Options -->
+            <div class="hover_pop">
+                <ul>
+                    <li><a href="javascript:void()" onclick="zoomImage('<?php echo $card->image ?>')">Zoom</a></li>
+                </ul>
             </div>
         </div>
-        <?php $i++; ?>
-        @if($i%3==0)
-        <div class="clearfix"></div>
-        @endif
     @endforeach
+</div>
 @else
     <div class="text-center">Cards not available</div>
 @endif
