@@ -57,7 +57,7 @@
                      <div class="signing text-center">
                       <p>
                         By signing up, you agree to Misbits <br>
-                        Terms of Service and Privacy Policy.
+                        Terms of Service and Privacy Policy
                       </p>
                      <div class="last_inner">
                      <h2 class="no_capitalization"> If you registered before, login</h2>
