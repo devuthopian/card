@@ -129,4 +129,10 @@ class User extends Authenticatable
         $saveArr['password'] = Hash::make($requestArr['password']);
         return $this->where('id', $logged_user_id)->update($saveArr);
     }
+
+    public function updateProfileSettings($logged_user_id, $requestArr){
+        $updatesArr['provider_id'] = $requestArr['provider_id'];
+        $updatesArr['profile_link'] = $requestArr['profile_link'];
+        return $this->where('id', $logged_user_id)->update($updatesArr);
+    }
 }

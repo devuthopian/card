@@ -3,8 +3,11 @@
 style="background-image: url({{ URL::asset('images/header-background.jpg') }}); ">
         <div class="header-content left">
             <div class="header-right right">
-                <!-- <a href="#" class="verify-btn">verify</a>
-                <a href="#" class="unverify-btn">unverified</a> -->
+                @if(!empty($profile->user->is_profile_approved))
+                <a href="#" class="verify-btn">verify</a>
+                @else
+                <a href="#" class="unverify-btn">unverified</a>
+                @endif
                 <div class="header-image">
                     <?php $profile_image = $profile->profile_image; ?>
                     <?php if(!empty($profile_image)){ ?>

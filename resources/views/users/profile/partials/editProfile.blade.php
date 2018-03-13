@@ -42,24 +42,6 @@
           </div>
         {{ Form::close() }}
       </div>
-      <div class="modal-header">
-        <h4>Profile Verification (Optional)</h4> 
-        <h5>If you visit to offer </h5>       
-      </div>
-      <div class="modal-body">
-        <div class="profile_cont">
-          <label>Select Verification method:</label> 
-          <select>
-            <option>01</option>
-            <option>01</option>
-            <option>01</option>
-          </select>
-           <label>Link to Your twitterlocator</label> <input type="text">
-           <label>Verification message shown to your followers:</label>
-           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet placerat nisi. Aenean condimentum porta est sed pharetra.</p>
-           <input type="submit" value="Save">
-        </div>
-      </div>
     </div>
   </div>
 </div>

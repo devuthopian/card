@@ -21,6 +21,8 @@
                         {{ Form::submit('Save', array('name'=>'saveSettings', 'id'=>'saveSettings')) }}
                     </div>
                     {{ Form::close() }}
+
+                    
                     {{ Form::open(array('url' => 'user/profile/settings', 'id' => 'settings')) }}
                     <div class="tracking_cont_right">
                         @if (session('status'))
@@ -53,6 +55,12 @@
                     
                     </div>
                     {{ Form::close() }}
+
+                    <div class="clearfix"></div>
+                    <!-- profile verification -->
+                    @include('users.profile.partials.profile_verification')
+
+
                 </div>
             </div>
         </div>

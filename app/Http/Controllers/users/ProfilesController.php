@@ -223,6 +223,7 @@ class ProfilesController extends Controller
 
             $requestArr = $request->all();
 
+            ### save Settings
             if(!empty($requestArr['saveSettings'])){
                 $settingResultObj = $userObj->updateSettings($logged_user_id, $requestArr);
                 if(!empty($settingResultObj)){
@@ -230,6 +231,15 @@ class ProfilesController extends Controller
                 }
             }
 
+            ### verify Profile
+            if(!empty($requestArr['profileVerification'])){
+                $settingResultObj = $userObj->updateProfileSettings($logged_user_id, $requestArr);
+                if(!empty($settingResultObj)){
+                    return redirect('user/profile/settings')->with('profile_status','Profile has been submitted for verification succesfully.');;
+                }
+            }
+
+            ### change Password
             if(!empty($requestArr['changePassword'])){
 
                 $userResultObj = $userObj->where('id', $logged_user_id)->first();

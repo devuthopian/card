@@ -14,8 +14,9 @@ class AlterUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('provider')->nullable()->after('password');
-            $table->string('provider_id')->nullable()->after('provider');
+            $table->tinyInteger('provider_id')->comment('1 for facebook, 2 for twitter, 3 for google')->nullable()->after('password');
+            $table->string('profile_link')->nullable()->after('provider_id');
+            $table->tinyInteger('is_profile_approved')->nullable()->after('profile_link');
         });
     }
 
