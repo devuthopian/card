@@ -49,15 +49,13 @@
                                                     <?php
                                                     
                                                         $last_login_date = date('d/m/Y', strtotime($userObj->last_login));
-
                                                         if($last_login_date == date('d/m/Y')) {
                                                           $last_login_date = 'Today';
-                                                        } 
-                                                        else if($last_login_date == date('d/m/Y',now() - (24 * 60 * 60))) {
+                                                        } else if($last_login_date == date('d/m/Y', strtotime(now()) - (24 * 60 * 60))) {
                                                           $last_login_date = 'Yesterday';
                                                         }
                                                             
-                                                    echo date('G:i', strtotime($userObj->last_login)).' '.$last_login_date;
+                                                        echo date('G:i', strtotime($userObj->last_login)).' '.$last_login_date;
                                                     ?>
                                                     </span></p>
                                                     <p>{{$defaultUserProfile->description}}</p>
@@ -72,9 +70,12 @@
                                                 ?>
                                                 @foreach($userProfilesObj as $profileObj)
                                                     @foreach($profileObj->released_cards as $cardObj)
-                                                        <div class="n_cards">
+                                                        <div class="n_cards" style="cursor: pointer !important;" onclick="goToProfile(<?php echo $cardObj->user_profile_id; ?>)">
+
                                                             <span class="n_cards_title">{{$cardObj->card_name}}</span>
+
                                                             <img src="{{ URL::asset('uploads/card/') }}/{{$cardObj->image}}" alt="">
+                                                            
                                                             <span class="n_cards_img hide" ><img src="{{ URL::asset('images/acquired.png') }}" alt=""></span>
                                                         </div>
                                                         <?php $card_inc++ ?>
@@ -95,4 +96,7 @@
         </div>
     </div>
 </body>
+@endsection
+@section('scripts')
+<script src="{{ asset('js/users/profile/tracking.js') }}"></script>
 @endsection

@@ -148,8 +148,14 @@ function removeCard(card_id){
 				    data: {'card_id':card_id},
 				    success: function( data, textStatus, jQxhr ){
 				    	if(data.code == 1){
-				    		$('#card_'+card_id).remove();
-				    		swal("Success", data.message, "success");
+				    		swal({
+					            title: "Success",
+					            text: data.message,
+					            type: "success"
+					        });
+
+					        location.reload();
+
 				    	}else{
 				    		swal("Error", data.message, "error");
 				    	}

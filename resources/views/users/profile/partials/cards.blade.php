@@ -3,14 +3,8 @@
 <div class="row card-parent">
     @foreach ($cardsObj as $key => $card)
         <?php $margin_class = ''; ?>
-        @if($i==4)
-        <?php $margin_class = 'second_row_first_column'; ?>
-        @endif
-        @if($i==7)
-        <?php $margin_class = 'third_row_first_column'; ?>
-        @endif
-        @if($i==9)
-        <?php $margin_class = 'fourth_row_first_column'; ?>
+        @if(in_array($i, [4,7,9]))
+        <div class="clearfix"></div>
         @endif
 
         <div class="card bordered shadowed {{$margin_class}}" id="card_<?php echo $card->id ?>">
