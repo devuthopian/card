@@ -31,7 +31,7 @@
                                 <?php $defaultUserProfile = $userObj->default_user_profile; ?>
                                         <div class="tracker_head_sec">
                                             <div class="head_sec_cont">
-                                                <span class="dropdown_icon" data-toggle="collapse" data-target="#cards<?php echo $user_inc; ?>"><i class="fas fa-angle-down"></i></span>
+                                                <span class="dropdown_icon collapsed" data-toggle="collapse" data-target="#cards<?php echo $user_inc; ?>"><i class="fas fa-angle-down"></i></span>
                                                 <div class="head_sec_img">
                                                     <?php if(!empty($defaultUserProfile->profile_image)){ ?>
                                                         <img src="{{ URL::asset('uploads/user/profile/') }}/{{$defaultUserProfile->profile_image}}">
@@ -45,7 +45,21 @@
                                                     <h3>Released {{$userCardsResultObj->count()}} Cards</h3>                        
                                                 </div>
                                                 <div class="head_sec_detail">
-                                                    <p><span>Activity Today 16:21</span></p>
+                                                    <p><span>Activity 
+                                                    <?php
+                                                    
+                                                        $last_login_date = date('d/m/Y', strtotime($userObj->last_login));
+
+                                                        if($last_login_date == date('d/m/Y')) {
+                                                          $last_login_date = 'Today';
+                                                        } 
+                                                        else if($last_login_date == date('d/m/Y',now() - (24 * 60 * 60))) {
+                                                          $last_login_date = 'Yesterday';
+                                                        }
+                                                            
+                                                    echo date('G:i', strtotime($userObj->last_login)).' '.$last_login_date;
+                                                    ?>
+                                                    </span></p>
                                                     <p>{{$defaultUserProfile->description}}</p>
                                                 </div>
                                             </div>
