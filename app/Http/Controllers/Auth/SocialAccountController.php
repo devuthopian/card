@@ -38,6 +38,7 @@ class SocialAccountController extends Controller
         } catch (\Exception $e) {
             return redirect('/login');
         }
+        dd($user);
 
         $authUser = $accountService->findOrCreate(
             $user,

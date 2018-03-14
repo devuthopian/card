@@ -77,4 +77,8 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/card/delete/{id}', 'CardController@destroy');
 
 	Route::post('/sendInvitation', 'InviteController@sendInvitation');
+
+
+	Route::get('/twitterUserTimeLine', 'users\TwitterController@twitterUserTimeLine');
+	Route::post('tweet', ['as'=>'post.tweet','uses'=>'users\TwitterController@tweet']);
 });
