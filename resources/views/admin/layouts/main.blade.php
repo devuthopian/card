@@ -14,6 +14,9 @@
                 <!-- content -->
                 @yield('content')
                 
+                <!-- page scripts -->
+                @yield('page_scripts')
+                
                 <!-- footer -->
                 @include('admin.includes.footer')
                 <!--end footer-->

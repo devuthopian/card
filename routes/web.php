@@ -83,7 +83,10 @@ Route::group(['middleware' => ['web']], function () {
 Route::prefix('admin')->group(function() {
 	Route::get('/', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-	Route::get('/index', 'AdminController@index')->name('admin.dashboard');
-	
-	Route::post('/logout', 'AdminController@logout')->name('admin.logout');
+
+	Route::group(['middleware' => ['web']], function () {
+		Route::get('/index', 'AdminController@index')->name('admin.dashboard');
+		Route::post('/user/approve', 'Admin\UsersController@approve')->name('admin.user.approve');
+		Route::post('/logout', 'AdminController@logout')->name('admin.logout');
+	});
 });
