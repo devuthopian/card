@@ -1,5 +1,5 @@
 {{ Form::open(array('url' => 'user/profile/settings', 'id' => 'verifyProfile')) }}
-    <div class="tracking_cont_right">
+    <div class="tracking_cont_right ">
         @if (session('profile_status'))
             <div class="alert alert-success">
                 {{ session('profile_status') }}

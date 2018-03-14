@@ -227,7 +227,7 @@ class ProfilesController extends Controller
             if(!empty($requestArr['saveSettings'])){
                 $settingResultObj = $userObj->updateSettings($logged_user_id, $requestArr);
                 if(!empty($settingResultObj)){
-                    return redirect('user/profile/settings');
+                    return redirect('user/profile/settings')->with('account_status','Settings has been updated successfully.');
                 }
             }
 
@@ -235,7 +235,7 @@ class ProfilesController extends Controller
             if(!empty($requestArr['profileVerification'])){
                 $settingResultObj = $userObj->updateProfileSettings($logged_user_id, $requestArr);
                 if(!empty($settingResultObj)){
-                    return redirect('user/profile/settings')->with('profile_status','Profile has been submitted for verification succesfully.');;
+                    return redirect('user/profile/settings?tab=profileVerification')->with('profile_status','Profile has been submitted for verification succesfully.');
                 }
             }
 
@@ -254,13 +254,17 @@ class ProfilesController extends Controller
                     $passwordResultObj = $userObj->changePassword($logged_user_id, $requestArr);
 
                     if(!empty($passwordResultObj)){
-                        return redirect('user/profile/settings')->with('status','Password has been saved successfully.');;
+                        return redirect('user/profile/settings?tab=changePassword')->with('status','Password has been saved successfully.');
                     }
                 }
             }
         }
-
-        return view('users.profile.settings');
+        $current_tab = '';
+        if(!empty($request->tab)){
+            $current_tab = $request->tab;
+        }
+        $data['tab'] = $current_tab;
+        return view('users.profile.settings', $data);
     }
 }
 
