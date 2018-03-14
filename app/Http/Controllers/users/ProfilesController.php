@@ -34,7 +34,6 @@ class ProfilesController extends Controller
      */
     public function index(Request $request, UserProfile $profile) {
         $logged_user_id = Auth::id();
-
         ### Default profile id
         $userProfileObj = new UserProfile;
         $default_profile_id = $userProfileObj->getDefaultProfile($logged_user_id);

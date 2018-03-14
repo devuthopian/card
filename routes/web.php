@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+	return redirect('login');
 });
 
 Route::get('/share', 'InviteController@index');
@@ -74,4 +74,16 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/card/delete/{id}', 'CardController@destroy');
 
 	Route::post('/sendInvitation', 'InviteController@sendInvitation');
+});
+
+
+// Admin
+//Route::get('/admin', 'AdminController@index');
+
+Route::prefix('admin')->group(function() {
+	Route::get('/', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+	Route::get('/index', 'AdminController@index')->name('admin.dashboard');
+	
+	Route::post('/logout', 'AdminController@logout')->name('admin.logout');
 });

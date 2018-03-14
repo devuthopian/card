@@ -1281,7 +1281,7 @@ label {
 .tracking_cont_left {
  width: 48%;
  float: left;
- padding: 50px 12%;
+ padding: 50px 7%;
  background: #f5f2f2;
 }
 .tracking_cont input[type="text"], .tracking_cont input[type="password"],  .tracking_cont select {
@@ -1304,7 +1304,7 @@ label {
 .tracking_cont_right {
  width: 48%;
  float: right;
- padding: 50px 12%;
+ padding: 50px 7%;
  background: #f5f2f2;
 }
 .second_inner .invite_link_cont .close {
@@ -1637,6 +1637,14 @@ label {
     align-items: stretch;
     margin-top: 50px;
 }
+.setting_wrapper #content {
+    width: 100%;
+}
+.setting_wrapper #my_account {
+    width: 60%;
+    margin: 0px auto;
+    float: none;
+}
 #sidebar .toggle {
     position: absolute;
     top: 10px;
@@ -1646,7 +1654,7 @@ label {
     border: 0px;
 }
 .active .toggle {
-    right: -96px !important;
+    right: -94px !important;
 }
 #sidebar h2 {
   color: #fff;
@@ -1668,7 +1676,7 @@ label {
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
+    padding: 40px 0;
 }
 
 #sidebar ul p {
@@ -1743,13 +1751,72 @@ ul.CTAs a {
     MEDIAQUERIES
 ----------------------------------------------------- */
 @media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
-    }
-    #sidebar.active {
-        margin-left: 0;
-    }
-    #sidebarCollapse span {
-        display: none;
-    }
+#sidebar {
+    margin-left: -250px;
+}
+#sidebar.active {
+    margin-left: 0;
+}
+#sidebarCollapse span {
+    display: none;
+}
+.setting_wrapper #my_account {
+    width: 100%;
+}
+    #sidebar .toggle {
+    right: -92px;
+}
+.active .toggle {
+    right: -42px !important;
+}
+.setting_wrapper #content {
+    margin-left: 50px;
+}
+}
+
+.admin_panel .top_bar {
+  width: 100%;
+  background: #ffd249;
+  color: #333;
+  padding: 7px 0px;
+  display: inline-block;
+  margin-bottom: -3px;
+}
+.admin_panel .top_bar p {
+  padding: 0px 40px;
+  margin: 0;
+}
+.admin_panel .navbar-default {
+    padding: 30px 0;
+}
+.admin_panel .admin_cont {
+  width: 100%;
+  display: inline-block;
+}
+.admin_panel .admin_cont h2 {
+  padding: 15px 55px;
+  webkit-box-shadow: inset 0px 4px 25px #bfbfbf;
+    box-shadow: inset 0px 4px 25px #bfbfbf;
+}
+.admin_panel .admin_cont_left {
+  width: 40%;
+  padding: 5% 0;
+  float: left;
+  text-align: center;
+  box-shadow: 0px 1px 14px #eaeaea;
+}
+.admin_panel .admin_cont_right {
+  width: 60%;
+  float: right;
+  padding: 4% 0;
+}
+.admin_panel .admin_cont_right ul li {
+  padding: 10px 20px;
+  font-size: 20px;
+  border-bottom: 1px solid #eee;
+}
+@media (max-width: 767px) {
+.admin_panel .admin_cont_left, .admin_panel .admin_cont_right {
+  width: 100%;
+}
 }

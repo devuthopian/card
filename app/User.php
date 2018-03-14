@@ -37,7 +37,7 @@ class User extends Authenticatable
 
     // linked accounts
     public function accounts(){
-        return $this->hasMany('App\LinkedSocialAccount');
+        return $this->hasOne('App\LinkedSocialAccount');
     }
 
     /**
