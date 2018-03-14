@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 <title>MISBITS</title>
-<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="shortcut icon" href="{{ URL::asset('images/favicon.png') }}" type="image/x-icon" />
 
 <!-- style -->
 <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap.css') }}" />

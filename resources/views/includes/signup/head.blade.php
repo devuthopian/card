@@ -9,7 +9,7 @@
 <meta http-equiv="Bulletin-Text" content="MISBITS"/>
 <meta name="page-topic" content="MISBITS"/>
 <meta http-equiv="Content-Style-Type" content="text/css"/>
-<link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+<link rel="shortcut icon" href="{{ URL::asset('images/favicon.png') }}" type="image/x-icon" />
 
 <link rel="stylesheet" href="{{ URL::asset('assets/vendor/css/style.css') }}" />
 <link rel="stylesheet" href="{{ URL::asset('assets/vendor/css/invite.css') }}" />
