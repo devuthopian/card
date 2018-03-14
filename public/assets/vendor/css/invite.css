@@ -428,16 +428,26 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
 
 /************2nd******************/
 .main {
-  margin-top: 10%;
+  margin: 10% auto;
+  max-width: 900px;
   display: flex;
 }
 .first_inner{
-  background-color: rgba(249, 220, 57, 0.80);
+  background-color: rgba(255, 216, 0, 0.8);
 }
 .second_inner{
   background-color: rgba(0, 0, 0, 0.70);
   padding-bottom: 22px;
   min-height: 416px !important;
+}
+.second_inner .name p {
+  font-size: 26px;
+  font-family: 'Gill Sans MT';
+}
+.second_inner .heading h2 {
+  font-size: 28px;
+  line-height: 40px;
+  font-family: 'Gill Sans MT';
 }
 .logo{
   margin: 0 auto;
@@ -483,17 +493,22 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
     font-weight: 100;
     position: relative;
 }
+.second_inner .next p {
+    font-size: 20px;
+    margin-top: 60px;
+    font-family: 'Gill Sans MT';
+}
 .second_inner .text_box{
-    width: 50%;
+    width: 65%;
     background: no-repeat;
     border: none;
     border-bottom: 1px solid #ffff;
     margin: 0 auto;
     display: inherit;
     float: none !important;
-    font-size: 12px;
+    font-size: 16px;
     color: #fff;
-    padding: 10px 0;
+    padding: 10px 10px;
 }
 .signing p {
     color: #fff;
@@ -507,13 +522,14 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
   float: left;
 }
 .signing p {
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 20px;
+  font-family: 'Gill Sans MT';
 }
-.play{
+.play {
     position: absolute;
-    right:-35px;
-    bottom: 0;
+    right: -35px;
+    bottom: -25px;
 }
 .last_inner {
   width:50%;
@@ -521,16 +537,19 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
    
 }
 .last_inner h2 {
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
-    width: 86%;
+    width: 82%;
     margin: 0 auto;
-    padding: 3% 0;
+    padding: 15% 0 0;
     float: left;
     font-weight: normal;
+    font-family: 'Gill Sans MT';
 }
-.play-botom{
-  float: right;
+.play-botom {
+    float: right;
+    position: relative;
+    top: 28px;
 }
 .bg-dark {
     background-color: #333333 !important;
@@ -552,10 +571,25 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
     display: inline-block;
     width: 100%;
 }
+.last_inner h2 {
+    padding: 10% 0 0;
+}
+.play-botom {
+    top: 36px;
+    right: 26%;
+}
 }
 @media screen and (max-width: 480px) {
 .heading {
     font-size: 30px;
+}
+.play-botom {
+    top: 18px;
+    right: 0px;
+}
+.last_inner h2 {
+    width: 70%;
+    text-align: left;
 }
 }
 .pop_up {
@@ -653,9 +687,13 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
   color: #fff;
   text-align: center;
 }
+.login_field .pull-left label {
+  font-weight: normal;
+  font-size: 14px;
+}
 .login_cont p {
   text-align: left;
-  padding: 0 23%;
+  padding: 0 15%;
 }
 .login_cont p a {
   color: #f9dc39;
@@ -830,5 +868,40 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
 .login_cont p span {
     float: left;
     margin-top: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+}
+@media (max-width: 991px) {
+.login_cont p {
+    padding: 0 5%;
+}
+}
+@media (max-width: 991px) and (min-width: 816px) {
+.play-botom {
+    margin-right: -10px;
+}
+}
+@media (max-width: 815px) {
+.last_inner h2 {
+    padding: 12% 0 0;
+}
+}
+@media (max-width: 767px) {
+.last_inner {
+    width: 95%;
+}
+.last_inner h2 {
+    padding: 9% 0 0;
+}
+}
+@media (max-width: 480px) {
+.last_inner h2 {
+    padding: 10% 0 0;
+}
+}
+@media (max-width: 405px) {
+.last_inner {
+    width: 100%;
 }
 }
