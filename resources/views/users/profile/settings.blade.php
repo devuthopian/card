@@ -14,7 +14,7 @@
             <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <button type="button" id="sidebarCollapse" class="toggle">
-                  <i class="glyphicon glyphicon-align-left"></i>
+                  <i class="fas fa-align-left"></i>
                 </button>
                 <?php 
                     $my_account_active_tab = 'active';
