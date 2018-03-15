@@ -46,7 +46,7 @@
                                 <?php $profile_link = $user->profile_link; ?>
 
                                 @if(!empty($profile_link))
-                                    <a href="{{$profile_link}}" style="text-transform: none !important;">{{$profile_link}}</a>
+                                    <a target="_blank" href="{{$profile_link}}" style="text-transform: none !important;">{{$profile_link}}</a>
                                 @else
                                     N/A
                                 @endif
@@ -82,5 +82,5 @@
     </div>
 @endsection
 @section('page_scripts')
-<script src="{{ asset('public/js/admin/users/index.js') }}"></script>
+<script src="{{ asset('js/admin/users/index.js') }}"></script>
 @endsection
