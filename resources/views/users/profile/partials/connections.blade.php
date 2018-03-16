@@ -9,7 +9,7 @@
                 <!-- Youtube -->
                 <a href="javascript:void(0)" onclick="openAuthenticationPopup('youtube')" class="btn btn-social-icon btn-google"><i class="fab fa-youtube"></i></a>
                 <!-- SMS -->
-                <a href="<?php echo url('auth/youtube') ?>" class="btn btn-social-icon" style="background-color:#ccc; color:#fff; text-align:center; vertical-align: middle;">SMS</a>
+                <a class="sms_link" href="<?php echo url('auth/youtube') ?>" class="btn btn-social-icon" style="color:#fff; text-align:center; vertical-align: middle;">SMS</a>
         	</div>
         </div>
     </div>
@@ -42,15 +42,14 @@
         <div style="background-color:{{$background_color}} !important; color:#fff !important; height: 200px !important;" class="tracking_cont_left" >
             
             <div href="javascript:void(0)" >
-                <i class="{{$social_icon}}"></i>
-            </div>
-            <br><br>
-            
+                <div class="social_icon"><i class="{{$social_icon}}"></i></div>
+                <div class="social_details">
+                    <p>{{$linkedSocialAccount->name}}</p>
+                    <small>Account Name</small>
+                </div>
+            </div>            
             <!-- Twitter -->
-            <p>{{$linkedSocialAccount->name}}</p>
-            <small>Account Name</small>
-
-
+        
         </div>
         <br>
     @endforeach
