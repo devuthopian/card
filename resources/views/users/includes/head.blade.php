@@ -16,10 +16,12 @@
 <!-- scripts -->
 <script src="{{ URL::asset('assets/vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ URL::asset('assets/bootstrap.min.js') }}"></script>
+<link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-social.css') }}" />
 <script src="{{ URL::asset('assets/scripts.js') }}"></script>
 <script src="{{ URL::asset('assets/sweetalert2/dist/sweetalert2.min.js') }}"></script>
 <script src="{{ URL::asset('assets/bootbox/bootbox.min.js') }}"></script>
 <script src="{{ asset('js/common.js') }}"></script>
+
 
 <script type="text/javascript">
   var base_url = {!! json_encode(url('/')) !!}

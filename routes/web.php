@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/share', 'InviteController@index');
+Route::get('auth/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
 
 Route::group(['middleware' => ['guest']], function () {
 	Route::get('/configureUserInfo/{user}', 'InviteController@configureUserInfo');
@@ -24,7 +25,7 @@ Route::group(['middleware' => ['guest']], function () {
 
 	// Social Login
 	Route::get('auth/{provider}', 'Auth\SocialAccountController@redirectToProvider');
-	Route::get('auth/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
+	
 });
 
 Auth::routes();
@@ -47,6 +48,9 @@ Route::group(['middleware' => ['web']], function () {
 	// Settings
 	//Route::get('/user/profile/settings', 'users\ProfilesController@settings');
 	Route::match(['get', 'post'], '/user/profile/settings', 'users\ProfilesController@settings');
+	Route::get('/user/profile/settingsCallback', 'users\ProfilesController@settingsCallback');
+
+	
 
 	// Tracking and Tracker
 	Route::get('/user/profile/tracking', 'users\ProfilesController@tracking');
@@ -74,6 +78,11 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/card/delete/{id}', 'CardController@destroy');
 
 	Route::post('/sendInvitation', 'InviteController@sendInvitation');
+
+
+	// Linked to Social Accounts
+	Route::get('user/social_accounts/{provider}', 'users\LinkedSocialAccountsController@redirectToProvider');
+	Route::get('user/social_accounts/{provider}/callback', 'users\LinkedSocialAccountsController@handleProviderCallback');
 });
 
 

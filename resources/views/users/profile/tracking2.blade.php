@@ -21,8 +21,18 @@
                         <?php }else{ ?>
                             <img src="{{ URL::asset('images/avtar.jpg') }}">
                         <?php } ?>
+                        <?php $user_count = 0; ?>
+                        @foreach($userResultObj->user_profiles as $userProfileObj)
+                            @foreach($userProfileObj->invitations as $invitationObj)
+                                @foreach($invitationObj->users as $userObj)
+                                    <?php $user_count++; ?>
+                                @endforeach
+                            @endforeach
+                        @endforeach
+
+                        
                        <h1>{{$userResultObj->name}} is Tracking</h1>
-                       <h2>28 <span>Tracking</span></h2>
+                       <h2>{{$user_count}} <span>Tracking</span></h2>
                     </div>
                     <?php $user_inc = 1; ?>
                     @foreach($userResultObj->user_profiles as $userProfileObj)
@@ -34,13 +44,13 @@
                                                 <span class="dropdown_icon collapsed" data-toggle="collapse" data-target="#cards<?php echo $user_inc; ?>"><i class="fas fa-angle-down"></i></span>
                                                 <div class="head_sec_img">
                                                     <?php if(!empty($defaultUserProfile->profile_image)){ ?>
-                                                        <img src="{{ URL::asset('uploads/user/profile/') }}/{{$defaultUserProfile->profile_image}}">
+                                                        <img style="cursor: pointer !important;" onclick="goToProfile(<?php echo $defaultUserProfile->id; ?>)" src="{{ URL::asset('uploads/user/profile/') }}/{{$defaultUserProfile->profile_image}}">
                                                     <?php }else{ ?>
-                                                        <img src="{{ URL::asset('images/avtar.jpg') }}">
+                                                        <img style="cursor: pointer !important;" onclick="goToProfile(<?php echo $defaultUserProfile->id; ?>)" src="{{ URL::asset('images/avtar.jpg') }}">
                                                     <?php } ?>
                                                 </div>
                                                 <div class="head_sec_name">
-                                                    <h2>{{$userObj->name}}</h2>
+                                                    <h2 style="cursor: pointer !important;" onclick="goToProfile(<?php echo $defaultUserProfile->id; ?>)">{{$userObj->name}}</h2>
                                                     <?php $userCardsResultObj = $userObj->released_cards; ?>
                                                     <h3>Released {{$userCardsResultObj->count()}} Cards</h3>                        
                                                 </div>

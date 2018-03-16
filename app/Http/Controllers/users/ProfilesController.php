@@ -265,6 +265,11 @@ class ProfilesController extends Controller
         $data['tab'] = $current_tab;
         return view('users.profile.settings', $data);
     }
+
+
+    public function settingsCallback(){
+        return view('users.profile.settingsCallback');
+    }
 }
 
 ?>

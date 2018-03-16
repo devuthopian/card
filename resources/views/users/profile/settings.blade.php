@@ -28,9 +28,13 @@
                         $login_hide_class = '';
                     }
 
+                    if($tab == 'connections'){
+                        $my_account_hide_class = $login_hide_class = 'hide';
+                        $connections_hide_class = '';
+                    }
+
                 ?>
                 
-
                 <ul class="list-unstyled components">
                     <h2>User Setting</h2>
                     <li class="{{$my_account_active_tab}}" id="my_account_tab">
@@ -100,13 +104,11 @@
                             <!-- Change Password Form -->
 
                         <!-- profile verification -->
-                        @include('users.profile.partials.profile_verification')                    
+                                        
                     </div>
                     <!-- connections -->
-                    <div class="tracking_cont_left tabs {{$connections_hide_class}}" id="connections">
-                        <h2>Connections</h2>
-                    </div>
-
+                    @include('users.profile.partials.connections') 
+                    
                 </div>    
             </div>
         </div>

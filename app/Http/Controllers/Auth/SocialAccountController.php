@@ -23,7 +23,7 @@ class SocialAccountController extends Controller
         return Socialite::driver($provider)->redirect();
     }
 
-
+    
     /**
      * Obtain the user information
      *
@@ -38,13 +38,22 @@ class SocialAccountController extends Controller
         } catch (\Exception $e) {
             return redirect('/login');
         }
-
-        $authUser = $accountService->findOrCreate(
-            $user,
-            $provider
-        );
+        if(empty(Auth::id())){
+            $authUser = $accountService->findOrCreate(
+                $user,
+                $provider
+            );
+            
+            $result = auth()->login($authUser, true);
+            return redirect('user/index');
+        }else{
+            
+            $accountService->newConnection(
+                $user,
+                $provider
+            );
         
-        $result = auth()->login($authUser, true);
-        return redirect('user/index');
+            return redirect('user/profile/settingsCallback');
+        }
     }
 }
