@@ -31,6 +31,10 @@ class AdminController extends Controller
         return view('admin.users.index', $data);
     }
 
+    public function dashboard(){
+        return view('admin.dashboard');
+    }
+
     public function logout(){
         Auth::logout();
         return redirect('admin');

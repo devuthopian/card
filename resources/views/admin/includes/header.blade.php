@@ -12,6 +12,14 @@
 <link rel="stylesheet" href="{{ URL::asset('assets/vendor/css/style.css') }}" />
 <link rel="stylesheet" href="{{ URL::asset('assets/sweetalert2/dist/sweetalert2.min.css') }}">
 
+
+<link rel="stylesheet" href="{{ URL::asset('assets/fontawesome.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('assets/fontawesome-all.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+
+
 <script src="{{ URL::asset('assets/jquery.min.js') }}"></script>
 <script src="{{ URL::asset('assets/bootstrap.min.js') }}"></script>
 <script src="{{ URL::asset('assets/scripts.js') }}"></script>

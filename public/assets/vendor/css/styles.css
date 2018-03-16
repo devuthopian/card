@@ -713,6 +713,10 @@ p{
     padding: 30px 30px 20px 30px;
 }
 
+.admin_footer{
+    margin-top: 0px !important;
+}
+
 .footer *,.footer a:hover,.footer a:focus{
     color: #adadad;
 }
@@ -1651,7 +1655,7 @@ label {
 }
 #sidebar .toggle {
     position: absolute;
-    top: 10px;
+    top: 0px;
     right: -0px;
     background: #333;
     padding: 10px 15px;
@@ -1673,6 +1677,7 @@ label {
     color: #fff;
     transition: all 0.3s;
     position: relative;
+    min-height: 500px;
 }
 
 #sidebar.active {
@@ -1791,7 +1796,7 @@ ul.CTAs a {
   margin: 0;
 }
 .admin_panel .navbar-default {
-    padding: 30px 0;
+   /* padding: 30px 0;*/
 }
 .admin_panel .admin_cont {
   width: 100%;
@@ -1865,6 +1870,121 @@ ul.CTAs a {
     margin-bottom: 10px;
 }
 }
-@media (max-width: 626px) {
 
+.card_editor_cont {
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
+    background: #eee;
+    padding: 20px;
+    overflow: hidden;
+}
+.card_editor_cont h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+.card_editor_cont .card_editor_left {
+    width: 50%;
+    float: left;
+}
+.card_editor_cont .card_editor_left input[type="text"] {
+    width: 80%;
+    padding: 8px 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+}
+.card_editor_cont .card_editor_left textarea {
+    width: 80%;
+    padding: 8px 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    height: 100px;
+}
+.card_editor_cont .card_editor_left span {
+    width: 100%;
+    display: inline-block;
+}
+.card_editor_cont .card_editor_left .textarea {
+    position: relative;
+}
+.card_editor_cont .card_editor_left .textarea i {
+    position: absolute;
+    right: 10%;
+    top: 42%;
+}
+.card_editor_cont .card_editor_left .editor_button {
+    padding: 10px 0px;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(#212121, #7b7b7b);
+    color: #fff;
+    border: 1px solid #eee;
+    font-size: 14px;
+}
+.card_editor_cont .card_editor_left .color_picker {
+    padding: 10px 20px;
+    margin: 10px 0;
+    text-align: center;
+    background: linear-gradient(#212121, #7b7b7b);
+    color: #fff;
+    border: 1px solid #eee;
+    font-size: 14px;
+}
+.card_editor_cont .card_editor_left .fields_left {
+    width: 50%;
+    float: left;
+}
+.card_editor_cont .card_editor_left .fields_right {
+    width: 50%;
+    float: right;
+    margin-top: 22%;
+}
+.card_editor_cont .card_editor_right {
+    width: 50%;
+    float: right;
+}
+
+@media (max-width: 767px) {
+.card_editor_cont .card_editor_left {
+    margin-bottom: 20px;
+}
+.card_editor_cont .card_editor_left, .card_editor_cont .card_editor_right {
+    width: 100%;
+}
+}
+#connections .tracking_cont_left {
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+}
+#connections .tracking_cont_left h2 {
+    color: #fff;
+    border-bottom: 1px solid #2b2b2b;
+}
+#connections .tracking_cont_left a {
+    border-radius: 4px;
+    line-height: 30px;
+}
+#connections .social_icon {
+    border-bottom: 1px solid #bd1918;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+#connections .social_icon i {
+    font-size: 35px;
+}
+.sms_link {
+    background: #666;
+    padding: 10px 5px;
+    font-size: 12px;
+}
+
+.navbar-default-admin{
+    margin-bottom: 0px !important;
+}
+
+.admin_setting_wrapper{
+    margin-top: 0px !important;
 }

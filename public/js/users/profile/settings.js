@@ -20,9 +20,3 @@ function openAuthenticationPopup(social_provider){
     }, 1000);
 
 }
-
-$(document).ready(function () {
-     $('#sidebarCollapse').on('click', function () {
-         $('#sidebar').toggleClass('active');
-     });
- });

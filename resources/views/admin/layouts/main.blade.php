@@ -11,8 +11,15 @@
                 <!-- navigation -->
                 @include('admin.includes.navigation')
 
-                <!-- content -->
-                @yield('content')
+                <div class="setting_wrapper admin_setting_wrapper">
+                    <!-- left navigation -->
+                    @include('admin.includes.left_navigation')
+
+                    <!-- content -->
+                    @yield('content')
+
+                </div>
+
                 
                 <!-- page scripts -->
                 @yield('page_scripts')

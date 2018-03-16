@@ -3,16 +3,16 @@
     <div class="row">
         <ul class="footer-links left">
             <li>
-                <a href="about.html">about</a>
+                <a href="#">about</a>
             </li>
             <li>
-                <a href="terma.html">terms</a>
+                <a href="#">terms</a>
             </li>
             <li>
-                <a href="help.html">help</a>
+                <a href="#">help</a>
             </li>
             <li>
-                <a href="apps.html">APPS</a>
+                <a href="#">APPS</a>
             </li>
         </ul>
         <!--end footer-links-->

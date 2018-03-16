@@ -8,6 +8,12 @@ use App\User;
 
 class UsersController extends Controller
 {
+
+    public function index(){
+        $data['users'] = User::paginate(10);
+        return view('admin.users.index', $data);
+    }
+
     public function approve(Request $request){
     	$user_id = $request->user_id;
     	User::where('id', $user_id)->update(['is_profile_approved'=>1]);
