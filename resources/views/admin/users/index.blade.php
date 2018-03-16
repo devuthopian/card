@@ -62,7 +62,7 @@
                                 @endif
 
                                 @if(!empty($is_profile_approved))
-                                    <div class="alert alert-success">Approved</div>
+                                    <div class="alert alert-success text-center">Approved</div>
                                 @endif
                             </td>
                         </tr>
