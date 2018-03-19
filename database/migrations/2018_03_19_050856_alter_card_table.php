@@ -18,7 +18,7 @@ class AlterCardTable extends Migration
             $table->string('card_number')->nullable()->after('bonus');
             $table->string('gender')->nullable()->after('card_number');
             $table->string('card_tier')->nullable()->after('gender');
-            $table->string('rewards')->nullable()->after('card_tier');
+            $table->longText('rewards')->nullable()->after('card_tier');
             $table->string('mask_image')->nullable()->after('rewards');
             $table->string('card_background')->nullable()->after('mask_image');
             $table->string('theme_color')->nullable()->after('card_background');

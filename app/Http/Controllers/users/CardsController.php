@@ -25,6 +25,7 @@ class CardsController extends Controller
             ->join('users', 'users.id', '=', 'card.created_by')
             ->select('users.name', 'card.*')
             ->where('card.deleted_at', null)
+            ->orderBy('card.created_at', 'desc')
             ->get();
 
         return view('users/profile/directory', $data);
