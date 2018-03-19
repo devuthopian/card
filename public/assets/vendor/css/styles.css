@@ -1873,10 +1873,10 @@ ul.CTAs a {
 
 .card_editor_cont {
     width: 100%;
-    max-width: 700px;
+    max-width: 900px;
     margin: 20px auto;
-    background: #eee;
-    padding: 20px;
+    /*background: #eee;*/
+    /*padding: 20px;*/
     overflow: hidden;
 }
 .card_editor_cont h2 {
@@ -1939,7 +1939,7 @@ ul.CTAs a {
 .card_editor_cont .card_editor_left .fields_right {
     width: 50%;
     float: right;
-    margin-top: 22%;
+    margin-top: 16%;
 }
 .card_editor_cont .card_editor_right {
     width: 50%;

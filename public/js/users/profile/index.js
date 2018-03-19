@@ -185,13 +185,43 @@ function editCard(card_id){
 	    success: function( data, textStatus, jQxhr ){
 	    	$('#create_card_header').html('Edit Card');
 	    	$('#card_name').val(data.card_name);
-	    	$('#card_image').attr('src', base_url+'/uploads/card/'+data.image);
-	    	$('textarea#description').val(data.description);
+	    	$('#card_image_preview').attr('src', base_url+'/uploads/card/'+data.image);
+	    	$('textarea#card_description').val(data.description);
+	    
+	    	$('#bonus').val(data.bonus);
+	    	$('#card_number').val(data.card_number);
+	    	$('#gender').val(data.gender);
+	    	$('#tier').val(data.card_tier);
+	    	$('#rewards').val(data.rewards);
+	    	$('#mask_image_preview').attr('src', base_url+'/uploads/card/'+data.mask_image);
+
 	    	$('#card_id').val(data.id);
 	    	$('#copy_card_id').val('');
 	    	$('#cardImageBlock').removeClass('hide');
 	    	$('#cardFileUploadBlock').addClass('hide');
 	    	$('#createCardModal').modal('toggle');
+
+	    	/** Preview Card **/
+
+		    	$('#card_name_label').html(data.card_name);
+		    	$('#bonus_label').html(data.bonus);
+		    	$('#card_number_label').html(data.card_number);
+		    	$('#gender_label').html(data.gender);
+		    	$('#tier_label').html(data.card_tier);
+				
+		    	/** card description **/
+				if(data.description.length>100){
+					$('#description_label').html(data.description.substring(0, 100)+' ...');
+				}else{
+					$('#description_label').html(data.description);
+				}
+
+				/** card rewards **/
+				if(data.rewards.length>100){
+					$('#rewards_label').html(data.rewards.substring(0, 100)+' ...');
+				}else{
+					$('#rewards_label').html(data.rewards);
+				}
 	    },
 	    error: function( jqXhr, textStatus, errorThrown ){
 	        console.log( errorThrown );
@@ -215,13 +245,45 @@ function duplicateCard(card_id){
 	    success: function( data, textStatus, jQxhr ){
 	    	$('#create_card_header').html('Create Duplicate Card');
 	    	$('#card_name').val(data.card_name);
-	    	$('#card_image').attr('src', base_url+'/uploads/card/'+data.image);
-	    	$('textarea#description').val(data.description);
+	    	$('#card_image_preview').attr('src', base_url+'/uploads/card/'+data.image);
+	    	$('textarea#card_description').val(data.description);
+
+
+	    	$('#bonus').val(data.bonus);
+	    	$('#card_number').val(data.card_number);
+	    	$('#gender').val(data.gender);
+	    	$('#tier').val(data.card_tier);
+	    	$('#rewards').val(data.rewards);
+	    	$('#mask_image_preview').attr('src', base_url+'/uploads/card/'+data.mask_image);
+
+
 	    	$('#card_id').val('');
 	    	$('#copy_card_id').val(data.id);
 	    	$('#cardImageBlock').removeClass('hide');
 	    	$('#cardFileUploadBlock').addClass('hide');
 	    	$('#createCardModal').modal('toggle');
+
+	    	/** Preview Card **/
+
+	    	$('#card_name_label').html(data.card_name);
+	    	$('#bonus_label').html(data.bonus);
+	    	$('#card_number_label').html(data.card_number);
+	    	$('#gender_label').html(data.gender);
+	    	$('#tier_label').html(data.card_tier);
+			
+	    	/** card description **/
+			if(data.description.length>100){
+				$('#description_label').html(data.description.substring(0, 100)+' ...');
+			}else{
+				$('#description_label').html(data.description);
+			}
+
+			/** card rewards **/
+			if(data.rewards.length>100){
+				$('#rewards_label').html(data.rewards.substring(0, 100)+' ...');
+			}else{
+				$('#rewards_label').html(data.rewards);
+			}
 	    },
 	    error: function( jqXhr, textStatus, errorThrown ){
 	        console.log( errorThrown );
@@ -249,8 +311,99 @@ function editCardImage(){
 	$('#cardFileUploadBlock').removeClass('hide');
 }
 
+function cardAutomation(){
+	// card name
+	$("#card_name").on('change keyup paste', function() {
+	    $('#card_name_label').html($(this).val());
+	});
+
+	// card bonus
+	$("#bonus").on('change keyup paste', function() {
+	    $('#bonus_label').html($(this).val());
+	});
+
+	// card number
+	$("#card_number").on('change keyup paste', function() {
+	    $('#card_number_label').html($(this).val());
+	});
+
+	// gender
+	$("#gender").on('change keyup paste', function() {
+	    $('#gender_label').html($(this).val());
+	});
+
+	// tier
+	$("#gender").on('change keyup paste', function() {
+	    $('#gender_label').html($(this).val());
+	});
+
+
+	//tier
+	$("#tier").on('change keyup paste', function() {
+	    $('#tier_label').html($(this).val());
+	});
+
+	//rewards
+	$("#card_description").on('change keyup paste', function() {
+		var card_description = $(this).val();
+		if(card_description.length>100){
+			$('#description_label').html(card_description.substring(0, 100)+' ...');
+		}else{
+			$('#description_label').html(card_description);
+		}
+	});
+
+	//rewards
+	$("#rewards").on('change keyup paste', function() {
+	   /* $('#rewards_label').html($(this).val());*/
+	    var card_rewards = $(this).val();
+		if(card_rewards.length>100){
+			$('#rewards_label').html(card_rewards.substring(0, 100)+' ...');
+		}else{
+			$('#rewards_label').html(card_rewards);
+		}
+	});
+
+	$("#card_image").change(function() {
+	  readURL(this);
+	});
+
+	// card image button
+	$('#card_image_button').click(function(){
+	    $('#card_image').click();
+	});
+
+	$("#mask_image").change(function() {
+	  readURL(this);
+	});
+	
+	// card image button
+	$('#mask_image_button').click(function(){
+	    $('#mask_image').click();
+	});
+	
+}
+
+
+function readURL(input) {
+	preview_image = input.id;
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#'+preview_image+'_preview').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+
+
 
 // Document Ready
 $( document ).ready(function() {
 	setNeverExpire();
+	cardAutomation();
 });

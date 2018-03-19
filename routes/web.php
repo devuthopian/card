@@ -64,7 +64,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('/user/card/remove', 'users\CardsController@remove');
 	Route::post('/user/card/add', 'users\CardsController@add');
 	Route::get('/user/card/{card}', 'users\CardsController@edit');
+
 	// Card End
+	Route::get('/user/profile/editCard', 'users\ProfilesController@editCard');
 
 
 

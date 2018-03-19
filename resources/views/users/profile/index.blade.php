@@ -46,7 +46,7 @@
 
     </div>
     <!--end wrapper-->
-
+    
     <!-- Edit Profile -->
     @include('users.profile.partials.editProfile')
 

@@ -23,7 +23,7 @@ class CardsController extends Controller
     public function dashboard(){
         $data['cards'] = DB::table('card')
             ->join('users', 'users.id', '=', 'card.created_by')
-            ->select('users.name', 'card.card_name', 'card.description','card.image', 'card.id')
+            ->select('users.name', 'card.*')
             ->where('card.deleted_at', null)
             ->get();
 
@@ -35,9 +35,10 @@ class CardsController extends Controller
 
         $cardObj = new Card;
         $cardImageObj = $request->file('image');
+        $maskImageObj = $request->file('mask_image');
         $requestArr = $request->all();
         $logged_user_id = Auth::id();
-        $resultArr = $cardObj->addCard($logged_user_id, $requestArr, $cardImageObj);
+        $resultArr = $cardObj->addCard($logged_user_id, $requestArr, $cardImageObj, $maskImageObj);
         
         if(!empty($resultArr)){
             return redirect('user/index/'.$requestArr['user_profile_id']);

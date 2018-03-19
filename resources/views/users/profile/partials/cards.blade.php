@@ -12,21 +12,28 @@
                 <div class="card-top">
                     <div class="rosette left">
                         <p>
-                            Bonus +50
+                            {{$card->bonus}}
                         </p>
                     </div>
                     <p class="card-title">{{$card->card_name}}</p>
-                    <p class="card-points right">AP300</p>
+                    <p class="card-points right">{{$card->card_number}}</p>
                 </div>
                 <!--end card-top-->
                 <div class="card-bottom">
                     <div class="row">
-                        <div class="card-icon left">f</div>
-                        <span class="card-points right">Tier1</span>
+                        <div class="card-icon left">{{$card->gender}}</div>
+                        <span class="card-points right">{{$card->card_tier}}</span>
                     </div>
                     <p class="row">
                         <b class="left">Rewards</b>
-                        <span class="left">Receive news 10 minutes early Receive news 10 minutes early Receive news 10 minutes earlysReceive news 10 minutes early</span>
+                        <span class="left">
+                            @if(strlen($card->rewards)>50)
+                            <?php $rewards = substr($card->rewards,0,50).'.....';  ?>
+                            @else
+                            <?php $rewards = $card->rewards; ?>
+                            @endif
+                            {{$rewards}}
+                        </span>
                     </p>
                     <p>
                         @if(strlen($card->description)>100)
@@ -41,6 +48,8 @@
             </div>
             <!--end card-content-->
             <img src="{{ URL::asset('uploads/card/') }}/{{$card->image}}">
+
+            <img src="{{ URL::asset('uploads/card/') }}/{{$card->mask_image}}">
 
             <!-- Options -->
             <div class="hover_pop">

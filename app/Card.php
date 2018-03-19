@@ -28,14 +28,26 @@ class Card extends Model
     }
 
     ### Add / Edit / Duplicate Card
-    function addCard($logged_user_id, $requestArr, $cardImageObj){
+    function addCard($logged_user_id, $requestArr, $cardImageObj, $maskImageObj){
 
-        //dd($requestArr);
 
         ### Create Save Array
         $saveArr['card_name'] = $requestArr['card_name'];
+        $saveArr['bonus'] = $requestArr['bonus'];
+        $saveArr['card_number'] = $requestArr['card_number'];
+        $saveArr['gender'] = $requestArr['gender'];
+
+
         $saveArr['description'] = $requestArr['description'];
         $saveArr['user_profile_id'] = $requestArr['user_profile_id'];
+
+        
+        
+        
+        $saveArr['card_tier'] = $requestArr['card_tier'];
+        $saveArr['rewards'] = $requestArr['rewards'];
+        //$saveArr['card_background'] = $requestArr['card_background'];
+       // $saveArr['theme_color'] = $requestArr['theme_color'];
         
         ### upload Image
         if(!empty($cardImageObj)){
@@ -44,19 +56,36 @@ class Card extends Model
             $saveArr['image'] = $imageName;
         }
 
+        ### upload mask Image
+        if(!empty($maskImageObj)){
+            $maskImageName = time().'_mask.'.$maskImageObj->getClientOriginalExtension();
+            $maskImageObj->move(public_path('uploads/card'), $maskImageName); 
+            $saveArr['mask_image'] = $maskImageName;
+        }
+        
          #### Save / Update / Copy Card
         if(!empty($requestArr['copy_card_id'])) {
+
+
             $saveArr['created_by'] = $logged_user_id;
-            if(!empty($saveArr['image'])){
-                $this->create($saveArr);
-            }else{
-                $copyCardDetails = $this->where('id', $requestArr['copy_card_id'])->first();
+            $copyCardDetails = $this->where('id', $requestArr['copy_card_id'])->first();
+
+            if(empty($saveArr['image'])){
                 $copy_card_image = $copyCardDetails->image;
                 $fileNameArr = explode('.', $copy_card_image);
                 $saveArr['image'] = $new_image_name = time().'.'.end($fileNameArr);
                 copy(public_path('uploads/card').'/'.$copy_card_image, public_path('uploads/card').'/'.$new_image_name);
-                $this->create($saveArr);
             }
+
+            if(empty($saveArr['mask_image'])){
+                $copy_card_mask_image = $copyCardDetails->mask_image;
+                $maskFileNameArr = explode('.', $copy_card_mask_image);
+                $saveArr['mask_image'] = $new_mask_image_name = time().'_mask.'.end($maskFileNameArr);
+                copy(public_path('uploads/card').'/'.$copy_card_mask_image, public_path('uploads/card').'/'.$new_mask_image_name);
+            }
+
+            $this->create($saveArr);
+
         }else{
             #### Save / Update Card
             if(!empty($requestArr['card_id'])) {

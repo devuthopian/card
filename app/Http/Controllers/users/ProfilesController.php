@@ -270,6 +270,12 @@ class ProfilesController extends Controller
     public function settingsCallback(){
         return view('users.profile.settingsCallback');
     }
+
+
+    ///
+    public function editCard(){
+        return view('users.profile.editCard');
+    }
 }
 
 ?>
