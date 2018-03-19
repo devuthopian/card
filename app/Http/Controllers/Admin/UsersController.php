@@ -9,6 +9,16 @@ use App\User;
 class UsersController extends Controller
 {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index(){
         $data['users'] = User::paginate(10);
         return view('admin.users.index', $data);

@@ -27,7 +27,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="{{ URL::asset('assets/sweetalert2/dist/sweetalert2.min.js') }}"></script>
 <script src="{{ URL::asset('assets/bootbox/bootbox.min.js') }}"></script>
+<script src="//cdn.ckeditor.com/4.9.0/basic/ckeditor.js"></script>
 <script src="{{ asset('js/common.js') }}"></script>
+
 
 <script type="text/javascript">
 	var base_url = {!! json_encode(url('/')) !!}

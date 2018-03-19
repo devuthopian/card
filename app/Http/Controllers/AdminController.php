@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\UserProfile;
+use App\Card;
 
 use Auth;
 
@@ -32,7 +34,10 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
-        return view('admin.dashboard');
+        $data['users'] = User::get();
+        $data['user_profiles'] = UserProfile::get();
+        $data['cards'] = Card::get();
+        return view('admin.dashboard', $data);
     }
 
     public function logout(){

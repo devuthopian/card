@@ -88,7 +88,7 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 
-// Admin
+// Admin Routes
 //Route::get('/admin', 'AdminController@index');
 
 Route::prefix('admin')->group(function() {
@@ -98,8 +98,17 @@ Route::prefix('admin')->group(function() {
 	Route::group(['middleware' => ['web']], function () {
 		Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
 		
+		// Users
 		Route::get('users/manage', 'Admin\UsersController@index')->name('admin.user.manage');
 		Route::post('/user/approve', 'Admin\UsersController@approve')->name('admin.user.approve');
+
+
+		// Notes
+		Route::get('notes', 'Admin\NotesController@index')->name('admin.notes');
+		Route::post('notes/add', 'Admin\NotesController@add')->name('admin.notes.add');
+		Route::get('note/{note}', 'Admin\NotesController@get')->name('admin.notes.get');
+
+
 		Route::post('/logout', 'AdminController@logout')->name('admin.logout');
 	});
 });

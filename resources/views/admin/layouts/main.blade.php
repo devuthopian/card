@@ -14,7 +14,7 @@
                 <div class="setting_wrapper admin_setting_wrapper">
                     <!-- left navigation -->
                     @include('admin.includes.left_navigation')
-
+                    
                     <!-- content -->
                     @yield('content')
 
