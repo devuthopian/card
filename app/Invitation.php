@@ -38,10 +38,13 @@ class Invitation extends Model
     	);
     }
 
-    public function validateInviteLink($invitation_id){
-        $invitationIdArr = explode('_', $invitation_id);
+    public function validateInviteLink($invitation_hash){
+        /*$invitationIdArr = explode('_', $invitation_id);
         $conditionsArr['profile_id'] = $invitationIdArr[0];
-        $conditionsArr['unique_id'] = $invitationIdArr[1];
+        $conditionsArr['unique_id'] = $invitationIdArr[1];*/
+
+        $conditionsArr['invitation_hash'] = $invitation_hash;
+        
         $invitationResultObj = $this->where($conditionsArr)->first();
         if(!empty($invitationResultObj)){
             if(!empty($invitationResultObj->never_expire)){

@@ -40,7 +40,7 @@
             <img src="{{ URL::asset('images/code.png') }}" class="code" alt="">
             </div>
             <div class="col-sm-8 second_inner">
-              {{ Form::open(array('url' => 'registerName/'.$invitation_id, 'id' => 'registerName')) }}
+              {{ Form::open(array('url' => 'registerName/'.$invitation_hash, 'id' => 'registerName')) }}
                   
                       <div class="name"><p>{{$userResultObj->name}} </p></div>
                       <div class="heading">

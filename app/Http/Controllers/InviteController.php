@@ -26,43 +26,35 @@ class InviteController extends Controller
         $this->middleware('auth', ['except' => ['index', 'registerName', 'configureUserInfo']]);
     }
 
-    public function index(Request $request){
+    public function index(Request $request, $invitation_hash){
 
         $logged_user_id = Auth::id();
         
         $invitationObj = new Invitation;
-        $inviteIdArr = explode('_', $request->id);
-        if(count($inviteIdArr)!=2){
-            return redirect('login');
-        }
+
+        $data['inviteReturnArr'] = $inviteReturnArr = $invitationObj->validateInviteLink($invitation_hash);
+        
         
         if(!empty($logged_user_id)){
-            return redirect('user/index/'.$inviteIdArr[0]);
+            return redirect('user/index/'.$inviteReturnArr->profile_id);
         }
         
-        $data['invitation_id'] = $request->id;
-        $data['inviteReturnArr'] = $invitationObj->validateInviteLink($request->id);
+        $data['invitation_hash'] = $invitation_hash;
+        
         return view('invite.index', $data);
     }
 
-    public function registerName(Request $request, $invitation_id){
+    public function registerName(Request $request, $invitation_hash){
 
         $userObj = new User;
         $userProfileObj = new UserProfile;
         $invitationObj = new Invitation;
 
-        $invitationIdArr = explode('_', $invitation_id);
-
-        $referenceUserDetails = $userProfileObj->where('id', $invitationIdArr[0])->first();
-
-        $conditionsArr['profile_id'] = $invitationIdArr[0];
-        $conditionsArr['unique_id'] = $invitationIdArr[1];
+        $conditionsArr['invitation_hash'] = $invitation_hash;
 
         $invitationDetailsObj = $invitationObj->where($conditionsArr)->first();
         
         $newUserArr['name'] = $request->name;
-        $newUserArr['reference_profile_id'] = $invitationIdArr[0];
-        $newUserArr['reference_unique_id'] = $invitationIdArr[1];
         $newUserArr['invitation_id'] = $invitationDetailsObj->id;
 
         $newUser = $userObj->create($newUserArr);

@@ -20,7 +20,7 @@ function generateInviteLink(){
 	    type: 'post',
 	    data: {'profile_id':profile_id},
 	    success: function( data, textStatus, jQxhr ){
-	    	$('#inviteUrl').val(base_url+'/share?id='+profile_id+'_'+data.data.unique_id);
+	    	$('#inviteUrl').val(base_url+'/share/'+data.data.invitation_hash);
 	    	$('#invitation_id').val(data.data.id);
 	    	$('#neverExpire').prop('checked', true);
 	    	$('#invitePeopleModal').modal('toggle');

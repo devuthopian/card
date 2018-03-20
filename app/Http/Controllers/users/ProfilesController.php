@@ -80,6 +80,7 @@ class ProfilesController extends Controller
         $invitationResultObj = $invitationObj->where('profile_id', $profile_id)->orderBy('id','DESC')->first();
         
         $invitationSaveArr['profile_id'] = $profile_id;
+        
         $invitationSaveArr['never_expire'] = 1;
 
         if(!empty($invitationResultObj)){

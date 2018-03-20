@@ -15,7 +15,7 @@ Route::get('/', function () {
 	return redirect('login');
 });
 
-Route::get('/share', 'InviteController@index');
+Route::get('/share/{invitation_hash}', 'InviteController@index');
 Route::get('auth/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
 
 Route::group(['middleware' => ['guest']], function () {
