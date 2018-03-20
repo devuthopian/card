@@ -38,7 +38,7 @@
             $social_button_class = 'btn btn-social-icon btn-youtube';
         ?>
         @endif
-
+        @if($linkedSocialAccount->provider_name!='instagram')
         <div style="background-color:{{$background_color}} !important; color:#fff !important; height: 200px !important;" class="tracking_cont_left" >
             
             <div href="javascript:void(0)" >
@@ -51,6 +51,7 @@
             <!-- Twitter -->
         
         </div>
+        @endif
         <br>
     @endforeach
 </div>

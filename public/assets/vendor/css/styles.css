@@ -1824,6 +1824,37 @@ ul.CTAs a {
   font-size: 20px;
   border-bottom: 1px solid #eee;
 }
+.admin_panel .admin_stats {
+    padding: 50px;
+    font-size: 35px;
+    border-radius: 4px;
+    color: #fff;
+}
+#users_stats .admin_stats {
+    background: #337AB7;
+}
+#user_profiles_stats .admin_stats {
+    background: #5CB85C;
+}
+#cards_stats .admin_stats {
+    background: #D9534F;
+}
+.admin_panel .admin_stats i {
+    font-size: 35px;
+}
+.admin_panel .count_class {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    background: #fff;
+    color: #333;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    line-height: 70px;
+}
 @media (max-width: 767px) {
 .admin_panel .admin_cont_left, .admin_panel .admin_cont_right {
   width: 100%;

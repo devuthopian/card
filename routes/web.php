@@ -30,7 +30,7 @@ Route::group(['middleware' => ['guest']], function () {
 
 Auth::routes();
 
-## I user panel
+## User panel Area
 Route::group(['middleware' => ['web']], function () {
 
 	Route::get('/user/dashboard', 'users\CardsController@dashboard');
@@ -51,12 +51,10 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/user/profile/settingsCallback', 'users\ProfilesController@settingsCallback');
 
 	
-
 	// Tracking and Tracker
 	Route::get('/user/profile/tracking', 'users\ProfilesController@tracking');
 	Route::get('/user/profile/tracking2', 'users\ProfilesController@tracking2');
 	Route::get('/user/profile/tracker', 'users\ProfilesController@tracker');
-
 
 
 	// Card
@@ -67,8 +65,6 @@ Route::group(['middleware' => ['web']], function () {
 
 	// Card End
 	Route::get('/user/profile/editCard', 'users\ProfilesController@editCard');
-
-
 
 	Route::get('/card', 'CardController@index')->name('card');
 	Route::get('/directory', 'CardController@viewdirectory')->name('directory');
@@ -89,8 +85,6 @@ Route::group(['middleware' => ['web']], function () {
 
 
 // Admin Routes
-//Route::get('/admin', 'AdminController@index');
-
 Route::prefix('admin')->group(function() {
 	Route::get('/', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
@@ -102,12 +96,16 @@ Route::prefix('admin')->group(function() {
 		Route::get('users/manage', 'Admin\UsersController@index')->name('admin.user.manage');
 		Route::post('/user/approve', 'Admin\UsersController@approve')->name('admin.user.approve');
 
-
 		// Notes
 		Route::get('notes', 'Admin\NotesController@index')->name('admin.notes');
 		Route::post('notes/add', 'Admin\NotesController@add')->name('admin.notes.add');
 		Route::get('note/{note}', 'Admin\NotesController@get')->name('admin.notes.get');
-
+		
+		
+		// Connections
+		Route::get('connections', 'Admin\ConnectionsController@index')->name('admin.connections');
+		//Route::post('notes/add', 'Admin\NotesController@add')->name('admin.notes.add');
+		//Route::get('note/{note}', 'Admin\NotesController@get')->name('admin.notes.get');
 
 		Route::post('/logout', 'AdminController@logout')->name('admin.logout');
 	});

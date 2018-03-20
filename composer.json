@@ -13,6 +13,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "~5.0",
         "socialiteproviders/instagram": "^3.0",
+        "socialiteproviders/twitter": "^3.0",
         "socialiteproviders/youtube": "^3.0"
     },
     "require-dev": {

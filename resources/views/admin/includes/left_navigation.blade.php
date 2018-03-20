@@ -11,7 +11,7 @@
             <a href="{{route('admin.user.manage')}}" >Users</a>
         </li>
         <li class="" id="connections_tab">
-            <a href="{{route('admin.user.manage')}}" >Connections</a>
+            <a href="{{route('admin.connections')}}" >Connections</a>
         </li>
         <li class="" id="login_tab">
             <a href="{{route('admin.notes')}}" >Notes</a>

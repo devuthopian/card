@@ -20,16 +20,13 @@
             </h2>
             <table>
                 <tr>
-                    <th class="col-sm-1">Sr. No.</th>
                     <th class="col-sm-4">Description</th>
                     <th class="col-sm-2">Created</th>
                     <th class="col-sm-2">Actions</th>
                 </tr>
                 @if(!empty($notes))
-                	<?php $note_inc = 1; ?>
                     @foreach($notes as $note)
                         <tr>
-                            <td>{{$note_inc}}</td>
                             <td>{{strip_tags($note->description)}}</td>
                             <td>{{$note->created_at}}</td>
                             <td>
@@ -38,7 +35,6 @@
                             	</a>
                             </td>
                         </tr>
-                        <?php $note_inc++; ?>
                     @endforeach
                 @else
                     <tr>
