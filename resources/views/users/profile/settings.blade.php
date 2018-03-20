@@ -63,7 +63,7 @@
                         @endif
                         <h2>My Account</h2>
                         {{ Form::text('name', Auth::user()->name, array('id' => 'name', 'required'=> true, 'placeholder'=>'Public Name')) }}
-                        {{ Form::text('email', Auth::user()->email, array('id' => 'email', 'required'=> true, 'placeholder'=>'Email')) }}
+                        {{ Form::text('email', Auth::user()->email, array('id' => 'email', 'required'=> true, 'placeholder'=>'Email', 'readonly'=>true)) }}
                         {{ Form::submit('Save', array('name'=>'saveSettings', 'id'=>'saveSettings')) }}
                     </div>
                     {{ Form::close() }}
@@ -80,7 +80,9 @@
                                 <h2>Change Password</h2>
 
                                 <!-- Current Password -->
-                                {{ Form::password('current_password', null, array('id' => 'current_password', 'required'=> true, 'placeholder'=>'Current Password')) }}
+                                {{ Form::input('password', 'current_password', null, array('id' => 'current_password', 'required'=> true, 'placeholder'=>'Current Password')) }}
+
+
                                 @if (session('current_password'))
                                     <span class="invalid-feedback">
                                         <strong>{{ session('current_password') }}</strong>
@@ -88,7 +90,9 @@
                                 @endif
 
                                 <!-- New Password -->
-                                {{ Form::password('password', null, array('id' => 'password', 'required'=> true, 'placeholder'=>'New Password')) }}
+
+                                {{ Form::input('password', 'password', null, array('id' => 'password', 'required'=> true, 'placeholder'=>'New Password')) }}
+
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -96,7 +100,8 @@
                                 @endif
 
                                 <!-- Confirm Password -->
-                                {{ Form::password('password_confirmation', null, array('id' => 'password_confirmation', 'required'=> true, 'placeholder'=>'Confirm Password')) }}
+
+                                {{ Form::input('password', 'password_confirmation', null, array('id' => 'password_confirmation', 'required'=> true, 'placeholder'=>'Confirm Password')) }}
                                 
                                 {{ Form::submit('Save', array('name'=>'changePassword', 'id'=>'changePassword')) }}
                             </div>

@@ -101,10 +101,9 @@ Route::prefix('admin')->group(function() {
 		Route::post('notes/add', 'Admin\NotesController@add')->name('admin.notes.add');
 		Route::get('note/{note}', 'Admin\NotesController@get')->name('admin.notes.get');
 		
-		
 		// Connections
 		Route::get('connections', 'Admin\ConnectionsController@index')->name('admin.connections');
-		//Route::post('notes/add', 'Admin\NotesController@add')->name('admin.notes.add');
+		Route::post('connections/update', 'Admin\ConnectionsController@update')->name('admin.connections.update');
 		//Route::get('note/{note}', 'Admin\NotesController@get')->name('admin.notes.get');
 
 		Route::post('/logout', 'AdminController@logout')->name('admin.logout');

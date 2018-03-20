@@ -248,7 +248,7 @@ class ProfilesController extends Controller
                 ]);
                 
                 if(!Hash::check($requestArr['current_password'], $userResultObj->password)){
-                    return back()->with('current_password','Wrong Password');
+                    return redirect('user/profile/settings?tab=changePassword')->with('current_password','Wrong Password.');
                 }else{
                     $passwordResultObj = $userObj->changePassword($logged_user_id, $requestArr);
 
