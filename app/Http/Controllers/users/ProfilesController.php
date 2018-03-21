@@ -81,7 +81,7 @@ class ProfilesController extends Controller
         
         $invitationSaveArr['profile_id'] = $profile_id;
         
-        $invitationSaveArr['invitation_hash'] = substr(md5(microtime()), 0, 12);
+        $invitationSaveArr['invitation_hash'] = substr(bcrypt(microtime()), 0, 12);
         $invitationSaveArr['never_expire'] = 1;
 
         if(!empty($invitationResultObj)){
