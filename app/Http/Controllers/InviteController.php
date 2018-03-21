@@ -34,9 +34,8 @@ class InviteController extends Controller
 
         $data['inviteReturnArr'] = $inviteReturnArr = $invitationObj->validateInviteLink($invitation_hash);
         
-        
         if(!empty($logged_user_id)){
-            return redirect('user/index/'.$inviteReturnArr->profile_id);
+            return redirect('user/index/'.$inviteReturnArr['data']->profile_id);
         }
         
         $data['invitation_hash'] = $invitation_hash;
