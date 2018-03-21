@@ -1662,7 +1662,7 @@ label {
     border: 0px;
 }
 .active .toggle {
-    right: -94px !important;
+    right: -44px !important;
 }
 #sidebar h2 {
   color: #fff;
@@ -1681,7 +1681,7 @@ label {
 }
 
 #sidebar.active {
-    margin-left: -250px;
+    margin-left: -200px;
 }
 
 #sidebar ul.components {
@@ -1760,26 +1760,14 @@ ul.CTAs a {
     MEDIAQUERIES
 ----------------------------------------------------- */
 @media (max-width: 768px) {
-#sidebar {
-    margin-left: -250px;
-}
-#sidebar.active {
-    margin-left: 0;
-}
 #sidebarCollapse span {
     display: none;
 }
 .setting_wrapper .tracking_cont_left {
     width: 100%;
 }
-    #sidebar .toggle {
-    right: -92px;
-}
 .active .toggle {
     right: -42px !important;
-}
-.setting_wrapper #content {
-    margin-left: 50px;
 }
 }
 
@@ -1856,6 +1844,9 @@ ul.CTAs a {
     line-height: 70px;
 }
 @media (max-width: 767px) {
+.admin_panel .admin_cont {
+    margin-left: 12%;
+}
 .admin_panel .admin_cont_left, .admin_panel .admin_cont_right {
   width: 100%;
 }
@@ -1905,7 +1896,7 @@ ul.CTAs a {
 .card_editor_cont {
     width: 100%;
     max-width: 900px;
-    margin: 20px auto;
+    margin: 0px auto;
     /*background: #eee;*/
     /*padding: 20px;*/
     overflow: hidden;
@@ -1928,9 +1919,10 @@ ul.CTAs a {
 .card_editor_cont .card_editor_left textarea {
     width: 80%;
     padding: 8px 10px;
-    margin: 10px 0;
+    margin: 10px 20px;
     border: 1px solid #ccc;
     height: 100px;
+    border-radius: 4px;
 }
 .card_editor_cont .card_editor_left span {
     width: 100%;
@@ -1941,36 +1933,37 @@ ul.CTAs a {
 }
 .card_editor_cont .card_editor_left .textarea i {
     position: absolute;
-    right: 10%;
+    left: 0;
     top: 42%;
 }
-.card_editor_cont .card_editor_left .editor_button {
+.card_editor_cont .card_editor_right .editor_button {
     padding: 10px 0px;
-    margin: 10px 0;
+    margin: 5px 0;
     width: 100%;
     text-align: center;
-    background: linear-gradient(#212121, #7b7b7b);
+    background: #333;
     color: #fff;
     border: 1px solid #eee;
     font-size: 14px;
+    border-radius: 4px;
 }
-.card_editor_cont .card_editor_left .color_picker {
-    padding: 10px 20px;
-    margin: 10px 0;
-    text-align: center;
-    background: linear-gradient(#212121, #7b7b7b);
-    color: #fff;
-    border: 1px solid #eee;
-    font-size: 14px;
+.card_editor_cont .card_editor_right .editor_button:hover {
+    background: #f9dc39;
+    color: #333;
 }
 .card_editor_cont .card_editor_left .fields_left {
-    width: 50%;
+    width: 100%;
     float: left;
 }
-.card_editor_cont .card_editor_left .fields_right {
-    width: 50%;
-    float: right;
-    margin-top: 16%;
+.card_editor_cont .card_editor_left a {
+    color: #333;
+}
+.card_editor_cont .card_editor_left a:hover {
+    color: #f9dc39;
+}
+.card_editor_cont .card_editor_right .fields_right {
+    width: 300px;
+    margin-left: 10px;
 }
 .card_editor_cont .card_editor_right {
     width: 50%;
@@ -2019,3 +2012,178 @@ ul.CTAs a {
 .admin_setting_wrapper{
     margin-top: 0px !important;
 }
+
+.admin_panel #editFacebookSettings h4 {
+    font-size: 25px;
+    margin-left: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+/**** css navigation for model ***/
+
+    /*!
+     * bootstrap-vertical-tabs - v1.2.1
+     * https://dbtek.github.io/bootstrap-vertical-tabs
+     * 2014-11-07
+     * Copyright (c) 2014 İsmail Demirbilek
+     * License: MIT
+     */
+    .tabs-left, .tabs-right {
+      border-bottom: none;
+      padding-top: 2px;
+    }
+    .tabs-left {
+      background: #333;
+      min-height: 570px;
+    }
+    .tabs-right {
+      border-left: 1px solid #ddd;
+    }
+    .tabs-left>li, .tabs-right>li {
+      float: none;
+      margin-bottom: 2px;
+    }
+    .tabs-right>li {
+      margin-left: -1px;
+    }
+    .tabs-left>li.active>a,
+    .tabs-left>li.active>a:hover,
+    .tabs-left>li.active>a:focus {
+      border-bottom-color: #ddd;
+      border-right-color: transparent;
+    }
+
+    .tabs-right>li.active>a,
+    .tabs-right>li.active>a:hover,
+    .tabs-right>li.active>a:focus {
+      border-bottom: 1px solid #ddd;
+      border-left-color: transparent;
+    }
+    .tabs-left>li>a {
+      border-radius: 4px 0 0 4px;
+      margin-right: 0;
+      display:block;
+      color: #fff;
+    }
+    .tabs-right>li>a {
+      border-radius: 0 4px 4px 0;
+      margin-right: 0;
+    }
+    .sideways {
+      margin-top:50px;
+      border: none;
+      position: relative;
+    }
+    .sideways>li {
+      height: 20px;
+      width: 120px;
+      margin-bottom: 100px;
+    }
+    .sideways>li>a {
+      border-bottom: 1px solid #ddd;
+      border-right-color: transparent;
+      text-align: center;
+      border-radius: 4px 4px 0px 0px;
+    }
+    .sideways>li.active>a,
+    .sideways>li.active>a:hover,
+    .sideways>li.active>a:focus {
+      border-bottom-color: transparent;
+      border-right-color: #ddd;
+      border-left-color: #ddd;
+    }
+    .sideways.tabs-left {
+      left: -50px;
+    }
+    .sideways.tabs-right {
+      right: -50px;
+    }
+    .sideways.tabs-right>li {
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+    .sideways.tabs-left>li {
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+}
+.n_card_editor .nav-tabs > li.active > a, .n_card_editor .nav-tabs > li.active > a:hover, .n_card_editor .nav-tabs > li.active > a:focus {
+    color: #fff;
+    background-color: #1f1f1f;
+    border: 0px;
+}
+.n_card_editor .nav-tabs  li  a:hover {
+    color: #fff;
+    background-color: #1f1f1f;
+    border: 1px solid #1f1f1f;
+}
+.n_card_editor input[type="submit"] {
+    width: 20%;
+    margin-left: 20px;
+}
+.n_card_editor .card {
+    margin: 0 9px 10px 9px;
+}
+.n_card_editor .editor_nav_left {
+    width: 25%;
+    float: left;
+}
+.n_card_editor .editor_content_right {
+    width: 74%;
+    float: right;
+}
+@media (max-width: 991px) {
+.n_card_editor {
+    width: 750px;
+}
+.card_editor_cont .card_editor_left {
+    width: 40%;
+}
+.card_editor_cont .card_editor_right {
+    width: 60%;
+}
+}
+@media (max-width: 480px) {
+.n_card_editor {
+    width: 94%;
+}
+.n_card_editor .editor_nav_left {
+    width: 100%;
+    float: left;
+}
+.card_editor_cont .card_editor_left {
+    width: 100%;
+}
+.card_editor_cont .card_editor_right {
+    width: 100%;
+}
+.n_card_editor .tabs-left {
+    min-height: 100%;
+    margin-bottom: 20px;
+}
+.n_card_editor .editor_content_right {
+    width: 100%;
+}
+.n_card_editor input[type="submit"] {
+    width: 100%;
+    margin: 15px 0;
+}
+.card_editor_cont .card_editor_right .fields_right {
+    width: 100%;
+    margin-left: 0;
+}
+.n_card_editor .modal-body {
+    padding: 0;
+}
+.card_editor_cont .card_editor_left input[type="text"], .card_editor_cont .card_editor_left textarea {
+    width: 90%;
+}
+}
+
+/*** end for css model ***/
