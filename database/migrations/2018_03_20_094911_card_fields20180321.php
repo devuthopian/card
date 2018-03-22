@@ -17,14 +17,9 @@ class CardFields20180321 extends Migration
             $table->increments('id')->unique();
             $table->timestamps();
             $table->integer('card_id')->unsigned();
-            $table->string('card_name', 255);   // Reference National Motor Freight Traffic Association are from 2 - 4 characters
-            $table->string('card_description', 1000);
-            $table->string('card_bonus', 255);
-            $table->string('card_number', 255);
+            $table->string('field', 255);
+            $table->string('value', 255);
             $table->boolean('is_disable');
-            $table->string('card_gender', 255);
-            $table->string('card_tier', 255);
-            $table->text('card_rewards', 255);
             
             //Created by and updated by fields
             $table->integer('created_by')->unsigned();

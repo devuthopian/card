@@ -78,6 +78,13 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('/sendInvitation', 'InviteController@sendInvitation');
 
 
+	// Type Names
+	Route::post('/user/typeNames/save', 'users\TypeNamesController@save');
+
+	// Tier Names
+	Route::post('/user/tierNames/save', 'users\TierNamesController@save');
+
+
 	// Linked to Social Accounts
 	Route::get('user/social_accounts/{provider}', 'users\LinkedSocialAccountsController@redirectToProvider');
 	Route::get('user/social_accounts/{provider}/callback', 'users\LinkedSocialAccountsController@handleProviderCallback');

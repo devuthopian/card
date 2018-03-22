@@ -29,3 +29,6 @@ INSERT INTO `admins` (`id`, `name`, `email`, `password`, `created_at`, `updated_
 ---14 March 2018
 ALTER TABLE `admins` ADD `last_login` TIMESTAMP NULL AFTER `password`;
 ALTER TABLE `admins` ADD `remember_token` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `password`;
+
+-- 21 March
+ALTER TABLE `card` CHANGE `gender` `type_name_id` INT NULL DEFAULT NULL, CHANGE `card_tier` `tier_name_id` INT NULL DEFAULT NULL;

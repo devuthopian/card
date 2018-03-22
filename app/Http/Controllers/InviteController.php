@@ -11,6 +11,8 @@ use Auth;
 use App\User;
 use App\Invitation;
 use App\UserProfile;
+use App\TypeName;
+use App\TierName;
 
 use Mail;
 
@@ -26,6 +28,11 @@ class InviteController extends Controller
         $this->middleware('auth', ['except' => ['index', 'registerName', 'configureUserInfo']]);
     }
 
+    /**
+     * Invitation Page
+     * @param Request $request, $invitation_hash
+     * @return \Illuminate\Http\Response
+     */
     public function index(Request $request, $invitation_hash){
 
         $logged_user_id = Auth::id();
@@ -43,6 +50,11 @@ class InviteController extends Controller
         return view('invite.index', $data);
     }
 
+    /**
+     * registerName
+     * @param Request $request, $invitation_hash
+     * @return \Illuminate\Http\Response
+     */
     public function registerName(Request $request, $invitation_hash){
 
         $userObj = new User;
@@ -61,8 +73,66 @@ class InviteController extends Controller
         return redirect('configureUserInfo/'.$newUser->id);
     }
 
+    
     /**
-     * send Invitation
+     * configure User Info
+     * @param Request $request, User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function configureUserInfo(Request $request, User $user){
+
+        ### Post Request
+        if($request->isMethod('post')){
+
+            $this->validate($request, [
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:6',
+            ]);
+
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $userDetails = $user->update();
+
+            ### User Profile
+            $userProfileObj = new UserProfile;
+            $userProfileArr['user_id'] = $user->id;
+            $userProfileArr['name'] = $user->name;
+            $userProfileArr['profile_image'] = '';
+            $userProfileArr['description'] = '';
+            $userProfileArr['is_default'] = 1;
+            $userProfileResultObj = $userProfileObj->create($userProfileArr);
+            
+
+            ### Save Default Type and Tier Name
+            $profile_id = $userProfileResultObj->id;
+
+            $typeNameObj = new TypeName;
+            $typeNameObj->saveDefaultTypeNames($profile_id);
+            
+
+            $tierNameObj = new TierName;
+            $tierNameObj->saveDefaultTierNames($profile_id);
+
+
+            ### Login after registartion
+            Auth::login($user, true);
+            return redirect('user/index/'.$user->reference_profile_id);
+        }
+
+        if(!empty($user->email) && !empty($user->password)){
+            return redirect('login');
+        }
+
+        $data['user'] = $user;
+
+        return view('invite.configureUserInfo', $data);
+    }
+
+
+
+
+    /**
+     * send Invitation,
      *
      * @return \Illuminate\Http\Response
      */
@@ -101,41 +171,4 @@ class InviteController extends Controller
         
     }
 
-
-    public function configureUserInfo(Request $request, User $user){
-
-        ### Post Request
-        if($request->isMethod('post')){
-
-            $this->validate($request, [
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:6',
-            ]);
-
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $userDetails = $user->update();
-
-            ### User Profile
-            $userProfileObj = new UserProfile;
-            $userProfileArr['user_id'] = $user->id;
-            $userProfileArr['name'] = $user->name;
-            $userProfileArr['profile_image'] = '';
-            $userProfileArr['description'] = '';
-            $userProfileArr['is_default'] = 1;
-            $userResultObj = $userProfileObj->create($userProfileArr);
-            
-            ### Login after registartion
-            Auth::login($user, true);
-            return redirect('user/index/'.$user->reference_profile_id);
-        }
-
-        if(!empty($user->email) && !empty($user->password)){
-            return redirect('login');
-        }
-
-        $data['user'] = $user;
-
-        return view('invite.configureUserInfo', $data);
-    }
 }

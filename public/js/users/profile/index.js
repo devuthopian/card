@@ -183,18 +183,17 @@ function editCard(card_id){
 	    dataType: 'json',
 	    type: 'get',
 	    success: function( data, textStatus, jQxhr ){
+
 	    	$('#create_card_header').html('Edit Card');
 	    	$('#card_name').val(data.card_name);
 	    	$('#card_image_preview').attr('src', base_url+'/uploads/card/'+data.image);
 	    	$('textarea#card_description').val(data.description);
-	    
 	    	$('#bonus').val(data.bonus);
 	    	$('#card_number').val(data.card_number);
-	    	$('#gender').val(data.gender);
-	    	$('#tier').val(data.card_tier);
+	    	$('#type_name_id').val(data.type_name_id);
+	    	$('#tier_name_id').val(data.tier_name_id);
 	    	$('#rewards').val(data.rewards);
 	    	$('#mask_image_preview').attr('src', base_url+'/uploads/card/'+data.mask_image);
-
 	    	$('#card_id').val(data.id);
 	    	$('#copy_card_id').val('');
 	    	$('#cardImageBlock').removeClass('hide');
@@ -202,26 +201,25 @@ function editCard(card_id){
 	    	$('#createCardModal').modal('toggle');
 
 	    	/** Preview Card **/
+	    	$('#card_name_label').html(data.card_name);
+	    	$('#bonus_label').html(data.bonus);
+	    	$('#card_number_label').html(data.card_number);
+	    	$('#type_name_label').html(data.type_name.name);
+	    	$('#tier_label').html(data.tier_name.name);
+			
+	    	/** card description **/
+			if(data.description.length>100){
+				$('#description_label').html(data.description.substring(0, 100));
+			}else{
+				$('#description_label').html(data.description);
+			}
 
-		    	$('#card_name_label').html(data.card_name);
-		    	$('#bonus_label').html(data.bonus);
-		    	$('#card_number_label').html(data.card_number);
-		    	$('#gender_label').html(data.gender);
-		    	$('#tier_label').html(data.card_tier);
-				
-		    	/** card description **/
-				if(data.description.length>100){
-					$('#description_label').html(data.description.substring(0, 100)+' ...');
-				}else{
-					$('#description_label').html(data.description);
-				}
-
-				/** card rewards **/
-				if(data.rewards.length>100){
-					$('#rewards_label').html(data.rewards.substring(0, 100)+' ...');
-				}else{
-					$('#rewards_label').html(data.rewards);
-				}
+			/** card rewards **/
+			if(data.rewards.length>100){
+				$('#rewards_label').html(data.rewards.substring(0, 100));
+			}else{
+				$('#rewards_label').html(data.rewards);
+			}
 	    },
 	    error: function( jqXhr, textStatus, errorThrown ){
 	        console.log( errorThrown );
@@ -251,8 +249,8 @@ function duplicateCard(card_id){
 
 	    	$('#bonus').val(data.bonus);
 	    	$('#card_number').val(data.card_number);
-	    	$('#gender').val(data.gender);
-	    	$('#tier').val(data.card_tier);
+	    	$('#type_name_id').val(data.type_name_id);
+	    	$('#tier_name_id').val(data.tier_name_id);
 	    	$('#rewards').val(data.rewards);
 	    	$('#mask_image_preview').attr('src', base_url+'/uploads/card/'+data.mask_image);
 
@@ -268,19 +266,19 @@ function duplicateCard(card_id){
 	    	$('#card_name_label').html(data.card_name);
 	    	$('#bonus_label').html(data.bonus);
 	    	$('#card_number_label').html(data.card_number);
-	    	$('#gender_label').html(data.gender);
-	    	$('#tier_label').html(data.card_tier);
+	    	$('#type_name_label').html(data.type_name.name);
+	    	$('#tier_label').html(data.tier_name.name);
 			
 	    	/** card description **/
 			if(data.description.length>100){
-				$('#description_label').html(data.description.substring(0, 100)+' ...');
+				$('#description_label').html(data.description.substring(0, 100));
 			}else{
 				$('#description_label').html(data.description);
 			}
 
 			/** card rewards **/
 			if(data.rewards.length>100){
-				$('#rewards_label').html(data.rewards.substring(0, 100)+' ...');
+				$('#rewards_label').html(data.rewards.substring(0, 100));
 			}else{
 				$('#rewards_label').html(data.rewards);
 			}
@@ -296,6 +294,10 @@ function duplicateCard(card_id){
 function openCreateCardPopup(){
 	$('#create_card_header').html('New Card');
 	$('#card_name').val('');
+
+	$('#type_name_id').val('');
+	$('#tier_name_id').val('');
+	
 	$('#cardImageBlock').addClass('hide');
 	$('#cardFileUploadBlock').removeClass('hide');
 	$('textarea#description').val('');
@@ -327,27 +329,25 @@ function cardAutomation(){
 	    $('#card_number_label').html($(this).val());
 	});
 
-	// gender
-	$("#gender").on('change keyup paste', function() {
-	    $('#gender_label').html($(this).val());
+	// type_name
+	$("#type_name_id").on('change keyup paste', function() {
+		if($("#type_name_id").val()!=''){		
+		    $('#type_name_label').html($("#type_name_id option:selected").text());
+		}
 	});
-
-	// tier
-	$("#gender").on('change keyup paste', function() {
-	    $('#gender_label').html($(this).val());
-	});
-
 
 	//tier
-	$("#tier").on('change keyup paste', function() {
-	    $('#tier_label').html($(this).val());
+	$("#tier_name_id").on('change keyup paste', function() {
+		if($("#tier_name_id").val()!=''){
+	    	$('#tier_label').html($("#tier_name_id option:selected").text());
+	    }
 	});
 
 	//rewards
 	$("#card_description").on('change keyup paste', function() {
 		var card_description = $(this).val();
 		if(card_description.length>100){
-			$('#description_label').html(card_description.substring(0, 100)+' ...');
+			$('#description_label').html(card_description.substring(0, 100));
 		}else{
 			$('#description_label').html(card_description);
 		}
@@ -358,7 +358,7 @@ function cardAutomation(){
 	   /* $('#rewards_label').html($(this).val());*/
 	    var card_rewards = $(this).val();
 		if(card_rewards.length>100){
-			$('#rewards_label').html(card_rewards.substring(0, 100)+' ...');
+			$('#rewards_label').html(card_rewards.substring(0, 100));
 		}else{
 			$('#rewards_label').html(card_rewards);
 		}
@@ -400,7 +400,132 @@ function readURL(input) {
 }
 
 
+/** Tier names **/
+function addNewTierRow(){
+	var tiers_count = (parseInt($('#tiers_count').val())+1);
+	var tier_new_row = "<div id='tier"+tiers_count+"_block' class='tier_div'><span><input type='text' placeholder='Tier Name' name='tier["+tiers_count+"]' id='tier"+tiers_count+"' /></span></div>";
+	$('.tiers_block').append(tier_new_row);
+	$('#tiers_count').val(tiers_count);
+}
 
+function removeTierRow(){
+	var tier_div_length = $('.tier_div').length;
+	if(tier_div_length>1){
+		$('.tier_div').last().remove();
+		var tiers_count = (parseInt($('#tiers_count').val())-1);
+		$('#tiers_count').val(tiers_count);
+	}else{
+		bootbox.alert('At least one tier is required.');
+	}
+}
+
+function saveTiers(){
+	var user_profile_id = $('#user_profile_id').val();
+	$.ajax({
+	    url: base_url+'/user/tierNames/save',
+	    dataType: 'json',
+	    data: $('#saveTierNames').serialize()+'&profile_id='+user_profile_id,
+	    type: 'post',
+	    success: function( data, textStatus, jQxhr ){
+	    	if(data.code == 1){
+	    		var tierNamesArr = data.dataArr;
+	    		var tierNames = '<option value="">--Select Tier--</option>';
+
+	    		var tier_name_id = $('#tier_name_id').val();
+	    		var selected_tier_name = '';
+	    		$.each(tierNamesArr, function( index, value ) {
+	    			if(tier_name_id == index){
+	    				selected_tier_name = index;
+	    			}
+				  tierNames+='<option value='+index+'>'+value+'</option>';
+				});
+	    		
+	    		$('#tier_name_id').html(tierNames);
+	    		if(selected_tier_name!=''){
+		    		$('#tier_name_id').val(selected_tier_name);
+		    	}
+		    	$('#tier_name_id').trigger('change');
+
+	    		swal({
+		            title: "Success",
+		            text: data.message,
+		            type: "success"
+		        });
+	    	}else{
+	    		swal("Error", data.message, "error");
+	    	}
+	    },
+	    error: function( jqXhr, textStatus, errorThrown ){
+	        console.log( errorThrown );
+	    }
+	});
+}
+/** Tier names **/
+
+
+
+/** Type names **/
+function addNewRow(){
+	var types_count = (parseInt($('#types_count').val())+1);
+	var type_new_row = "<div id='type"+types_count+"_block' class='type_div'><span><input type='text' placeholder='Type Name' name='type["+types_count+"]' id='type"+types_count+"' /></span></div>";
+	$('.types_block').append(type_new_row);
+	$('#types_count').val(types_count);
+}
+
+function removeRow(){
+	var type_div_length = $('.type_div').length;
+	if(type_div_length>1){
+		$('.type_div').last().remove();
+		var types_count = (parseInt($('#types_count').val())-1);
+		$('#types_count').val(types_count);
+	}else{
+		bootbox.alert('At least one type is required.');
+	}
+}
+
+// Save TypeNames
+function saveTypes(){
+	var user_profile_id = $('#user_profile_id').val();
+	$.ajax({
+	    url: base_url+'/user/typeNames/save',
+	    dataType: 'json',
+	    data: $('#saveTypeNames').serialize()+'&profile_id='+user_profile_id,
+	    type: 'post',
+	    success: function( data, textStatus, jQxhr ){			
+	    	if(data.code == 1){
+	    		var typeNamesArr = data.dataArr;
+	    		var typeNames = '<option value="">--Select Type--</option>';
+
+	    		var type_name_id = $('#type_name_id').val();
+	    		var selected_type_name = '';
+	    		$.each(typeNamesArr, function( index, value ) {
+	    			if(type_name_id == index){
+	    				selected_type_name = index;
+	    			}
+				  typeNames+='<option value='+index+'>'+value+'</option>';
+				});
+
+	    		$('#type_name_id').html(typeNames);
+	    		if(selected_type_name!=''){
+		    		$('#type_name_id').val(selected_type_name);
+		    	}
+		    	$('#type_name_id').trigger('change');
+
+	    		swal({
+		            title: "Success",
+		            text: data.message,
+		            type: "success"
+		        });
+	    	}else{
+	    		swal("Error", data.message, "error");
+	    	}
+	    },
+	    error: function( jqXhr, textStatus, errorThrown ){
+	        console.log( errorThrown );
+	    }
+	});
+}
+/** Type names **/
 
 // Document Ready
 $( document ).ready(function() {

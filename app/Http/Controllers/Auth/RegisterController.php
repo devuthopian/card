@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\UserProfile;
+use App\TypeName;
+use App\TierName;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -78,7 +80,18 @@ class RegisterController extends Controller
         $userProfileArr['profile_image'] = '';
         $userProfileArr['description'] = '';
 
-        $userProfileObj->create($userProfileArr);
+        $userProfileResultObj = $userProfileObj->create($userProfileArr);
+
+        
+        ### Save Default Type and Tier Name
+        $profile_id = $userProfileResultObj->id;
+        
+        $typeNameObj = new TypeName;
+        $typeNameObj->saveDefaultTypeNames($profile_id);
+
+
+        $tierNameObj = new TierName;
+        $tierNameObj->saveDefaultTierNames($profile_id);
 
         return $userResultObj;
 

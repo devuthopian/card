@@ -21,14 +21,22 @@
                 <!--end card-top-->
                 <div class="card-bottom">
                     <div class="row">
-                        <div class="card-icon left">{{$card->gender}}</div>
-                        <span class="card-points right">{{$card->card_tier}}</span>
+                        <div class="card-icon left">
+                            @if(!empty($card->type_name))
+                            {{$card->type_name->name}}
+                            @endif
+                        </div>
+                        <span class="card-points right">
+                            @if(!empty($card->tier_name))
+                            {{$card->tier_name->name}}
+                            @endif
+                        </span>
                     </div>
                     <p class="row">
                         <b class="left">Rewards</b>
                         <span class="left">
                             @if(strlen($card->rewards)>50)
-                            <?php $rewards = substr($card->rewards,0,50).'.....';  ?>
+                            <?php $rewards = substr($card->rewards,0,50);  ?>
                             @else
                             <?php $rewards = $card->rewards; ?>
                             @endif
@@ -37,7 +45,7 @@
                     </p>
                     <p>
                         @if(strlen($card->description)>100)
-                        <?php $description = substr($card->description,0,100).'.....';  ?>
+                        <?php $description = substr($card->description,0,100);  ?>
                         @else
                         <?php $description = $card->description; ?>
                         @endif

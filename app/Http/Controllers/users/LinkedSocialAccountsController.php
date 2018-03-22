@@ -13,6 +13,17 @@ use App\ConnectionSetting;
 
 class LinkedSocialAccountsController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Redirect the user to the GitHub authentication page.
      *

@@ -112,7 +112,18 @@ class User extends Authenticatable
         }
 
         $userProfileObj = new UserProfile;
-        $userProfileObj->create($saveArr);
+        $userProfileResultObj = $userProfileObj->create($saveArr);
+
+        ### Save Default Type and Tier Name
+        $profile_id = $userProfileResultObj->id;
+
+        $typeNameObj = new TypeName;
+        $typeNameObj->saveDefaultTypeNames($profile_id);
+
+        $tierNameObj = new TierName;
+        $tierNameObj->saveDefaultTierNames($profile_id);
+
+
         
         return array(
             'code' => 1,

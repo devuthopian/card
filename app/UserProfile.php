@@ -19,6 +19,21 @@ class UserProfile extends Model
     }
 
     /**
+     * Get type names
+     */
+    public function type_names() {
+        return $this->hasMany('App\TypeName', 'profile_id');
+    }
+
+
+    /**
+     * Get type names
+     */
+    public function tier_names() {
+        return $this->hasMany('App\TierName', 'profile_id');
+    }
+
+    /**
      * Get cards
      */
     public function invitations() {

@@ -21,12 +21,10 @@ class CardsController extends Controller
     }
 
     public function dashboard(){
-        $data['cards'] = DB::table('card')
-            ->join('users', 'users.id', '=', 'card.created_by')
-            ->select('users.name', 'card.*')
-            ->where('card.deleted_at', null)
-            ->orderBy('card.created_at', 'desc')
-            ->get();
+        // fetch cards
+        $cardObj = new Card;
+        $data['cards'] = $cardObj->orderBy('created_at', 'desc')
+                            ->get();
 
         return view('users/profile/directory', $data);
     }
@@ -49,7 +47,8 @@ class CardsController extends Controller
 
     // edit card
     public function edit(Request $request, Card $card){
-        return response()->json($card);
+        $cardDetails = Card::where('id', $card->id)->with('type_name', 'tier_name')->first();
+        return response()->json($cardDetails);
     }
 
     // release card

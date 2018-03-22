@@ -9,6 +9,9 @@ use App\UserProfile;
 
 use Auth;
 
+use App\TypeName;
+use App\TierName;
+
 class SocialAccountService
 {
     public function findOrCreate($providerUser, $provider)
@@ -37,7 +40,18 @@ class SocialAccountService
                 $userProfileArr['profile_image'] = '';
                 $userProfileArr['description'] = '';
                 $userProfileArr['is_default'] = 1;
-                $userResultObj = $userProfileObj->create($userProfileArr);
+                $userProfileResultObj = $userProfileObj->create($userProfileArr);
+                
+
+                ### Save Default Type and Tier Name
+                $profile_id = $userProfileResultObj->id;
+                
+                $typeNameObj = new TypeName;
+                $typeNameObj->saveDefaultTypeNames($profile_id);
+
+                
+                $tierNameObj = new TierName;
+                $tierNameObj->saveDefaultTierNames($profile_id);
 
 
             }
