@@ -37,7 +37,19 @@ class CardsController extends Controller
         $maskImageObj = $request->file('mask_image');
         $requestArr = $request->all();
         $logged_user_id = Auth::id();
-        $resultArr = $cardObj->addCard($logged_user_id, $requestArr, $cardImageObj, $maskImageObj);
+
+        ##### Copy Card
+        if(!empty($requestArr['copy_card_id'])){
+            $resultArr = $cardObj->duplicateCard($logged_user_id, $requestArr, $cardImageObj, $maskImageObj);
+        }
+        #### Update Card
+        elseif(!empty($requestArr['card_id'])){
+            $resultArr = $cardObj->updateCard($logged_user_id, $requestArr, $cardImageObj, $maskImageObj);
+        }
+        #### Duplicate Card
+        else{
+            $resultArr = $cardObj->addCard($logged_user_id, $requestArr, $cardImageObj, $maskImageObj);
+        }
         
         if(!empty($resultArr)){
             return redirect('user/index/'.$requestArr['user_profile_id']);
