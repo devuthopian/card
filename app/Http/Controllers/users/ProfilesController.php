@@ -14,6 +14,8 @@ use App\User;
 use App\Card;
 use App\UserProfile;
 use App\Invitation;
+use App\TierName;
+use App\TypeName;
 
 class ProfilesController extends Controller
 {
@@ -45,12 +47,25 @@ class ProfilesController extends Controller
         $profile_id = $profile->id;
 
         $cardObj = new Card;
+        $tierNameObj = new TierName;
+        $typeNameObj = new TypeName;
+
+        // fetch cards
         $cardsObj = $cardObj->where('user_profile_id', $profile_id)
                             ->orderBy('created_at', 'desc')
                             ->paginate(10);
 
+        // fetch profile tier names
+        $tierNamesArr = TierName::where('profile_id', $profile_id)->pluck('name', 'id')->toArray();
+
+        // fetch profile type names
+        $typeNamesArr = TypeName::where('profile_id', $profile_id)->pluck('name', 'id')->toArray();
+
         $data['profile'] = $profile;
         $data['cardsObj'] = $cardsObj;
+        $data['tierNamesArr'] = $tierNamesArr;
+        $data['typeNamesArr'] = $typeNamesArr;
+
         return view('users.profile.index', $data);
     }
 
