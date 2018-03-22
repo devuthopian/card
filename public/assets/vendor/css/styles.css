@@ -1932,7 +1932,7 @@ ul.CTAs a {
 .card_editor_cont .card_editor_left textarea {
     width: 80%;
     padding: 8px 10px;
-    margin: 10px 20px;
+    margin: 10px 18px;
     border: 1px solid #ccc;
     height: 100px;
     border-radius: 4px;
@@ -1949,6 +1949,11 @@ ul.CTAs a {
 }
 .card_editor_cont .card_editor_left .textarea {
     position: relative;
+}
+.card_editor_cont .card_editor_left .textarea #is_rewards, .card_editor_cont .card_editor_left .textarea #is_description {
+    position: absolute;
+    top: 40%;
+    left: 0;
 }
 .card_editor_cont .card_editor_left .textarea i {
     position: absolute;
@@ -2208,5 +2213,10 @@ ul.CTAs a {
     width: 90%;
 }
 }
+
+.btn-yellow{
+    background-color: #f9dc39 !important;
+}
+
 
 /*** end for css model ***/

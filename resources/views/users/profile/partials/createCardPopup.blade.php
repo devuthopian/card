@@ -111,17 +111,17 @@
                                 <div class="fields_right">
                                     <div>
                                         <input type="file" class="hide" name="image" id="card_image">
-                                        <button type="button" class="btn btn-md" id="card_image_button"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-md btn-yellow" id="card_image_button"><i class="fa fa-plus"></i></button>
                                         <button type="button" class="editor_button"  >Image</button>
                                     </div>
                                     <div>
                                         <input type="file" class="hide" name="background_image" id="background_image">
-                                        <button type="button" class="btn btn-md" id="background_image_button"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-md btn-yellow" id="background_image_button"><i class="fa fa-plus"></i></button>
                                         <button type="button" class="editor_button" >Background</button>
                                     </div>
                                     <div>
                                         <input type="file" class="hide" name="mask_image" id="mask_image">
-                                        <button type="button" class="btn btn-md" id="mask_image_button"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-md btn-yellow" id="mask_image_button"><i class="fa fa-plus"></i></button>
                                         <button type="button" class="editor_button" >Mask</button>
                                     </div>
                                 </div>
