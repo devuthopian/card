@@ -25,45 +25,52 @@
                               <div class="card_editor_left">                                
                                 <div class="fields_left">
                                     <div>
-                                        <span>                        
-                                            <a href="javascript:void(0)" onclick="return cardeditor('card_name')" class=""><i class="fa fa-window-close" aria-hidden="true"></i></a>
+                                        <span>    
+                                            {{ Form::checkbox('is_card_name', 1, true, array('id'=>'is_card_name')) }}               
+                                            
                                             {{ Form::text('card_name', null, array('id' => 'card_name', 'required'=> true, 'placeholder'=>'Card Name')) }}
                                         </span>
                                     </div>
                                     <div>
                                         <span>
-                                            <a href="javascript:void(0)" onclick="return cardeditor('bonus')" class=""><i class="fa fa-window-close" aria-hidden="true"></i></a>
+                                            {{ Form::checkbox('is_bonus', 1, true, array('id'=>'is_bonus')) }}
+
                                             {{ Form::text('bonus', null, array('id' => 'bonus', 'required'=> true, 'placeholder'=>'Bonus')) }}
                                         </span>
                                     </div>
                                     <div>
                                         <span>
-                                            <a href="javascript:void(0)" onclick="return cardeditor('card_number')" class=""><i class="fa fa-window-close" aria-hidden="true"></i></a>
+                                            {{ Form::checkbox('is_card_number', 1, true, array('id'=>'is_card_number')) }}
+
                                             {{ Form::text('card_number', null, array('id' => 'card_number', 'required'=> true, 'placeholder'=>'Card Number')) }}
                                         </span>
                                     </div>
                                     <div>
                                         <span>
-                                            <a href="javascript:void(0)" onclick="return cardeditor('type_name')" class=""><i class="fa fa-window-close" aria-hidden="true"></i></a>
+                                            {{ Form::checkbox('is_type_name', 1, true, array('id'=>'is_type_name')) }}
+
                                             {{ Form::select('type_name_id', [''=>'--Select Type--']+$typeNamesArr, null, array('id' => 'type_name_id', 'required'=> true)) }}
                                         </span>
                                     </div>
                                     <div>
                                         <span>
-                                            <a href="javascript:void(0)" onclick="return cardeditor('tier')" class=""><i class="fa fa-window-close" aria-hidden="true"></i></a>
+                                            {{ Form::checkbox('is_tier_name', 1, true, array('id'=>'is_tier_name')) }}
+
                                             {{ Form::select('tier_name_id', [''=>'--Select Tier--']+$tierNamesArr, null, array('id' => 'tier_name_id', 'required'=> true)) }}
                                         </span>
                                     </div>
                                 </div>                                
                                 <div>
                                     <span class="textarea">   
-                                        <a href="javascript:void(0)" onclick="return cardeditor('rewards')" class=""><i class="fa fa-window-close" aria-hidden="true"></i></a>
+                                        {{ Form::checkbox('is_rewards', 1, true, array('id'=>'is_rewards')) }}
+
                                         {{ Form::textarea('rewards', null, array('id' => 'rewards', 'required'=> true, 'placeholder'=>'Rewards')) }}
                                     </span>
                                 </div>
                                 <div>
                                     <span class="textarea">
-                                        <a href="javascript:void(0)" onclick="return cardeditor('card_description')" class=""><i class="fa fa-window-close" aria-hidden="true"></i></a>
+                                        {{ Form::checkbox('is_description', 1, true, array('id'=>'is_description')) }}
+
                                         {{ Form::textarea('description', null, array('id' => 'card_description', 'required'=> true, 'placeholder'=>'Description')) }}
                                     </span>
                                 </div>
@@ -76,7 +83,7 @@
                                     <div class="card bordered shadowed" style="height: 375px;">
                                         <div class="card-content">
                                             <div class="card-top">
-                                                <div class="rosette left">
+                                                <div class="rosette left" id="bonus_block">
                                                     <p id="bonus_label"></p>
                                                 </div>
                                                 <p class="card-title" id="card_name_label"></p>
@@ -88,7 +95,7 @@
                                                     <div class="card-icon left" id="type_name_label"></div>
                                                     <span class="card-points right" id="tier_label"></span>
                                                 </div>
-                                                <p class="row">
+                                                <p class="row" id="rewards_block">
                                                     <b class="left">Rewards</b>
                                                     <span class="left" id="rewards_label"></span>
                                                 </p>

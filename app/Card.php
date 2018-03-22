@@ -56,6 +56,15 @@ class Card extends Model
         $saveArr['rewards'] = $requestArr['rewards'];
         $saveArr['updated_by'] = $logged_user_id;
         $saveArr['created_by'] = $logged_user_id;
+
+        #flag variables
+        $saveArr['is_card_name'] = !empty($requestArr['is_card_name'])?1:0;
+        $saveArr['is_bonus'] = !empty($requestArr['is_bonus'])?1:0;
+        $saveArr['is_card_number'] = !empty($requestArr['is_card_number'])?1:0;
+        $saveArr['is_type_name'] = !empty($requestArr['is_type_name'])?1:0;
+        $saveArr['is_tier_name'] = !empty($requestArr['is_tier_name'])?1:0;
+        $saveArr['is_rewards'] = !empty($requestArr['is_rewards'])?1:0;
+        $saveArr['is_description'] = !empty($requestArr['is_description'])?1:0;
         
         ### upload Image
         if(!empty($cardImageObj)){
@@ -99,6 +108,16 @@ class Card extends Model
         $saveArr['updated_by'] = $logged_user_id;
 
 
+        #flag variables
+        $saveArr['is_card_name'] = !empty($requestArr['is_card_name'])?1:0;
+        $saveArr['is_bonus'] = !empty($requestArr['is_bonus'])?1:0;
+        $saveArr['is_card_number'] = !empty($requestArr['is_card_number'])?1:0;
+        $saveArr['is_type_name'] = !empty($requestArr['is_type_name'])?1:0;
+        $saveArr['is_tier_name'] = !empty($requestArr['is_tier_name'])?1:0;
+        $saveArr['is_rewards'] = !empty($requestArr['is_rewards'])?1:0;
+        $saveArr['is_description'] = !empty($requestArr['is_description'])?1:0;
+
+
         ### upload Image
         if(!empty($cardImageObj)){
             $imageName = time().'.'.$cardImageObj->getClientOriginalExtension();
@@ -140,6 +159,18 @@ class Card extends Model
         $saveArr['rewards'] = $requestArr['rewards'];
         $saveArr['updated_by'] = $logged_user_id;
         $saveArr['created_by'] = $logged_user_id;
+
+
+        #flag variables
+        $saveArr['is_card_name'] = !empty($requestArr['is_card_name'])?1:0;
+        $saveArr['is_bonus'] = !empty($requestArr['is_bonus'])?1:0;
+        $saveArr['is_card_number'] = !empty($requestArr['is_card_number'])?1:0;
+        $saveArr['is_type_name'] = !empty($requestArr['is_type_name'])?1:0;
+        $saveArr['is_tier_name'] = !empty($requestArr['is_tier_name'])?1:0;
+        $saveArr['is_rewards'] = !empty($requestArr['is_rewards'])?1:0;
+        $saveArr['is_description'] = !empty($requestArr['is_description'])?1:0;
+
+
 
         ### upload Image
         if(!empty($cardImageObj)){

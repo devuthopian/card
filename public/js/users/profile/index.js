@@ -184,6 +184,9 @@ function editCard(card_id){
 	    type: 'get',
 	    success: function( data, textStatus, jQxhr ){
 
+	    	enableEnableFieldFlags(data);
+
+
 	    	$('#create_card_header').html('Edit Card');
 	    	$('#card_name').val(data.card_name);
 	    	$('#card_image_preview').attr('src', base_url+'/uploads/card/'+data.image);
@@ -227,6 +230,68 @@ function editCard(card_id){
 	});
 }
 
+function enableEnableFieldFlags(data){
+	// is card name
+	if(data.is_card_name == 1){
+		$('#is_card_name').prop('checked', true);
+	}else{
+		$('#is_card_name').prop('checked', false);
+	}
+	$("#is_card_name").trigger('change');
+
+
+	// is card name
+	if(data.is_bonus == 1){
+		$('#is_bonus').prop('checked', true);
+	}else{
+		$('#is_bonus').prop('checked', false);
+	}
+	$("#is_bonus").trigger('change');
+
+
+	//is card number
+	if(data.is_card_number == 1){
+		$('#is_card_number').prop('checked', true);
+	}else{
+		$('#is_card_number').prop('checked', false);
+	}
+	$("#is_card_number").trigger('change');
+
+	//is type name
+	if(data.is_type_name == 1){
+		$('#is_type_name').prop('checked', true);
+	}else{
+		$('#is_type_name').prop('checked', false);
+	}
+	$("#is_type_name").trigger('change');
+
+
+	//is rewards
+	if(data.is_rewards == 1){
+		$('#is_rewards').prop('checked', true);
+	}else{
+		$('#is_rewards').prop('checked', false);
+	}
+	$("#is_rewards").trigger('change');
+
+	//is rewards
+	if(data.is_description == 1){
+		$('#is_description').prop('checked', true);
+	}else{
+		$('#is_description').prop('checked', false);
+	}
+	$("#is_description").trigger('change');
+
+
+	//is tier name
+	if(data.is_tier_name == 1){
+		$('#is_tier_name').prop('checked', true);
+	}else{
+		$('#is_tier_name').prop('checked', false);
+	}
+	$("#is_tier_name").trigger('change');
+}
+
 
 // Duplicate Card
 function duplicateCard(card_id){
@@ -241,6 +306,9 @@ function duplicateCard(card_id){
 	    dataType: 'json',
 	    type: 'get',
 	    success: function( data, textStatus, jQxhr ){
+
+	    	enableEnableFieldFlags(data);
+
 	    	$('#create_card_header').html('Create Duplicate Card');
 	    	$('#card_name').val(data.card_name);
 	    	$('#card_image_preview').attr('src', base_url+'/uploads/card/'+data.image);
@@ -292,6 +360,38 @@ function duplicateCard(card_id){
 
 // Open Create Card Popup
 function openCreateCardPopup(){
+
+	//is card name
+	$('#is_bonus').prop('checked', true);
+	$("#is_bonus").trigger('change');
+
+	//is card name
+	$('#is_card_name').prop('checked', true);
+	$("#is_card_name").trigger('change');
+
+	//is card number
+	$('#is_card_number').prop('checked', true);
+	$("#is_card_number").trigger('change');
+
+	//is type name
+	$('#is_type_name').prop('checked', true);
+	$("#is_type_name").trigger('change');
+
+
+	//is rewards
+	$('#is_rewards').prop('checked', true);
+	$("#is_rewards").trigger('change');
+
+	//is rewards
+	$('#is_description').prop('checked', true);
+	$("#is_description").trigger('change');
+
+	//is tier name
+	$('#is_tier_name').prop('checked', true);
+	$("#is_tier_name").trigger('change');
+
+
+	
 	$('#create_card_header').html('New Card');
 	$('#card_name').val('');
 
@@ -381,6 +481,73 @@ function cardAutomation(){
 	$('#mask_image_button').click(function(){
 	    $('#mask_image').click();
 	});
+
+
+	//hide / show flag
+	//is card name
+	$("#is_card_name").on('change', function() {
+		if($("#is_card_name").is(':checked')) {
+	    	$('#card_name_label').removeClass('hide');
+	    }else{
+	    	$('#card_name_label').addClass('hide');
+	    }
+	});
+
+	//is card number
+	$("#is_card_number").on('change', function() {
+		if($("#is_card_number").is(':checked')) {
+	    	$('#card_number_label').removeClass('hide');
+	    }else{
+	    	$('#card_number_label').addClass('hide');
+	    }
+	});
+
+	//is type name
+	$("#is_type_name").on('change', function() {
+		if($("#is_type_name").is(':checked')) {
+	    	$('#type_name_label').removeClass('hide');
+	    }else{
+	    	$('#type_name_label').addClass('hide');
+	    }
+	});
+
+
+	//is rewards
+	$("#is_rewards").on('change', function() {
+		if($("#is_rewards").is(':checked')) {
+	    	$('#rewards_block').removeClass('hide');
+	    }else{
+	    	$('#rewards_block').addClass('hide');
+	    }
+	});
+
+	//is rewards
+	$("#is_description").on('change', function() {
+		if($("#is_description").is(':checked')) {
+	    	$('#description_label').removeClass('hide');
+	    }else{
+	    	$('#description_label').addClass('hide');
+	    }
+	});
+
+	//is tier name
+	$("#is_tier_name").on('change', function() {
+		if($("#is_tier_name").is(':checked')) {
+	    	$('#tier_label').removeClass('hide');
+	    }else{
+	    	$('#tier_label').addClass('hide');
+	    }
+	});
+
+	//is bonus
+	$("#is_bonus").on('change', function() {
+		if($("#is_bonus").is(':checked')) {
+	    	$('#bonus_block').removeClass('hide');
+	    }else{
+	    	$('#bonus_block').addClass('hide');
+	    }
+	});
+
 	
 }
 
