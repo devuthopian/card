@@ -230,6 +230,8 @@ function editCard(card_id){
 	});
 }
 
+
+// Enable Disable field by flags when open edit and duplicate card.
 function enableEnableFieldFlags(data){
 	// is card name
 	if(data.is_card_name == 1){
@@ -364,10 +366,12 @@ function openCreateCardPopup(){
 	//is card name
 	$('#is_bonus').prop('checked', true);
 	$("#is_bonus").trigger('change');
+	$("#bonus").trigger('change');
 
 	//is card name
 	$('#is_card_name').prop('checked', true);
 	$("#is_card_name").trigger('change');
+	$("#card_name").trigger('change');
 
 	//is card number
 	$('#is_card_number').prop('checked', true);
@@ -376,15 +380,18 @@ function openCreateCardPopup(){
 	//is type name
 	$('#is_type_name').prop('checked', true);
 	$("#is_type_name").trigger('change');
+	$("#type_name_id").trigger('change');
 
 
 	//is rewards
 	$('#is_rewards').prop('checked', true);
 	$("#is_rewards").trigger('change');
+	$("#rewards").trigger('change');
 
 	//is rewards
 	$('#is_description').prop('checked', true);
 	$("#is_description").trigger('change');
+	$("#card_description").trigger('change');
 
 	//is tier name
 	$('#is_tier_name').prop('checked', true);
@@ -413,14 +420,26 @@ function editCardImage(){
 	$('#cardFileUploadBlock').removeClass('hide');
 }
 
+
+// Card Automatic changes
 function cardAutomation(){
 	// card name
 	$("#card_name").on('change keyup paste', function() {
+		if($(this).val()==''){
+			$('#card_name_label').addClass('hide');
+		}else{
+			$('#card_name_label').removeClass('hide');
+		}
 	    $('#card_name_label').html($(this).val());
 	});
 
 	// card bonus
 	$("#bonus").on('change keyup paste', function() {
+		if($(this).val()==''){
+			$('#bonus_block').addClass('hide');
+		}else{
+			$('#bonus_block').removeClass('hide');
+		}
 	    $('#bonus_label').html($(this).val());
 	});
 
@@ -429,10 +448,20 @@ function cardAutomation(){
 	    $('#card_number_label').html($(this).val());
 	});
 
+	// card number
+	$("#card_background").on('change keyup paste', function() {
+		var card_background = $("#card_background").val();
+	    $('#card_container').css('background-color', card_background);
+	});
+
 	// type_name
 	$("#type_name_id").on('change keyup paste', function() {
-		if($("#type_name_id").val()!=''){		
+		if($("#type_name_id").val()!=''){	
+			$('#type_name_label').removeClass('hide');	
 		    $('#type_name_label').html($("#type_name_id option:selected").text());
+		}else{
+			$('#type_name_label').addClass('hide');	
+			$('#type_name_label').html('');
 		}
 	});
 
@@ -446,6 +475,11 @@ function cardAutomation(){
 	//rewards
 	$("#card_description").on('change keyup paste', function() {
 		var card_description = $(this).val();
+		if(card_description==''){
+	    	$('#description_label').addClass('hide');
+	    }else{
+	    	$('#description_label').removeClass('hide');
+	    }
 		if(card_description.length>100){
 			$('#description_label').html(card_description.substring(0, 100));
 		}else{
@@ -455,8 +489,13 @@ function cardAutomation(){
 
 	//rewards
 	$("#rewards").on('change keyup paste', function() {
-	   /* $('#rewards_label').html($(this).val());*/
 	    var card_rewards = $(this).val();
+	    if(card_rewards==''){
+	    	$('#rewards_block').addClass('hide');
+	    }else{
+	    	$('#rewards_block').removeClass('hide');
+	    }
+	    
 		if(card_rewards.length>100){
 			$('#rewards_label').html(card_rewards.substring(0, 100));
 		}else{
@@ -480,6 +519,11 @@ function cardAutomation(){
 	// card image button
 	$('#mask_image_button').click(function(){
 	    $('#mask_image').click();
+	});
+
+	// card image button
+	$('#card_background_button').click(function(){
+	    $('#card_background').click();
 	});
 
 
@@ -547,11 +591,10 @@ function cardAutomation(){
 	    	$('#bonus_block').addClass('hide');
 	    }
 	});
-
-	
 }
 
 
+// Read image url to preview
 function readURL(input) {
 	preview_image = input.id;
 
@@ -575,6 +618,7 @@ function addNewTierRow(){
 	$('#tiers_count').val(tiers_count);
 }
 
+// remove Tier row
 function removeTierRow(){
 	var tier_div_length = $('.tier_div').length;
 	if(tier_div_length>1){
@@ -586,6 +630,7 @@ function removeTierRow(){
 	}
 }
 
+// save Tiers
 function saveTiers(){
 	var user_profile_id = $('#user_profile_id').val();
 	$.ajax({
@@ -639,6 +684,7 @@ function addNewRow(){
 	$('#types_count').val(types_count);
 }
 
+// remove type row
 function removeRow(){
 	var type_div_length = $('.type_div').length;
 	if(type_div_length>1){
@@ -694,8 +740,56 @@ function saveTypes(){
 }
 /** Type names **/
 
+
+/* Crop functionality */
+function openImageCropPopup(){
+	var card_image_preview_src = $('#card_image_preview').attr('src');
+	$('#imageForCrop').attr('src', card_image_preview_src);
+	$('#imageForCrop').Jcrop({
+      aspectRatio: 12/16,
+      onSelect: updateCoords,
+    });
+	$('#cropImageModal').modal('toggle');
+}
+
+// close crop modal
+function closeCropModal(){
+	$('#cropImageModal').modal('toggle');
+}
+
+// update coordinates for crop
+function updateCoords(c)
+  {
+    $('#x').val(c.x);
+    $('#y').val(c.y);
+    $('#w').val(c.w);
+    $('#h').val(c.h);
+
+/*
+    var rx = 100 / coords.w;
+	var ry = 100 / coords.h;
+
+	$('#preview').css({
+		width: Math.round(rx * 500) + 'px',
+		height: Math.round(ry * 370) + 'px',
+		marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+		marginTop: '-' + Math.round(ry * coords.y) + 'px'
+	});
+*/
+  };
+
+// Check Coordinates
+function checkCoords()
+{
+	if (parseInt($('#w').val())) return true;
+	bootbox.alert('Please select a crop region then press submit.');
+	return false;
+};
+
+
 // Document Ready
 $( document ).ready(function() {
 	setNeverExpire();
 	cardAutomation();
+	$('#card_background').colorpicker();
 });
