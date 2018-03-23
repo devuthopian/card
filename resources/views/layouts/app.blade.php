@@ -23,10 +23,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <!-- <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a> -->
-                <?php if(!empty(Auth::id())){ ?>
+                
+                @if(!empty(Auth::id()))
                 <a class="navbar-brand" href="{{ url('/directory') }}">
                     Directory
                 </a>
@@ -36,7 +34,7 @@
                 <a class="navbar-brand" data-toggle="modal" href="javascript:void(0)" data-target="#inviteModal">
                     Invite
                 </a>
-                <?php } ?>
+                @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

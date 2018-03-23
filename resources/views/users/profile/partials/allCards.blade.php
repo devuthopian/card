@@ -77,30 +77,28 @@
                     <p class="row {{$rewards_hide_class}}">
                         <b class="left">Rewards</b>
                         <span class="left">
-                            @if(strlen($card->rewards)>50)
-                            <?php $rewards = substr($card->rewards,0,50);  ?>
-                            @else
-                            <?php $rewards = $card->rewards; ?>
-                            @endif
-                            {{$rewards}}
+                            {{$rewards = $card->rewards}}
                         </span>
                     </p>
                     <p class="{{$description_hide_class}}">
-                        @if(strlen($card->description)>100)
-                        <?php $description = substr($card->description,0,100);  ?>
-                        @else
-                        <?php $description = $card->description; ?>
-                        @endif
-                        {{$description}}
+                        {{$card->description}}
                     </p>
                 </div>
                 <!--end card-bottom-->
             </div>
             <!--end card-content-->
-            <img src="{{ URL::asset('uploads/card/') }}/{{$card->image}}">
 
+
+            @if(!empty($card->cropped_image_file_name))
+            <img src="{{ URL::asset('uploads/card/cropped') }}/{{$card->cropped_image_file_name}}">
+            @else
+            <img src="{{ URL::asset('uploads/card/originals') }}/{{$card->image}}">
+            @endif
+
+            @if($card->mask_image)
             <img src="{{ URL::asset('uploads/card/') }}/{{$card->mask_image}}">
-
+            @endif
+            
             <!-- Options -->
             <div class="hover_pop">
                 <ul>

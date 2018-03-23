@@ -11,12 +11,7 @@
                 <!--end card-top-->
                 <div class="card-bottom">
                     <p>
-                        @if(strlen($userProfile->description)>100)
-                        <?php $description = substr($userProfile->description,0,100);  ?>
-                        @else
-                        <?php $description = $userProfile->description; ?>
-                        @endif
-                        {{$description}}
+                        {{$userProfile->description}}
                     </p>
                 </div>
                 <!--end card-bottom-->

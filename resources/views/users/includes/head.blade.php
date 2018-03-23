@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="{{ URL::asset('assets/JcCrop/css/jquery.Jcrop.css') }}" />
 
 
+
+
 <!-- scripts -->
 <script src="{{ URL::asset('assets/vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ URL::asset('assets/bootstrap.min.js') }}"></script>
@@ -23,7 +25,7 @@
 <script src="{{ URL::asset('assets/scripts.js') }}"></script>
 <script src="{{ URL::asset('assets/sweetalert2/dist/sweetalert2.min.js') }}"></script>
 <script src="{{ URL::asset('assets/bootbox/bootbox.min.js') }}"></script>
-
+<script src="{{ URL::asset('assets/fine-uploader/jquery.fine-uploader.js') }}"></script>
 <script src="{{ asset('assets/JcCrop/js/jquery.Jcrop.js') }}"></script>
 <script src="{{ asset('js/common.js') }}"></script>
 

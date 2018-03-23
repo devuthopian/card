@@ -62,6 +62,8 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('/user/card/remove', 'users\CardsController@remove');
 	Route::post('/user/card/add', 'users\CardsController@add');
 	Route::get('/user/card/{card}', 'users\CardsController@edit');
+	Route::post('/user/card/uploadCardImage', 'users\CardsController@uploadCardImage');
+	Route::post('/user/card/cropCardImage', 'users\CardsController@cropCardImage');
 
 	// Card End
 	Route::get('/user/profile/editCard', 'users\ProfilesController@editCard');

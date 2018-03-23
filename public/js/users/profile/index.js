@@ -184,12 +184,18 @@ function editCard(card_id){
 	    type: 'get',
 	    success: function( data, textStatus, jQxhr ){
 
+	    	//
 	    	enableEnableFieldFlags(data);
-
 
 	    	$('#create_card_header').html('Edit Card');
 	    	$('#card_name').val(data.card_name);
-	    	$('#card_image_preview').attr('src', base_url+'/uploads/card/'+data.image);
+	    	if(data.cropped_image_file_name==''){
+	    		$('#card_image_preview').attr('src', base_url+'/uploads/card/originals/'+data.image);
+	    	}else{
+	    		$('#card_image_preview').attr('src', base_url+'/uploads/card/cropped/'+data.cropped_image_file_name);
+	    	}
+	    	$('#image_file_name').val(data.image);
+	    	$('#cropped_image_file_name').val(data.cropped_image_file_name);
 	    	$('textarea#card_description').val(data.description);
 	    	$('#bonus').val(data.bonus);
 	    	$('#card_number').val(data.card_number);
@@ -211,18 +217,10 @@ function editCard(card_id){
 	    	$('#tier_label').html(data.tier_name.name);
 			
 	    	/** card description **/
-			if(data.description.length>100){
-				$('#description_label').html(data.description.substring(0, 100));
-			}else{
-				$('#description_label').html(data.description);
-			}
+			$('#description_label').html(data.description);
 
 			/** card rewards **/
-			if(data.rewards.length>100){
-				$('#rewards_label').html(data.rewards.substring(0, 100));
-			}else{
-				$('#rewards_label').html(data.rewards);
-			}
+			$('#rewards_label').html(data.rewards);
 	    },
 	    error: function( jqXhr, textStatus, errorThrown ){
 	        console.log( errorThrown );
@@ -313,7 +311,16 @@ function duplicateCard(card_id){
 
 	    	$('#create_card_header').html('Create Duplicate Card');
 	    	$('#card_name').val(data.card_name);
-	    	$('#card_image_preview').attr('src', base_url+'/uploads/card/'+data.image);
+
+	    	if(data.cropped_image_file_name==''){
+	    		$('#card_image_preview').attr('src', base_url+'/uploads/card/originals/'+data.image);
+	    	}else{
+	    		$('#card_image_preview').attr('src', base_url+'/uploads/card/cropped/'+data.cropped_image_file_name);
+	    	}
+
+	    	//$('#card_image_preview').attr('src', base_url+'/uploads/card/'+data.image);
+	    	$('#image_file_name').val(data.image);
+	    	$('#cropped_image_file_name').val(data.cropped_image_file_name);
 	    	$('textarea#card_description').val(data.description);
 
 
@@ -340,18 +347,10 @@ function duplicateCard(card_id){
 	    	$('#tier_label').html(data.tier_name.name);
 			
 	    	/** card description **/
-			if(data.description.length>100){
-				$('#description_label').html(data.description.substring(0, 100));
-			}else{
-				$('#description_label').html(data.description);
-			}
+			$('#description_label').html(data.description);
 
 			/** card rewards **/
-			if(data.rewards.length>100){
-				$('#rewards_label').html(data.rewards.substring(0, 100));
-			}else{
-				$('#rewards_label').html(data.rewards);
-			}
+			$('#rewards_label').html(data.rewards);
 	    },
 	    error: function( jqXhr, textStatus, errorThrown ){
 	        console.log( errorThrown );
@@ -496,11 +495,7 @@ function cardAutomation(){
 	    	$('#rewards_block').removeClass('hide');
 	    }
 	    
-		if(card_rewards.length>100){
-			$('#rewards_label').html(card_rewards.substring(0, 100));
-		}else{
-			$('#rewards_label').html(card_rewards);
-		}
+		$('#rewards_label').html(card_rewards);
 	});
 
 	$("#card_image").change(function() {
@@ -743,13 +738,27 @@ function saveTypes(){
 
 /* Crop functionality */
 function openImageCropPopup(){
-	var card_image_preview_src = $('#card_image_preview').attr('src');
-	$('#imageForCrop').attr('src', card_image_preview_src);
-	$('#imageForCrop').Jcrop({
-      aspectRatio: 12/16,
-      onSelect: updateCoords,
-    });
-	$('#cropImageModal').modal('toggle');
+	var image_file_name_src = $('#image_file_name').val();
+
+	if(image_file_name_src!=''){
+		$('#imageForCrop').attr('src', base_url+'/uploads/card/originals/'+image_file_name_src);
+
+		if ($('#imageForCrop').data('Jcrop')) {
+		   $('#imageForCrop').data('Jcrop').destroy();
+		}
+
+		// assign jcrop to jcrop_api
+		var jcrop_api = $.Jcrop('#imageForCrop', {
+		    aspectRatio: 12/16,
+	      	onSelect: updateCoords,
+		});
+		// when you want to remove it
+	
+		$('#cropImageModal').modal('toggle');
+	}else{
+		bootbox.alert('Please select image to crop.');
+	}
+	
 }
 
 // close crop modal
@@ -764,32 +773,98 @@ function updateCoords(c)
     $('#y').val(c.y);
     $('#w').val(c.w);
     $('#h').val(c.h);
-
-/*
-    var rx = 100 / coords.w;
-	var ry = 100 / coords.h;
-
-	$('#preview').css({
-		width: Math.round(rx * 500) + 'px',
-		height: Math.round(ry * 370) + 'px',
-		marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-		marginTop: '-' + Math.round(ry * coords.y) + 'px'
-	});
-*/
   };
 
 // Check Coordinates
-function checkCoords()
+function croppingImage()
 {
-	if (parseInt($('#w').val())) return true;
-	bootbox.alert('Please select a crop region then press submit.');
+
+	var w = parseInt($('#w').val());
+	var h = parseInt($('#h').val());
+	var x = parseInt($('#x').val());
+	var y = parseInt($('#y').val());
+	var image_file_name = $('#image_file_name').val();
+
+
+	var dataObj = {'w':w, 'h':h, 'x':x, 'y':y, 'image_file_name':image_file_name}
+
+	if (w){
+
+		$.ajaxSetup({
+		    headers: {
+		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		});
+
+		$.ajax({
+		    url: base_url+'/user/card/cropCardImage',
+		    dataType: 'json',
+		    type: 'post',
+		    data: dataObj,
+		    success: function( data, textStatus, jQxhr ){
+				$("#card_image_preview").attr("src", base_url+'/uploads/card/cropped/'+data.newFileName);
+				$('#cropped_image_file_name').val(data.newFileName);
+		    	$('#cropImageModal').modal('toggle');
+		    },
+		    error: function( jqXhr, textStatus, errorThrown ){
+		        console.log( errorThrown );
+		    }
+		});
+
+	}else{
+		bootbox.alert('Please select a crop region then press submit.');
+	}
 	return false;
 };
 
 
+function fineUploader(){
+	$('#image_uploader_gallery').fineUploader({
+        template: 'qq-template-gallery',
+        multiple: false,
+        request: {
+            endpoint: base_url+'/user/card/uploadCardImage',
+            customHeaders: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	        }
+        },
+        callbacks: {
+        	onUpload: function() {
+        		
+        	},
+		    onComplete: function(id, name, response) {
+		    	console.log(response);
+		    	if(response.code==1){
+		    		$('#card_image_preview').css({
+					   'position': '',
+					   'left' : '',
+					   'top' : '',
+					});
+
+		    		$('#image_file_name').val(response.dataArr.image);
+		    		$('#cropped_image_file_name').val('');
+		    		$('#card_image_preview').attr('src', base_url+'/uploads/card/originals/'+response.dataArr.image);
+		    		swal("Success", response.message, "success");
+		    	}
+		    }
+		},
+        thumbnails: {
+            placeholders: {
+                waitingPath: '/source/placeholders/waiting-generic.png',
+                notAvailablePath: '/source/placeholders/not_available-generic.png'
+            }
+        },
+        validation: {
+            allowedExtensions: ['jpeg', 'jpg', 'gif', 'png'],
+            image:{minWidth:369, minHeight:468},
+        }
+    });
+}
+
+
 // Document Ready
 $( document ).ready(function() {
+	fineUploader();
 	setNeverExpire();
 	cardAutomation();
-	$('#card_background').colorpicker();
 });

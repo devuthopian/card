@@ -7,17 +7,16 @@
         <h4>Crop Image</h4>        
       </div>
       <div class="modal-body">
-          <div class="profile_cont text-center">
-            <img src="" id="imageForCrop" style="max-width: 400px" />
-            <img src="" id="preview">
-            <form action="crop.php" method="post" onsubmit="return checkCoords();">
-              <input type="hidden" id="x" name="x" />
-              <input type="hidden" id="y" name="y" />
-              <input type="hidden" id="w" name="w" />
-              <input type="hidden" id="h" name="h" />
-              <br>
-              <input type="submit" value="Crop Image" class="btn btn-large btn-inverse" />
-            </form>
+          <div class="profile_cont text-center" id="crop_image_form">
+            <img src="" id="imageForCrop" width="100%" />
+            
+            <input type="hidden" id="x" name="x" />
+            <input type="hidden" id="y" name="y" />
+            <input type="hidden" id="w" name="w" />
+            <input type="hidden" id="h" name="h" />
+            <br>
+            <input type="button" value="Crop Image" onclick="return croppingImage()" class="btn btn-large btn-inverse" />
+            
           </div>
       </div>
     </div>

@@ -54,6 +54,8 @@ class Card extends Model
         $saveArr['description'] = $requestArr['description'];
         $saveArr['user_profile_id'] = $requestArr['user_profile_id'];
         $saveArr['rewards'] = $requestArr['rewards'];
+        $saveArr['image'] = $requestArr['image_file_name'];
+        $saveArr['cropped_image_file_name'] = $requestArr['cropped_image_file_name'];
         $saveArr['updated_by'] = $logged_user_id;
         $saveArr['created_by'] = $logged_user_id;
 
@@ -65,13 +67,14 @@ class Card extends Model
         $saveArr['is_tier_name'] = !empty($requestArr['is_tier_name'])?1:0;
         $saveArr['is_rewards'] = !empty($requestArr['is_rewards'])?1:0;
         $saveArr['is_description'] = !empty($requestArr['is_description'])?1:0;
+
         
-        ### upload Image
+        /*### upload Image
         if(!empty($cardImageObj)){
             $imageName = time().'.'.$cardImageObj->getClientOriginalExtension();
             $cardImageObj->move(public_path('uploads/card'), $imageName); 
             $saveArr['image'] = $imageName;
-        }
+        }*/
 
         ### upload mask Image
         if(!empty($maskImageObj)){
@@ -105,6 +108,8 @@ class Card extends Model
         $saveArr['description'] = $requestArr['description'];
         $saveArr['user_profile_id'] = $requestArr['user_profile_id'];
         $saveArr['rewards'] = $requestArr['rewards'];
+        $saveArr['image'] = $requestArr['image_file_name'];
+        $saveArr['cropped_image_file_name'] = $requestArr['cropped_image_file_name'];
         $saveArr['updated_by'] = $logged_user_id;
 
 
@@ -119,11 +124,11 @@ class Card extends Model
 
 
         ### upload Image
-        if(!empty($cardImageObj)){
+        /*if(!empty($cardImageObj)){
             $imageName = time().'.'.$cardImageObj->getClientOriginalExtension();
             $cardImageObj->move(public_path('uploads/card'), $imageName); 
             $saveArr['image'] = $imageName;
-        }
+        }*/
 
         ### upload mask Image
         if(!empty($maskImageObj)){
@@ -157,6 +162,8 @@ class Card extends Model
         $saveArr['description'] = $requestArr['description'];
         $saveArr['user_profile_id'] = $requestArr['user_profile_id'];
         $saveArr['rewards'] = $requestArr['rewards'];
+        $saveArr['image'] = $requestArr['image_file_name'];
+        $saveArr['cropped_image_file_name'] = $requestArr['cropped_image_file_name'];
         $saveArr['updated_by'] = $logged_user_id;
         $saveArr['created_by'] = $logged_user_id;
 
@@ -173,11 +180,11 @@ class Card extends Model
 
 
         ### upload Image
-        if(!empty($cardImageObj)){
+        /*if(!empty($cardImageObj)){
             $imageName = time().'.'.$cardImageObj->getClientOriginalExtension();
             $cardImageObj->move(public_path('uploads/card'), $imageName); 
             $saveArr['image'] = $imageName;
-        }
+        }*/
 
         ### upload mask Image
         if(!empty($maskImageObj)){
@@ -193,16 +200,20 @@ class Card extends Model
         #### 
         if(empty($saveArr['image'])){
             $copy_card_image = $copyCardDetails->image;
-            $fileNameArr = explode('.', $copy_card_image);
-            $saveArr['image'] = $new_image_name = time().'.'.end($fileNameArr);
-            copy(public_path('uploads/card').'/'.$copy_card_image, public_path('uploads/card').'/'.$new_image_name);
+            if(!empty($copy_card_image) && (file_exists(public_path('uploads/card').'/'.$copy_card_image))){
+                $fileNameArr = explode('.', $copy_card_image);
+                $saveArr['image'] = $new_image_name = time().'.'.end($fileNameArr);
+                copy(public_path('uploads/card').'/'.$copy_card_image, public_path('uploads/card').'/'.$new_image_name);
+            }
         }
 
         if(empty($saveArr['mask_image'])){
             $copy_card_mask_image = $copyCardDetails->mask_image;
-            $maskFileNameArr = explode('.', $copy_card_mask_image);
-            $saveArr['mask_image'] = $new_mask_image_name = time().'_mask.'.end($maskFileNameArr);
-            copy(public_path('uploads/card').'/'.$copy_card_mask_image, public_path('uploads/card').'/'.$new_mask_image_name);
+            if(!empty($copy_card_mask_image) && (file_exists(public_path('uploads/card').'/'.$copy_card_mask_image))){
+                $maskFileNameArr = explode('.', $copy_card_mask_image);
+                $saveArr['mask_image'] = $new_mask_image_name = time().'_mask.'.end($maskFileNameArr);
+                copy(public_path('uploads/card').'/'.$copy_card_mask_image, public_path('uploads/card').'/'.$new_mask_image_name);
+            }
         }
 
 
