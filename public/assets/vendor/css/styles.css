@@ -1960,10 +1960,10 @@ ul.CTAs a {
     left: 0;
     top: 42%;
 }
-.card_editor_cont .card_editor_right .editor_button {
+.card_editor_cont .card_editor_left .editor_button {
     padding: 10px 0px;
     margin: 5px 0;
-    width: 80%;
+    width: 35%;
     text-align: center;
     background: #333;
     color: #fff;
@@ -1971,12 +1971,12 @@ ul.CTAs a {
     font-size: 14px;
     border-radius: 4px;
 }
-.card_editor_cont .card_editor_right .editor_button:hover {
+.card_editor_cont .card_editor_left .editor_button:hover {
     background: #f9dc39;
     color: #333;
 }
 .card_editor_cont .card_editor_left .fields_left {
-    width: 100%;
+    width: 50%;
     float: left;
 }
 .card_editor_cont .card_editor_left a {
@@ -2153,17 +2153,17 @@ ul.CTAs a {
 }
 .n_card_editor button.btn-submit {
     width: 20%;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
 }
 .n_card_editor .card {
     margin: 0 9px 10px 9px;
 }
 .n_card_editor .editor_nav_left {
-    width: 25%;
+    width: 20%;
     float: left;
 }
 .n_card_editor .editor_content_right {
-    width: 74%;
+    width: 80%;
     float: right;
 }
 @media (max-width: 991px) {
@@ -2216,6 +2216,10 @@ ul.CTAs a {
 
 .btn-yellow{
     background-color: #f9dc39 !important;
+}
+
+.modal-xl{
+    width:1200px !important;
 }
 
 

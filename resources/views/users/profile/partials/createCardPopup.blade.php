@@ -1,5 +1,5 @@
 <div class="modal fade" id="createCardModal" role="dialog">
-  <div class="modal-dialog modal-lg n_card_editor">
+  <div class="modal-dialog modal-xl n_card_editor">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -22,44 +22,63 @@
                         <div class="tab-pane fade in active" id="general">
                             {{ Form::open(array('url' => 'user/card/add', 'id' => 'createCard', 'files' => true)) }}
                             <div class="profile_cont card_editor_cont">
-                              <div class="card_editor_left">                                
-                                <div class="fields_left">
-                                    <div>
-                                        <span>    
-                                            {{ Form::checkbox('is_card_name', 1, true, array('id'=>'is_card_name')) }}               
-                                            
-                                            {{ Form::text('card_name', null, array('id' => 'card_name', 'required'=> true, 'placeholder'=>'Card Name')) }}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span>
-                                            {{ Form::checkbox('is_bonus', 1, true, array('id'=>'is_bonus')) }}
+                              <div class="card_editor_left">
+                                <div>                                
+                                    <div class="fields_left">
+                                        <div>
+                                            <span>    
+                                                {{ Form::checkbox('is_card_name', 1, true, array('id'=>'is_card_name')) }}               
+                                                
+                                                {{ Form::text('card_name', null, array('id' => 'card_name', 'required'=> true, 'placeholder'=>'Card Name')) }}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span>
+                                                {{ Form::checkbox('is_bonus', 1, true, array('id'=>'is_bonus')) }}
 
-                                            {{ Form::text('bonus', null, array('id' => 'bonus', 'required'=> true, 'placeholder'=>'Bonus')) }}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span>
-                                            {{ Form::checkbox('is_card_number', 1, true, array('id'=>'is_card_number')) }}
+                                                {{ Form::text('bonus', null, array('id' => 'bonus', 'required'=> true, 'placeholder'=>'Bonus')) }}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span>
+                                                {{ Form::checkbox('is_card_number', 1, true, array('id'=>'is_card_number')) }}
 
-                                            {{ Form::text('card_number', null, array('id' => 'card_number', 'required'=> true, 'placeholder'=>'Card Number')) }}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span>
-                                            {{ Form::checkbox('is_type_name', 1, true, array('id'=>'is_type_name')) }}
+                                                {{ Form::text('card_number', null, array('id' => 'card_number', 'required'=> true, 'placeholder'=>'Card Number')) }}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span>
+                                                {{ Form::checkbox('is_type_name', 1, true, array('id'=>'is_type_name')) }}
 
-                                            {{ Form::select('type_name_id', [''=>'--Select Type--']+$typeNamesArr, null, array('id' => 'type_name_id', 'required'=> true)) }}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span>
-                                            {{ Form::checkbox('is_tier_name', 1, true, array('id'=>'is_tier_name')) }}
+                                                {{ Form::select('type_name_id', [''=>'--Select Type--']+$typeNamesArr, null, array('id' => 'type_name_id', 'required'=> true)) }}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span>
+                                                {{ Form::checkbox('is_tier_name', 1, true, array('id'=>'is_tier_name')) }}
 
-                                            {{ Form::select('tier_name_id', [''=>'--Select Tier--']+$tierNamesArr, null, array('id' => 'tier_name_id', 'required'=> true)) }}
-                                        </span>
-                                    </div>
-                                </div>                                
+                                                {{ Form::select('tier_name_id', [''=>'--Select Tier--']+$tierNamesArr, null, array('id' => 'tier_name_id', 'required'=> true)) }}
+                                            </span>
+                                        </div>
+                                    </div> 
+                                    <div class="fields_right">
+                                        <div>
+                                            <input type="file" class="hide" name="image" id="card_image">
+                                            <button type="button" class="btn btn-md btn-yellow" id="card_image_button"><i class="fa fa-plus"></i></button>
+                                            <button type="button" class="editor_button" onclick="openImageCropPopup()"  >Image</button>
+                                        </div>
+                                        <div>
+                                            <input type="file" class="hide" name="background_image" id="background_image">
+                                            <button type="button" class="btn btn-md btn-yellow" id="background_image_button"><i class="fa fa-plus"></i></button>
+                                            <button type="button" class="editor_button" >Background</button>
+                                        </div>
+                                        <div>
+                                            <input type="file" class="hide" name="mask_image" id="mask_image">
+                                            <button type="button" class="btn btn-md btn-yellow" id="mask_image_button"><i class="fa fa-plus"></i></button>
+                                            <button type="button" class="editor_button" >Mask</button>
+                                        </div>
+                                    </div>   
+                                </div>
                                 <div>
                                     <span class="textarea">   
                                         {{ Form::checkbox('is_rewards', 1, true, array('id'=>'is_rewards')) }}
@@ -74,6 +93,8 @@
                                         {{ Form::textarea('description', null, array('id' => 'card_description', 'required'=> true, 'placeholder'=>'Description')) }}
                                     </span>
                                 </div>
+                                                            
+                                
                                <!--  <span>
                                   <button class="color_picker">Theme Color Picker</button>
                                 </span> -->
@@ -104,29 +125,13 @@
                                             <!--end card-bottom-->
                                         </div>
                                         <!--end card-content-->
-                                        <img id="card_image_preview" src="" alt="Card Image" style="height: 375px;">
-                                        <img id="mask_image_preview" src="" alt="Mask Image" style="height: 375px;">
-                                    </div>
-                                </div>
-                                <div class="fields_right">
-                                    <div>
-                                        <input type="file" class="hide" name="image" id="card_image">
-                                        <button type="button" class="btn btn-md btn-yellow" id="card_image_button"><i class="fa fa-plus"></i></button>
-                                        <button type="button" class="editor_button"  >Image</button>
-                                    </div>
-                                    <div>
-                                        <input type="file" class="hide" name="background_image" id="background_image">
-                                        <button type="button" class="btn btn-md btn-yellow" id="background_image_button"><i class="fa fa-plus"></i></button>
-                                        <button type="button" class="editor_button" >Background</button>
-                                    </div>
-                                    <div>
-                                        <input type="file" class="hide" name="mask_image" id="mask_image">
-                                        <button type="button" class="btn btn-md btn-yellow" id="mask_image_button"><i class="fa fa-plus"></i></button>
-                                        <button type="button" class="editor_button" >Mask</button>
+                                        <img id="card_image_preview" src="" alt="" style="height: 375px;">
+                                        <img id="mask_image_preview" src="" alt="" style="height: 375px;">
                                     </div>
                                 </div>
                               </div>
                               <hr>
+                              <div class="clearfix"></div>
                             <div class="popup-footer">
                                 {{ Form::hidden('user_profile_id', $profile->id, array('id' => 'user_profile_id')) }}
                                 {{ Form::hidden('card_id', null, array('id' => 'card_id')) }}
@@ -136,7 +141,30 @@
                           </div>
                           {{ Form::close() }}
                         </div>
-                        <div class="tab-pane fade" id="profile">profile tab</div>
+
+                        <!-- Layout Area -->
+                        <div class="tab-pane fade" id="profile">
+                           
+                            <div class="profile_cont card_editor_cont text-center" style="overflow-y:auto; height: 570px;">
+
+                                <div class="card_editor_left">
+                                    <strong>Bonus Style</strong><br>
+                                    Enable [X]<br><br>
+                                    <label>Shape</label>
+                                    <div class="fields_left types_block">
+                                        {{ Form::select('type_name_id', [''=>'--Select Type--', 1=>'Hide', 2=>'Award', 3=>'Circle', 4=>'Stadium', 5=>'Rectangle', 6=>'Rounded Rectangle'], null, array('id' => 'type_name_id', 'required'=> true, 'multiple'=>true)) }}
+                                    </div>
+
+
+                                    <div class="clearfix"></div>
+
+                                    {{ Form::button('Save', array('id'=>'saveType', 'class' => 'btn btn-medium btn-submit', 'onclick'=>'return saveTypes()')) }}
+                                    <div class="clearfix"></div><br>
+                                    {{ Form::button('Apply to All Cards', array('id'=>'saveType', 'class' => 'btn btn-medium btn-submit', 'style'=>'width:80%', 'onclick'=>'return saveTypes()')) }}
+                                    </div>
+                            </div>
+                        </div>
+
                         <div class="tab-pane fade" id="messages">messages tab</div>
                         <!-- Type Names -->
                         <div class="tab-pane fade" id="type_names">
@@ -177,7 +205,7 @@
                                 <a href="javascript:void(0)" class="btn btn-danger" onclick="removeRow()" class="text-danger">
                                     <i class="fas fa-minus"></i>
                                 </a>
-
+                                <div class="clearfix"></div><br>
                                 {{ Form::button('Save', array('id'=>'saveType', 'class' => 'btn btn-medium btn-submit', 'onclick'=>'return saveTypes()')) }}
 
                             </div>
@@ -222,7 +250,7 @@
                                 <a href="javascript:void(0)" class="btn btn-danger" onclick="removeTierRow()" class="text-danger">
                                     <i class="fas fa-minus"></i>
                                 </a>
-
+                                <div class="clearfix"></div><br>
                                 {{ Form::button('Save', array('id'=>'saveTier', 'class' => 'btn btn-medium btn-submit', 'onclick'=>'return saveTiers()')) }}
 
                             </div>

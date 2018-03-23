@@ -58,6 +58,9 @@
 
     <!-- Create Card -->
     @include('users.profile.partials.createCardPopup')
+
+    <!-- Crop Image Popup -->
+    @include('users.profile.partials.cropImagePopup')
 </body>
 @endsection
 @section('scripts')
