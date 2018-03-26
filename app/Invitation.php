@@ -16,7 +16,7 @@ class Invitation extends Model
     }
 
     public function users() {
-        return $this->hasMany('App\User', 'invitation_id');
+        return $this->hasMany('App\User', 'invitation_id')->whereNotNull('email');
     }
 
     public function updateNeverExpireInviteUrl($invitation_id){

@@ -39,6 +39,7 @@
                         @foreach($userProfileObj->invitations as $invitationObj)
                             @foreach($invitationObj->users as $userObj)
                                 <?php $defaultUserProfile = $userObj->default_user_profile; ?>
+                                    @if(!empty($defaultUserProfile))
                                         <div class="tracker_head_sec">
                                             <div class="head_sec_cont">
                                                 <span class="dropdown_icon collapsed" data-toggle="collapse" data-target="#cards<?php echo $user_inc; ?>"><i class="fas fa-angle-down"></i></span>
@@ -98,6 +99,7 @@
                                             </div>
                                         </div>
                                         <?php $user_inc++; ?>
+                                    @endif
                                 @endforeach
                             @endforeach
                         @endforeach
