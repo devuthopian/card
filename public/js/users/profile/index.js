@@ -751,6 +751,7 @@ function openImageCropPopup(){
 		var jcrop_api = $.Jcrop('#imageForCrop', {
 		    aspectRatio: 12/16,
 	      	onSelect: updateCoords,
+	      	boxWidth: 550,
 		});
 		// when you want to remove it
 	
