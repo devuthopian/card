@@ -48,7 +48,7 @@
                                                 <span>
                                                     {{ Form::checkbox('is_card_value', 1, true, array('id'=>'is_card_value')) }}
 
-                                                    {{ Form::text('card_value', null, array('id' => 'card_value', 'placeholder'=>'Card Number')) }}
+                                                    {{ Form::text('card_value', null, array('id' => 'card_value', 'placeholder'=>'Card Value')) }}
                                                 </span>
                                             </div>
                                             <div>

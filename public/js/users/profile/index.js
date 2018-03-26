@@ -183,7 +183,6 @@ function editCard(card_id){
 	    dataType: 'json',
 	    type: 'get',
 	    success: function( data, textStatus, jQxhr ){
-
 	    	//
 	    	enableEnableFieldFlags(data);
 
@@ -237,7 +236,9 @@ function enableEnableFieldFlags(data){
 	}else{
 		$('#is_card_name').prop('checked', false);
 	}
+
 	$("#is_card_name").trigger('change');
+	$("#card_name").trigger('change');
 
 
 	// is card name
@@ -247,6 +248,7 @@ function enableEnableFieldFlags(data){
 		$('#is_bonus').prop('checked', false);
 	}
 	$("#is_bonus").trigger('change');
+	$("#bonus").trigger('change');
 
 
 	//is card number
@@ -256,6 +258,7 @@ function enableEnableFieldFlags(data){
 		$('#is_card_value').prop('checked', false);
 	}
 	$("#is_card_value").trigger('change');
+	$("#card_value").trigger('change');
 
 	//is type name
 	if(data.is_type_name == 1){
@@ -264,6 +267,7 @@ function enableEnableFieldFlags(data){
 		$('#is_type_name').prop('checked', false);
 	}
 	$("#is_type_name").trigger('change');
+	$("#type_name_id").trigger('change');
 
 
 	//is rewards
@@ -273,6 +277,7 @@ function enableEnableFieldFlags(data){
 		$('#is_rewards').prop('checked', false);
 	}
 	$("#is_rewards").trigger('change');
+	$("#rewards").trigger('change');
 
 	//is rewards
 	if(data.is_description == 1){
@@ -281,6 +286,7 @@ function enableEnableFieldFlags(data){
 		$('#is_description').prop('checked', false);
 	}
 	$("#is_description").trigger('change');
+	$("#description").trigger('change');
 
 
 	//is tier name
@@ -290,6 +296,7 @@ function enableEnableFieldFlags(data){
 		$('#is_tier_name').prop('checked', false);
 	}
 	$("#is_tier_name").trigger('change');
+	$("#tier_name_id").trigger('change');
 }
 
 
@@ -532,65 +539,65 @@ function cardAutomation(){
 	//hide / show flag
 	//is card name
 	$("#is_card_name").on('change', function() {
-		if($("#is_card_name").is(':checked')) {
-	    	$('#card_name_label').removeClass('hide');
+		if(($('#card_name').val()=='') || !$("#is_card_name").is(':checked')){
+			$('#card_name_label').addClass('hide');
 	    }else{
-	    	$('#card_name_label').addClass('hide');
+	    	$('#card_name_label').removeClass('hide');
 	    }
 	});
 
 	//is card number
 	$("#is_card_value").on('change', function() {
-		if($("#is_card_value").is(':checked')) {
-	    	$('#card_value_label').removeClass('hide');
-	    }else{
+		if(($('#card_value').val()=='') || !$("#is_card_value").is(':checked')){
 	    	$('#card_value_label').addClass('hide');
+	    }else{
+	    	$('#card_value_label').removeClass('hide');
 	    }
 	});
 
 	//is type name
 	$("#is_type_name").on('change', function() {
-		if($("#is_type_name").is(':checked')) {
-	    	$('#type_name_label').removeClass('hide');
-	    }else{
+		if(($('#type_name_id').val()=='') || !$("#is_type_name").is(':checked')){
 	    	$('#type_name_label').addClass('hide');
+	    }else{
+	    	$('#type_name_label').removeClass('hide');
 	    }
 	});
 
 
 	//is rewards
 	$("#is_rewards").on('change', function() {
-		if($("#is_rewards").is(':checked')) {
-	    	$('#rewards_block').removeClass('hide');
-	    }else{
+		if(($('#rewards').val()=='') || !$("#is_rewards").is(':checked')){
 	    	$('#rewards_block').addClass('hide');
+	    }else{
+	    	$('#rewards_block').removeClass('hide');
 	    }
 	});
 
 	//is rewards
 	$("#is_description").on('change', function() {
-		if($("#is_description").is(':checked')) {
-	    	$('#description_label').removeClass('hide');
-	    }else{
+		if(($('#card_description').val()=='') || !$("#is_description").is(':checked')){
 	    	$('#description_label').addClass('hide');
+	    }else{
+	    	$('#description_label').removeClass('hide');
 	    }
 	});
 
 	//is tier name
 	$("#is_tier_name").on('change', function() {
-		if($("#is_tier_name").is(':checked')) {
-	    	$('#tier_label').removeClass('hide');
-	    }else{
+		if(($('#tier_name_id').val()=='') || !$("#is_tier_name").is(':checked')){
 	    	$('#tier_label').addClass('hide');
+	    }else{
+	    	$('#tier_label').removeClass('hide');
 	    }
 	});
 
 	//is bonus
 	$("#is_bonus").on('change', function() {
-		if($("#is_bonus").is(':checked')) {
-	    	$('#bonus_block').removeClass('hide');
-	    }else{
+		if(($('#bonus').val()=='') || !$("#is_bonus").is(':checked')){
 	    	$('#bonus_block').addClass('hide');
+	    }else{
+	    	$('#bonus_block').removeClass('hide');
 	    }
 	});
 }

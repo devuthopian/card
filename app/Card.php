@@ -178,14 +178,6 @@ class Card extends Model
         $saveArr['is_description'] = !empty($requestArr['is_description'])?1:0;
 
 
-
-        ### upload Image
-        /*if(!empty($cardImageObj)){
-            $imageName = time().'.'.$cardImageObj->getClientOriginalExtension();
-            $cardImageObj->move(public_path('uploads/card'), $imageName); 
-            $saveArr['image'] = $imageName;
-        }*/
-
         ### upload mask Image
         if(!empty($maskImageObj)){
             $maskImageName = time().'_mask.'.$maskImageObj->getClientOriginalExtension();
