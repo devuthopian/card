@@ -63,6 +63,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\UserProfile', 'reference_profile_id');
     }
 
+    public function invitation() {
+        return $this->belongsTo('App\Invitation', 'invitation_id');
+    }
+
     /**
      * Get cards
      */
@@ -77,14 +81,32 @@ class User extends Authenticatable
         return $this->hasMany('App\Card', 'created_by')->where('is_released', 1);
     }
 
-    public function updateProfile($requestArr, $profileImageObj){
+    public function updateProfile($requestArr, $profileImageObj, $coverImageObj, $profileBackgroundImageObj){
 
         $saveArr['name'] = $requestArr['name'];
         $saveArr['description'] = $requestArr['description'];
+        $saveArr['title_color'] = $requestArr['title_color'];
+        $saveArr['description_color'] = $requestArr['description_color'];
+
+        #### profile image
         if(!empty($profileImageObj)){
-            $imageName = time().'.'.$profileImageObj->getClientOriginalExtension();
-            $profileImageObj->move(public_path('uploads/user/profile'), $imageName); 
+            $imageName = md5(microtime()).'.'.$profileImageObj->getClientOriginalExtension();
+            $profileImageObj->move(public_path('uploads/user/profile/profileImages'), $imageName); 
             $saveArr['profile_image'] = $imageName;
+        }
+
+        #### cover image
+        if(!empty($coverImageObj)){
+            $coverImageName = md5(microtime()).'.'.$coverImageObj->getClientOriginalExtension();
+            $coverImageObj->move(public_path('uploads/user/profile/coverImages'), $coverImageName); 
+            $saveArr['cover_image'] = $coverImageName;
+        }
+
+        #### background image
+        if(!empty($profileBackgroundImageObj)){
+            $profileBackgroundImageName = md5(microtime()).'.'.$profileBackgroundImageObj->getClientOriginalExtension();
+            $profileBackgroundImageObj->move(public_path('uploads/user/profile/backgroundImages'), $profileBackgroundImageName); 
+            $saveArr['profile_background_image'] = $profileBackgroundImageName;
         }
 
         $userProfileObj = new UserProfile;
@@ -100,15 +122,33 @@ class User extends Authenticatable
     }
 
     ### Create Profile
-    public function createProfile($logged_user_id, $requestArr, $profileImageObj){
-
+    public function createProfile($logged_user_id, $requestArr, $profileImageObj, $coverImageObj, $profileBackgroundImageObj){
+        
         $saveArr['name'] = $requestArr['name'];
         $saveArr['description'] = $requestArr['description'];
+        $saveArr['title_color'] = $requestArr['title_color'];
+        $saveArr['description_color'] = $requestArr['description_color'];
         $saveArr['user_id'] = $logged_user_id;
+
+        ### profile image
         if(!empty($profileImageObj)){
-            $imageName = time().'.'.$profileImageObj->getClientOriginalExtension();
-            $profileImageObj->move(public_path('uploads/user/profile'), $imageName); 
+            $imageName = md5(microtime()).'.'.$profileImageObj->getClientOriginalExtension();
+            $profileImageObj->move(public_path('uploads/user/profile/profileImages'), $imageName); 
             $saveArr['profile_image'] = $imageName;
+        }
+        
+        ### cover background image
+        if(!empty($coverImageObj)){
+            $coverImageName = md5(microtime()).'.'.$coverImageObj->getClientOriginalExtension();
+            $coverImageObj->move(public_path('uploads/user/profile/coverImages'), $coverImageName); 
+            $saveArr['cover_image'] = $coverImageName;
+        }
+
+        ### profile background image
+        if(!empty($profileBackgroundImageObj)){
+            $profileBackgroundImageName = md5(microtime()).'.'.$profileBackgroundImageObj->getClientOriginalExtension();
+            $profileBackgroundImageObj->move(public_path('uploads/user/profile/backgroundImages'), $profileBackgroundImageName); 
+            $saveArr['profile_background_image'] = $profileBackgroundImageName;
         }
 
         $userProfileObj = new UserProfile;
@@ -123,8 +163,6 @@ class User extends Authenticatable
         $tierNameObj = new TierName;
         $tierNameObj->saveDefaultTierNames($profile_id);
 
-
-        
         return array(
             'code' => 1,
             'message' => 'Profile saved successfully.',

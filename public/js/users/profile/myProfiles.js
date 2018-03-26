@@ -98,3 +98,10 @@ function setDefaultProfile(profile_id){
 	    }
 	});
 }
+
+
+// Document Ready
+$( document ).ready(function() {
+	$('#title_color').colorpicker();
+	$('#description_color').colorpicker();
+});

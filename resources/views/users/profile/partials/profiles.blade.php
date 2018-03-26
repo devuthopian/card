@@ -18,7 +18,7 @@
             </div>
             <!--end card-content-->
             <?php if(!empty($userProfile->profile_image)){ ?>
-                <img src="{{ URL::asset('uploads/user/profile') }}/{{$userProfile->profile_image}}" alt="" />
+                <img src="{{ URL::asset('uploads/user/profile/profileImages') }}/{{$userProfile->profile_image}}" alt="" />
             <?php }else{ ?>
                 <img src="{{ URL::asset('images/avtar.jpg') }}" alt="" />
             <?php } ?>

@@ -26,41 +26,46 @@
                         <div class="tab-content">
                             <!-- General Tab -->
                             <div class="tab-pane fade in active" id="general">
-
+                                
                                 {{ Form::open(array('url' => 'user/card/add', 'id' => 'createCard', 'files' => true)) }}
                                     <div>                                
                                         <div class="fields_left">
                                             <div>
-                                                <span>    
-                                                    {{ Form::checkbox('is_card_name', 1, true, array('id'=>'is_card_name')) }}               
+                                                <span class="checkbox">    
+                                                    {{ Form::checkbox('is_card_name', 1, true, array('id'=>'is_card_name')) }}
+                                                    <label for="is_card_name"></label>
                                                     
                                                     {{ Form::text('card_name', null, array('id' => 'card_name', 'placeholder'=>'Card Name')) }}
                                                 </span>
                                             </div>
                                             <div>
-                                                <span>
+                                                <span class="checkbox">
                                                     {{ Form::checkbox('is_bonus', 1, true, array('id'=>'is_bonus')) }}
+                                                    <label for="is_bonus"></label>
 
                                                     {{ Form::text('bonus', null, array('id' => 'bonus', 'placeholder'=>'Bonus')) }}
                                                 </span>
                                             </div>
                                             <div>
-                                                <span>
+                                                <span class="checkbox">
                                                     {{ Form::checkbox('is_card_value', 1, true, array('id'=>'is_card_value')) }}
+                                                    <label for="is_card_value"></label>
 
                                                     {{ Form::text('card_value', null, array('id' => 'card_value', 'placeholder'=>'Card Value')) }}
                                                 </span>
                                             </div>
                                             <div>
-                                                <span>
+                                                <span class="checkbox">
                                                     {{ Form::checkbox('is_type_name', 1, true, array('id'=>'is_type_name')) }}
+                                                    <label for="is_type_name"></label>
 
                                                     {{ Form::select('type_name_id', [''=>'--Select Type--']+$typeNamesArr, null, array('id' => 'type_name_id')) }}
                                                 </span>
                                             </div>
                                             <div>
-                                                <span>
+                                                <span class="checkbox">
                                                     {{ Form::checkbox('is_tier_name', 1, true, array('id'=>'is_tier_name')) }}
+                                                    <label for="is_tier_name"></label>
 
                                                     {{ Form::select('tier_name_id', [''=>'--Select Tier--']+$tierNamesArr, null, array('id' => 'tier_name_id')) }}
                                                 </span>
@@ -150,15 +155,17 @@
                                         </div>   
                                     </div>
                                     <div>
-                                        <span class="textarea">   
+                                        <span class="textarea checkbox">   
                                             {{ Form::checkbox('is_rewards', 1, true, array('id'=>'is_rewards')) }}
+                                            <label for="is_rewards"></label>
 
                                             {{ Form::textarea('rewards', null, array('id' => 'rewards',  'placeholder'=>'Rewards')) }}
                                         </span>
                                     </div>
                                     <div>
-                                        <span class="textarea">
+                                        <span class="textarea checkbox">
                                             {{ Form::checkbox('is_description', 1, true, array('id'=>'is_description')) }}
+                                            <label for="is_description"></label>
 
                                             {{ Form::textarea('description', null, array('id' => 'card_description',  'placeholder'=>'Description')) }}
                                         </span>

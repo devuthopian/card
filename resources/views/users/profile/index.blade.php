@@ -1,6 +1,12 @@
 @extends('users.layouts.profile')
 @section('content')
-<body onload="sizing()" onresize="sizing()">
+
+@if(!empty($profile->profile_background_image))
+    <?php $background_image = URL::asset('uploads/user/profile/backgroundImages').'/'.$profile->profile_background_image; ?>
+    <body onload="sizing()" onresize="sizing()" style="background: url({{$background_image}}) !important;">
+@else
+    <body onload="sizing()" onresize="sizing()">
+@endif
     <div class="wrapper">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">

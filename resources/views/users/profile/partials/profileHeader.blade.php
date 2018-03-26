@@ -1,6 +1,10 @@
+<?php $background_image = URL::asset('images/header-background.jpg'); ?>
+@if(!empty($profile->cover_image))
+<?php $background_image = URL::asset('uploads/user/profile/coverImages').'/'.$profile->cover_image; ?>
+@endif
 <div class="header">
-    <div class="header-top"
-style="background-image: url({{ URL::asset('images/header-background.jpg') }}); ">
+    <div class="header-top" id="cover_image_div" 
+style="background-image: url({{ $background_image }}); ">
         <div class="header-content left">
             <div class="header-right right">
                 @if(!empty($profile->user->is_profile_approved))
@@ -9,39 +13,60 @@ style="background-image: url({{ URL::asset('images/header-background.jpg') }}); 
                 <div class="header-image">
                     <?php $profile_image = $profile->profile_image; ?>
                     <?php if(!empty($profile_image)){ ?>
-                        <img src="{{ URL::asset('uploads/user/profile/') }}/{{$profile_image}}">
+                        <img id="profile_image" src="{{ URL::asset('uploads/user/profile/profileImages') }}/{{$profile_image}}">
                     <?php }else{ ?>
-                        <img src="{{ URL::asset('images/avtar.jpg') }}">
+                        <img id="profile_image" src="{{ URL::asset('images/avtar.jpg') }}">
                     <?php } ?>
                 </div>
             </div>
             <div class="header-details left">
-                <p class="header-breif left">
+                <p class="header-breif left" style="color:{{$profile->description_color}}">
                     {{ $profile->description }}
                 </p>
                 <div class="clearfix"></div>
                 <div class="user-name left">
-                    <p class="name">{{ $profile->name }}</p>
+                    <p class="name" style="color:{{$profile->title_color}}">{{ $profile->name }}</p>
                     <p>market cap: 500 MBC</p>
                     <p>bonuses: 50,000</p>
                 </div>
-    @if($profile->user->id == Auth::id())
-    <p>&nbsp;</p>
-    <p>
-        &nbsp;&nbsp;<a class="btn btn-primary" data-toggle="modal" href="javascript:void(0)" onclick="generateInviteLink()">
-            invite people
-        </a>
-    </p>
-    <p>
-        &nbsp;&nbsp;<a class="btn btn-primary" data-toggle="modal" href="javascript:void(0)" data-target="#editProfileModal">
-            edit profile
-        </a>
-    </p>
-    @endif
+                @if($profile->user->id == Auth::id())
+                <p>&nbsp;</p>
+                <p>
+                    &nbsp;&nbsp;<a class="btn btn-primary" data-toggle="modal" href="javascript:void(0)" onclick="generateInviteLink()">
+                        invite people
+                    </a>
+                </p>
+                <p>
+                    &nbsp;&nbsp;<a class="btn btn-primary" data-toggle="modal" href="javascript:void(0)" data-target="#editProfileModal">
+                        edit profile
+                    </a>
+                </p>
+                @endif
                 <!--end user-name-->
             </div>
             <!--end header-details-->
         </div>
+
+        @if($profile->user->id == Auth::id())
+            <p>
+                &nbsp;&nbsp;<a class="btn btn-info" data-toggle="modal" href="javascript:void(0)" onclick="resetCoverImage()">
+                    <i class="fa fa-undo"></i>
+                    reset cover image
+                </a>
+            </p>
+            <p>
+                &nbsp;&nbsp;<a class="btn btn-info" data-toggle="modal" href="javascript:void(0)" onclick="resetProfileImage()">
+                    <i class="fa fa-undo"></i>
+                    reset profile image
+                </a>
+            </p>
+            <p>
+                &nbsp;&nbsp;<a class="btn btn-info" data-toggle="modal" href="javascript:void(0)" onclick="resetProfileBackground()">
+                    <i class="fa fa-undo"></i>
+                    reset profile background
+                </a>
+            </p>
+        @endif
         <!--end header-content-->
     </div>
     <!--end header-top-->
