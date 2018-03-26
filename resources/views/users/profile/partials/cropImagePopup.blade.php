@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
           <div class="profile_cont text-center" id="crop_image_form">
-            <img src="" id="imageForCrop" width="100%" />
+            <img src="" id="imageForCrop" />
             
             <input type="hidden" id="x" name="x" />
             <input type="hidden" id="y" name="y" />
