@@ -606,6 +606,9 @@ p{
     font-weight: bold;
     margin: 0;
     padding-top: 5px;
+    position: relative;
+    top: 46%;
+    transform: translateY(-50%);
 }
 
 .card-content .card-top .card-title{
@@ -1729,7 +1732,7 @@ a[data-toggle="collapse"] {
     position: relative;
 }
 
-a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+/*a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
     content: '\e259';
     display: block;
     position: absolute;
@@ -1739,7 +1742,7 @@ a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
 }
 a[aria-expanded="true"]::before {
     content: '\e260';
-}
+}*/
 
 
 ul ul a {
@@ -2087,7 +2090,7 @@ ul.CTAs a {
       border-left-color: transparent;
     }
     .tabs-left>li>a {
-      border-radius: 4px 0 0 4px;
+      border-radius: 0px;
       margin-right: 0;
       display:block;
       color: #fff;
@@ -2142,7 +2145,7 @@ ul.CTAs a {
 .n_card_editor .nav-tabs > li.active > a, .n_card_editor .nav-tabs > li.active > a:hover, .n_card_editor .nav-tabs > li.active > a:focus {
     color: #fff;
     background-color: #1f1f1f;
-    border: 0px;
+    border: 1px solid transparent;
 }
 .n_card_editor .nav-tabs  li  a:hover {
     color: #fff;
@@ -2181,19 +2184,6 @@ ul.CTAs a {
 }
 }
 @media (max-width: 480px) {
-.n_card_editor {
-    width: 94%;
-}
-.n_card_editor .editor_nav_left {
-    width: 100%;
-    float: left;
-}
-.card_editor_cont .card_editor_left {
-    width: 100%;
-}
-.card_editor_cont .card_editor_right {
-    width: 100%;
-}
 .n_card_editor .tabs-left {
     min-height: 100%;
     margin-bottom: 20px;
@@ -2213,26 +2203,123 @@ ul.CTAs a {
     padding: 0;
 }
 .card_editor_cont .card_editor_left input[type="text"], .card_editor_cont .card_editor_left textarea {
-    width: 90%;
+    width: 93%;
 }
 }
 
 .btn-yellow{
     background-color: #f9dc39 !important;
 }
-
+@media (min-width: 1225px) {
 .modal-xl{
-    width:1200px !important;
+    width: 1200px !important;
 }
-
+}
+@media (min-width: 991px) and (max-width: 1224px) {
+.modal-xl{
+    width: 970px !important;
+}
+}
+/*** end for css model ***/
+.n_card_editor .profile_cont strong {
+    margin-bottom: 10px;
+    display: inline-block;
+    font-size: 20px;
+}
+.n_card_editor .profile_cont label {
+    text-align: left;
+}
+.n_card_editor .card_editor_cont .card_editor_left #bonus_style {
+    width: 100%;
+    min-height: 160px;
+    overflow: auto;
+    margin-bottom: 30px;
+}
+.n_card_editor button.btn-submit {
+    width: auto !important;
+    padding: 10px 30px;
+}
+.n_card_editor .card_editor_left .tiers_block input[type="text"], .n_card_editor .card_editor_left .types_block input[type="text"] {
+    width: 100%;
+}
 .preview_card{
+   width: 100% !important;
+}
+.n_card_editor .card_editor_cont .card_editor_left .fields_right i {
+    font-size: 16px;
+}
+.n_card_editor .card_editor_cont .card_editor_left .fields_right .btn-yellow {
+    padding: 8px 12px;
+    border-radius: 4px;
+    position: relative;
+    top: -1px;
+}
+@media (max-width: 991px) {
+.n_card_editor .card_editor_cont .card_editor_left .fields_left {
+    width: 100%;
+}
+.n_card_editor .card_editor_cont .card_editor_left .fields_right {
+    width: 100%;
+    padding-top: 0;
+}
+.n_card_editor .card_editor_cont .card_editor_left .editor_button {
+    width: 70%;
+}
+}
+@media (max-width: 767px) {
+.n_card_editor {
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.n_card_editor .editor_nav_left {
+    width: 100%;
+}
+.n_card_editor .editor_content_right {
+    width: 100%;
+}
+.n_card_editor .tabs-left {
+    min-height: 100%;
+    margin-bottom: 20px;
+}
+.n_card_editor .tabs-left>li, .n_card_editor .tabs-right>li {
+    float: left;
+}
+}
+@media (max-width: 480px) {
+.card_editor_cont .card_editor_left, .card_editor_cont .card_editor_right {
     width: 100% !important;
-    overflow: hidden !important;
+    max-width: 100%;
+}
+.n_card_editor .profile_cont {
+    padding: 0 10px;
+    display: flex;
+    flex-flow: column;
+}
+.n_card_editor .profile_cont .card_editor_left {
+    order: 2;
+}
+.n_card_editor .profile_cont .card_editor_right {
+    order: 1;
+}
+.n_card_editor .card {
+    margin: 0 0 10px 0px;
+}
+.preview_card {
+    max-width: 300px;
+}
+.n_card_editor .card_editor_cont .card_editor_left select {
+    width: 93%;
+}
+.n_card_editor .card_editor_cont .card_editor_left .editor_button {
+    width: 84%;
+}
+.n_card_editor input[type="submit"] {
+    max-width: 100%;
+}
 }
 
 .qq-alert-dialog-selector{
     position: absolute !important;
     left: 600px;
 }
-
-/*** end for css model ***/

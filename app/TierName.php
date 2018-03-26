@@ -49,14 +49,14 @@ class TierName extends Model
         ### save Type Names
         $saveArr[0]['name'] = 'Tier 1';
         $saveArr[0]['value'] = 1;
-        $saveArr[1]['name'] = 'Tier 2';
+        /*$saveArr[1]['name'] = 'Tier 2';
         $saveArr[1]['value'] = 2;
         $saveArr[2]['name'] = 'Tier 3';
         $saveArr[2]['value'] = 3;
         $saveArr[3]['name'] = 'Tier 4';
         $saveArr[3]['value'] = 4;
         $saveArr[4]['name'] = 'Tier 5';
-        $saveArr[4]['value'] = 5;
+        $saveArr[4]['value'] = 5;*/
         #### default type names enteries
         foreach ($saveArr as $valueArr) {
             $valueArr['profile_id'] = $profile_id;
