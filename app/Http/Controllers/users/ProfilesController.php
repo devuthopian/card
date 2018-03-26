@@ -96,7 +96,14 @@ class ProfilesController extends Controller
         
         $invitationSaveArr['profile_id'] = $profile_id;
         
+        $changeCharactersArr = ['%','/', '\\'];
         $invitationSaveArr['invitation_hash'] = substr(bcrypt(microtime()), 0, 12);
+        
+        foreach ($changeCharactersArr as $key => $value) {
+            $invitationSaveArr['invitation_hash'] = str_replace($value, '$', $invitationSaveArr['invitation_hash']);
+        }
+
+        
         $invitationSaveArr['never_expire'] = 1;
 
         if(!empty($invitationResultObj)){
