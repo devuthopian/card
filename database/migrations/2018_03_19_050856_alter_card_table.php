@@ -15,8 +15,8 @@ class AlterCardTable extends Migration
     {
         Schema::table('card', function (Blueprint $table) {
             $table->string('bonus')->nullable()->after('image');
-            $table->string('card_number')->nullable()->after('bonus');
-            $table->integer('type_name_id')->nullable()->after('card_number');
+            $table->string('card_value')->nullable()->after('bonus');
+            $table->integer('type_name_id')->nullable()->after('card_value');
             $table->integer('tier_name_id')->nullable()->after('type_name_id');
             $table->longText('rewards')->nullable()->after('card_tier');
             $table->string('mask_image')->nullable()->after('rewards');

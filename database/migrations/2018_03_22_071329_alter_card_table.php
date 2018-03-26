@@ -16,8 +16,8 @@ class AlterCardTable extends Migration
         Schema::table('card', function (Blueprint $table) {
             $table->tinyInteger('is_card_name')->nullable()->after('user_profile_id');
             $table->tinyInteger('is_bonus')->nullable()->after('image');
-            $table->tinyInteger('is_card_number')->nullable()->after('bonus');
-            $table->tinyInteger('is_type_name')->nullable()->after('card_number');
+            $table->tinyInteger('is_card_value')->nullable()->after('bonus');
+            $table->tinyInteger('is_type_name')->nullable()->after('card_value');
             $table->tinyInteger('is_tier_name')->nullable()->after('type_name_id');
             $table->tinyInteger('is_rewards')->nullable()->after('tier_name_id');
             $table->tinyInteger('is_description')->nullable()->after('card_name');

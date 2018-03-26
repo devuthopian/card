@@ -48,7 +48,7 @@ class Card extends Model
         ### Create Save Array
         $saveArr['card_name'] = $requestArr['card_name'];
         $saveArr['bonus'] = $requestArr['bonus'];
-        $saveArr['card_number'] = $requestArr['card_number'];
+        $saveArr['card_value'] = $requestArr['card_value'];
         $saveArr['type_name_id'] = $requestArr['type_name_id'];
         $saveArr['tier_name_id'] = $requestArr['tier_name_id'];
         $saveArr['description'] = $requestArr['description'];
@@ -62,7 +62,7 @@ class Card extends Model
         #flag variables
         $saveArr['is_card_name'] = !empty($requestArr['is_card_name'])?1:0;
         $saveArr['is_bonus'] = !empty($requestArr['is_bonus'])?1:0;
-        $saveArr['is_card_number'] = !empty($requestArr['is_card_number'])?1:0;
+        $saveArr['is_card_value'] = !empty($requestArr['is_card_value'])?1:0;
         $saveArr['is_type_name'] = !empty($requestArr['is_type_name'])?1:0;
         $saveArr['is_tier_name'] = !empty($requestArr['is_tier_name'])?1:0;
         $saveArr['is_rewards'] = !empty($requestArr['is_rewards'])?1:0;
@@ -102,7 +102,7 @@ class Card extends Model
         ### Create Save Array
         $saveArr['card_name'] = $requestArr['card_name'];
         $saveArr['bonus'] = $requestArr['bonus'];
-        $saveArr['card_number'] = $requestArr['card_number'];
+        $saveArr['card_value'] = $requestArr['card_value'];
         $saveArr['type_name_id'] = $requestArr['type_name_id'];
         $saveArr['tier_name_id'] = $requestArr['tier_name_id'];
         $saveArr['description'] = $requestArr['description'];
@@ -116,7 +116,7 @@ class Card extends Model
         #flag variables
         $saveArr['is_card_name'] = !empty($requestArr['is_card_name'])?1:0;
         $saveArr['is_bonus'] = !empty($requestArr['is_bonus'])?1:0;
-        $saveArr['is_card_number'] = !empty($requestArr['is_card_number'])?1:0;
+        $saveArr['is_card_value'] = !empty($requestArr['is_card_value'])?1:0;
         $saveArr['is_type_name'] = !empty($requestArr['is_type_name'])?1:0;
         $saveArr['is_tier_name'] = !empty($requestArr['is_tier_name'])?1:0;
         $saveArr['is_rewards'] = !empty($requestArr['is_rewards'])?1:0;
@@ -156,7 +156,7 @@ class Card extends Model
         ### Create Save Array
         $saveArr['card_name'] = $requestArr['card_name'];
         $saveArr['bonus'] = $requestArr['bonus'];
-        $saveArr['card_number'] = $requestArr['card_number'];
+        $saveArr['card_value'] = $requestArr['card_value'];
         $saveArr['type_name_id'] = $requestArr['type_name_id'];
         $saveArr['tier_name_id'] = $requestArr['tier_name_id'];
         $saveArr['description'] = $requestArr['description'];
@@ -171,7 +171,7 @@ class Card extends Model
         #flag variables
         $saveArr['is_card_name'] = !empty($requestArr['is_card_name'])?1:0;
         $saveArr['is_bonus'] = !empty($requestArr['is_bonus'])?1:0;
-        $saveArr['is_card_number'] = !empty($requestArr['is_card_number'])?1:0;
+        $saveArr['is_card_value'] = !empty($requestArr['is_card_value'])?1:0;
         $saveArr['is_type_name'] = !empty($requestArr['is_type_name'])?1:0;
         $saveArr['is_tier_name'] = !empty($requestArr['is_tier_name'])?1:0;
         $saveArr['is_rewards'] = !empty($requestArr['is_rewards'])?1:0;

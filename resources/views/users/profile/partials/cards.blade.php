@@ -13,43 +13,43 @@
 
                     <!-- bonus hide/show  -->
                     <?php $bonus_hide_class = 'hide'; ?>
-                    @if($card->is_bonus)
+                    @if(!empty($card->is_bonus) && (!empty($card->bonus)))
                     <?php $bonus_hide_class = ''; ?>
                     @endif
 
                     <!-- card name hide/show  -->
                     <?php $card_name_hide_class = 'hide'; ?>
-                    @if($card->is_card_name)
+                    @if(!empty($card->is_card_name) && !empty($card->card_name))
                     <?php $card_name_hide_class = ''; ?>
                     @endif
 
                     <!-- card number hide/show  -->
-                    <?php $card_number_hide_class = 'hide'; ?>
-                    @if($card->is_card_number)
-                    <?php $card_number_hide_class = ''; ?>
+                    <?php $card_value_hide_class = 'hide'; ?>
+                    @if(!empty($card->is_card_value) && !empty($card->card_value))
+                    <?php $card_value_hide_class = ''; ?>
                     @endif
 
                     <!-- type name hide/show  -->
                     <?php $type_name_hide_class = 'hide'; ?>
-                    @if($card->is_type_name)
+                    @if(!empty($card->is_type_name) && !empty($card->type_name))
                     <?php $type_name_hide_class = ''; ?>
                     @endif
 
                     <!-- tier name hide/show  -->
                     <?php $tier_name_hide_class = 'hide'; ?>
-                    @if($card->is_tier_name)
+                    @if(!empty($card->is_tier_name) && !empty($card->tier_name))
                     <?php $tier_name_hide_class = ''; ?>
                     @endif
 
                     <!-- rewards hide/show  -->
                     <?php $rewards_hide_class = 'hide'; ?>
-                    @if($card->is_rewards)
+                    @if(!empty($card->is_rewards) && !empty($card->rewards))
                     <?php $rewards_hide_class = ''; ?>
                     @endif
 
                     <!-- description hide/show  -->
                     <?php $description_hide_class = 'hide'; ?>
-                    @if($card->is_description)
+                    @if(!empty($card->is_description) && !empty($card->description))
                     <?php $description_hide_class = ''; ?>
                     @endif
 
@@ -59,7 +59,7 @@
                         </p>
                     </div>
                     <p class="card-title {{$card_name_hide_class}}">{{$card->card_name}}</p>
-                    <p class="card-points right {{$card_number_hide_class}}">{{$card->card_number}}</p>
+                    <p class="card-points right {{$card_value_hide_class}}">{{$card->card_value}}</p>
                 </div>
                 <!--end card-top-->
                 <div class="card-bottom">
@@ -90,8 +90,8 @@
             <!--end card-content-->
             @if(!empty($card->cropped_image_file_name))
             <img src="{{ URL::asset('uploads/card/cropped') }}/{{$card->cropped_image_file_name}}">
-            @else
-            <img src="{{ URL::asset('uploads/card/originals') }}/{{$card->image}}">
+            @elseif(!empty($card->image))
+                <img src="{{ URL::asset('uploads/card/originals') }}/{{$card->image}}">
             @endif
 
             @if($card->mask_image)
@@ -101,7 +101,7 @@
             <!-- Options -->
             <div class="hover_pop">
                 <ul>
-                    <li><a href="javascript:void()" onclick="zoomImage('<?php echo $card->image ?>')">Zoom</a></li>
+                    <!-- <li><a href="javascript:void()" onclick="zoomImage('<?php echo $card->image ?>')">Zoom</a></li> -->
                     @if($profile->user->id == Auth::id())
                         <li><a href="javascript:void()" onclick="editCard('<?php echo $card->id ?>')">Edit</a></li>
                         @if(empty($card->is_released))

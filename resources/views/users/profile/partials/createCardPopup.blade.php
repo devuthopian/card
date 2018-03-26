@@ -34,35 +34,35 @@
                                                 <span>    
                                                     {{ Form::checkbox('is_card_name', 1, true, array('id'=>'is_card_name')) }}               
                                                     
-                                                    {{ Form::text('card_name', null, array('id' => 'card_name', 'required'=> true, 'placeholder'=>'Card Name')) }}
+                                                    {{ Form::text('card_name', null, array('id' => 'card_name', 'placeholder'=>'Card Name')) }}
                                                 </span>
                                             </div>
                                             <div>
                                                 <span>
                                                     {{ Form::checkbox('is_bonus', 1, true, array('id'=>'is_bonus')) }}
 
-                                                    {{ Form::text('bonus', null, array('id' => 'bonus', 'required'=> true, 'placeholder'=>'Bonus')) }}
+                                                    {{ Form::text('bonus', null, array('id' => 'bonus', 'placeholder'=>'Bonus')) }}
                                                 </span>
                                             </div>
                                             <div>
                                                 <span>
-                                                    {{ Form::checkbox('is_card_number', 1, true, array('id'=>'is_card_number')) }}
+                                                    {{ Form::checkbox('is_card_value', 1, true, array('id'=>'is_card_value')) }}
 
-                                                    {{ Form::text('card_number', null, array('id' => 'card_number', 'required'=> true, 'placeholder'=>'Card Number')) }}
+                                                    {{ Form::text('card_value', null, array('id' => 'card_value', 'placeholder'=>'Card Number')) }}
                                                 </span>
                                             </div>
                                             <div>
                                                 <span>
                                                     {{ Form::checkbox('is_type_name', 1, true, array('id'=>'is_type_name')) }}
 
-                                                    {{ Form::select('type_name_id', [''=>'--Select Type--']+$typeNamesArr, null, array('id' => 'type_name_id', 'required'=> true)) }}
+                                                    {{ Form::select('type_name_id', [''=>'--Select Type--']+$typeNamesArr, null, array('id' => 'type_name_id')) }}
                                                 </span>
                                             </div>
                                             <div>
                                                 <span>
                                                     {{ Form::checkbox('is_tier_name', 1, true, array('id'=>'is_tier_name')) }}
 
-                                                    {{ Form::select('tier_name_id', [''=>'--Select Tier--']+$tierNamesArr, null, array('id' => 'tier_name_id', 'required'=> true)) }}
+                                                    {{ Form::select('tier_name_id', [''=>'--Select Tier--']+$tierNamesArr, null, array('id' => 'tier_name_id')) }}
                                                 </span>
                                             </div>
                                         </div> 
@@ -153,14 +153,14 @@
                                         <span class="textarea">   
                                             {{ Form::checkbox('is_rewards', 1, true, array('id'=>'is_rewards')) }}
 
-                                            {{ Form::textarea('rewards', null, array('id' => 'rewards', 'required'=> true, 'placeholder'=>'Rewards')) }}
+                                            {{ Form::textarea('rewards', null, array('id' => 'rewards',  'placeholder'=>'Rewards')) }}
                                         </span>
                                     </div>
                                     <div>
                                         <span class="textarea">
                                             {{ Form::checkbox('is_description', 1, true, array('id'=>'is_description')) }}
 
-                                            {{ Form::textarea('description', null, array('id' => 'card_description', 'required'=> true, 'placeholder'=>'Description')) }}
+                                            {{ Form::textarea('description', null, array('id' => 'card_description',  'placeholder'=>'Description')) }}
                                         </span>
                                     </div>
                                     <div class="popup-footer">
@@ -229,10 +229,10 @@
                                     @endif
                                     {{ Form::hidden('types_count', $type_names_count, array('id' => 'types_count')) }}
                                             
-                                    <a href="javascript:void(0)" class="btn btn-success" onclick="addNewRow()" class="text-danger">
+                                    <a href="javascript:void(0)" class="btn btn-success" onclick="addNewTypeRow()" class="text-danger">
                                         <i class="fas fa-plus"></i>
                                     </a>
-                                    <a href="javascript:void(0)" class="btn btn-danger" onclick="removeRow()" class="text-danger">
+                                    <a href="javascript:void(0)" class="btn btn-danger" onclick="removeTypeRow()" class="text-danger">
                                         <i class="fas fa-minus"></i>
                                     </a>
                                     <div class="clearfix"></div><br>
@@ -300,7 +300,7 @@
                                             <p id="bonus_label"></p>
                                         </div>
                                         <p class="card-title" id="card_name_label"></p>
-                                        <p class="card-points right" id="card_number_label"></p>
+                                        <p class="card-points right" id="card_value_label"></p>
                                     </div>
                                     <!--end card-top-->
                                     <div class="card-bottom">

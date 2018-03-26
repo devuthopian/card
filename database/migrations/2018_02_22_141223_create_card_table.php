@@ -15,9 +15,9 @@ class CreateCardTable extends Migration
     {
         Schema::create('card', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('card_name');
-            $table->string('description', 10000);
-            $table->string('image');
+            $table->string('card_name')->nullable();
+            $table->string('description', 10000)->nullable();
+            $table->string('image')->nullable();
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->softDeletes();
