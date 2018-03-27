@@ -2,8 +2,20 @@
 @section('content')
 <body onload="sizing()" onresize="sizing()">
     <div class="wrapper">
-      
-        <div class="content">
+
+    @if (Auth::check())
+    <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!--end navbar-header-->
+                @include('users.profile.partials.top_navbar')
+                <!--end navbar-collapse-->
+            </div>
+            <!--end navbar-->
+        </nav>
+@else
+  
+@endif
+ <div class="content">
             <div class="container">
             @if(empty($status))
                 <div class="alert alert-danger">
