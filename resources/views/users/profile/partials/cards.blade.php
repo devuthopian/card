@@ -103,10 +103,9 @@
 
             <!-- Options -->
             <div class="hover_pop">
-
-
                 <ul>
-                    <li><a href="{{ route('card.view') }}/?id={{$profile->user->id}}-{{$card->id}}" >View Card</a></li>
+                     <li><a href="{{ route('card.view') }}/?id={{$profile->user->id}}-{{$card->id}}" >View Card</a></li> 
+
                     @if($profile->user->id == Auth::id())
                         <li><a href="javascript:void()" onclick="editCard('<?php echo $card->id ?>')">Edit</a></li>
                         @if(empty($card->is_released))

@@ -5,7 +5,7 @@
         <div class="card bordered shadowed" id="card_<?php echo $card->id ?>">
             <div class="card-content">
                 <div class="card-top">
-
+                
 
                     <!-- bonus hide/show  -->
                     <?php $bonus_hide_class = 'hide'; ?>
@@ -95,6 +95,18 @@
             @if($card->mask_image)
             <img src="{{ URL::asset('uploads/card/') }}/{{$card->mask_image}}">
             @endif
+
+               <!-- Options -->
+            <div class="hover_pop">
+
+
+                <ul>
+                @if(!empty($card->user_profile->user))
+     <li><a href="{{ route('card.view') }}/?id={{$card->user_profile->user->id}}-{{$card->id}}" >View Card</a></li> 
+     @endif
+                  
+                </ul>
+            </div>
            
         </div>
     @endforeach

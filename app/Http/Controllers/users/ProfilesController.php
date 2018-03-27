@@ -61,8 +61,8 @@ class ProfilesController extends Controller
         // fetch profile type names
         $typeNamesArr = TypeName::where('profile_id', $profile_id)->pluck('name', 'id')->toArray();
 
-        $data['profile'] = $profile;
-        $data['cardsObj'] = $cardsObj;
+        $data['profile']     = $profile;
+        $data['cardsObj']     = $cardsObj;
         $data['tierNamesArr'] = $tierNamesArr;
         $data['typeNamesArr'] = $typeNamesArr;
 

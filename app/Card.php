@@ -23,6 +23,13 @@ class Card extends Model
         return $this->belongsTo('App\TypeName');
     }
 
+    /**
+     * Get type names
+     */
+    public function user_profile() {
+        return $this->belongsTo('App\UserProfile');
+    }
+
 
     /**
      * Get tier names
