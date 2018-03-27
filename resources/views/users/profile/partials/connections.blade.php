@@ -67,7 +67,6 @@
             <div href="javascript:void(0)" >
                 <div class="social_icon sms_border"><i class="fas fa-mobile-alt"></i></div>
                 <div class="social_details">
-                    {{$user->mobile_verified->mobile_number}}
                     SMS Verified ({{$user->mobile_verified->mobile_number}})
                 </div>
             </div>            

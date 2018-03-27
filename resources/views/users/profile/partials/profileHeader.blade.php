@@ -71,20 +71,4 @@ style="background-image: url({{ $background_image }}); ">
         @endif
         <!--end header-content-->
     </div>
-    <!--end header-top-->
-    <div class="header-bottom row">
-        <div class="col-sm-1 latest">Chirp</div>
-        <div class="col-sm-9">Here I am once more in this scene of dissipation and vice, and I begin already to find my morals corrupted. 1h</div>
-        <div class="col-sm-2">
-            <a href="#" class="right">
-                <div class="left">view all</div>
-                <div class="view-toggle left">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </div>
-            </a>
-        </div>
-    </div>
-    <!--end header-bottom-->
 </div>

@@ -41,6 +41,21 @@
               </span>
 
           @endforeach
+
+          @if(!empty($profile->user->mobile_verified))
+
+              <span class="col-sm-6" style="text-align: center;">
+                <label class="col-sm-10" style="background-color:#666 !important; color:#fff !important; padding: 10px;">
+                  <p class="social_icon">
+                    <i class="fas fa-mobile-alt"></i>&nbsp;
+                    SMS Verified
+                  </p>
+                </label>
+              </span>
+                <!-- Twitter -->
+            </div>
+        @endif
+
           </div>
         @endif
       </div>

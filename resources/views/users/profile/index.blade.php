@@ -24,12 +24,12 @@
             <div class="button_cont">
                 @if($profile->user->id == Auth::id())
                <div class="button_left">
-                 <a href="javascript:void(0)" onclick="openCreateCardPopup()">New Card</a>
+                 <a href="javascript:void(0)" onclick="openCreateCardPopup()" class="yellow-btn">New Card</a>
                </div>
                @endif
                <div class="button_right">
-                 <a href="#">Sort by owner</a>
-                 <a href="#">Newest</a>
+                 <a href="#" class="black-btn">Sort by owner</a>
+                 <a href="#" class="white-btn">Newest</a>
                </div>
             </div>
 
@@ -49,6 +49,15 @@
         
         <!-- footer -->
         @include('users.includes.footer')
+
+        <!--end header-top-->
+        <div class="chirp-pop row">
+            <div class="col-sm-1 latest">Chirp</div>
+            <div class="col-sm-11">
+                <p>Here I am once more in this scene of dissipation and vice, and I begin already to find my morals corrupted. 1h</p>
+                </div>
+        </div>
+        <!--end header-bottom-->
 
     </div>
     <!--end wrapper-->
