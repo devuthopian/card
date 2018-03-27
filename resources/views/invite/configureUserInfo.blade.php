@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="main">          
+        <div class="main invite_register">          
              <div class="col-sm-12 second_inner">
                  <div class="login_cont">
                    <h2>Register</h2>

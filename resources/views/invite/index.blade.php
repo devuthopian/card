@@ -34,14 +34,14 @@
     <!-- Page Content -->
     <section>
       <div class="container">
-        <div class="main">
+        <div class="main main-invite">
             <div class="col-sm-4 first_inner">
-            <img src="{{ URL::asset('images/logo1.png') }}" class="logo" alt="">
-            <img src="{{ URL::asset('images/code.png') }}" class="code" alt="">
+                <img src="{{ URL::asset('images/misbits-logo.png') }}" class="invite-logo"/>
+                <img src="{{ URL::asset('images/code.png') }}" class="code" alt="">
             </div>
             <div class="col-sm-8 second_inner">
               {{ Form::open(array('url' => 'registerName/'.$invitation_hash, 'id' => 'registerName')) }}
-                  
+                    
                       <div class="name"><p>{{$userResultObj->name}} </p></div>
                       <div class="heading">
                         <h2 class="text-uppercase">
@@ -51,17 +51,15 @@
                       </div>
                      <div class="next">
                        <p>What should people call you?</p>
-                       <input class="text_box" type="text" name="name" id="name" />
-                       <a href="javascript:void(0)" onclick="registerName()"><img src="{{ URL::asset('images/play.png') }}" class="play" alt=""></a>
+                       <input class="text_box" type="text" name="name" id="name" placeholder="Type your public name here" />
+                       <a href="javascript:void(0)" class="login-btn" onclick="registerName()">Accept invitation</a>
                      </div>
-                     <div class="signing text-center">
+                     <div class="signing">
                       <p>
-                        By signing up, you agree to Misbits <br>
-                        Terms of Service and Privacy Policy
+                        By signing up, you agree to Misbits <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
                       </p>
                      <div class="last_inner">
-                     <h2 class="no_capitalization"> If you registered before, login</h2>
-                       <a href="<?php echo url('login') ?>"><img src="{{ URL::asset('images/botom.png') }}" class="play-botom" alt=""></a>
+                     <p class="no_capitalization"> If you registered before, <a href="<?php echo url('login') ?>">login here</a></p>
                        </div>
                      </div>
                 {{ Form::close() }}
