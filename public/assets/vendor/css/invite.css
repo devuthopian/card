@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body {
-  background: url('../../../images/bg.jpg') no-repeat center center fixed;
+  background: url(../../../images/bg.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -428,26 +428,57 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
 
 /************2nd******************/
 .main {
-  margin: 10% auto;
-  max-width: 900px;
-  display: flex;
+  margin: 12% auto;
+  max-width: 420px;
+  /*display: flex;*/
 }
-.first_inner{
-  background-color: rgba(255, 216, 0, 0.8);
+
+.main.main-invite{
+    margin: 12% auto;
+    display: flex;
+    max-width: 620px;
+}
+
+.main.main-invite .invite-logo{
+    margin-bottom: 30px;
+	width:75px;
+	height:80px;
+	border-radius:50%;
+	background:#111;
+	padding:10px;
+	box-shadow:0px 3px 0 3px #000;
+}
+
+.main.main-invite .signing{
+    margin-top: 10px;
+}
+
+.main.main-invite .second_inner{
+    top: 0;
+    padding: 0px 60px 0px 60px;
+}
+.main.main-invite .first_inner{
+  background-color: rgba(0, 0, 0, 0.70);
+    padding: 30px;
+    text-align: center;
+    margin-right: 1px;
 }
 .second_inner{
   background-color: rgba(0, 0, 0, 0.70);
-  padding-bottom: 22px;
-  min-height: 416px !important;
+  top:-40px;
+    padding: 0 50px !important;
+  /*min-height: 416px !important;*/
 }
 .second_inner .name p {
-  font-size: 26px;
+  font-size: 30px;
   font-family: 'Gill Sans MT';
+  margin-bottom:0;
 }
 .second_inner .heading h2 {
-  font-size: 28px;
-  line-height: 40px;
+  font-size: 20px;
+  line-height: 30px;
   font-family: 'Gill Sans MT';
+  margin-top:0;
 }
 .logo{
   margin: 0 auto;
@@ -459,18 +490,18 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
 
 }
 .code {
-    margin: 0 auto;
     text-align: center;
     width: 100%;
-    max-width: 200px;
+/*    max-width: 100px;*/
     display: inherit;
-    padding: 10% 0;
+    padding: 10px;
+	background:#fff;
 }
 .name{
     color: #fff;
     font-size: 24px;
     text-align: center;
-    margin: 15px 0;
+    margin: 30px 0 0 0;
 }
 .heading{
     text-align: center;
@@ -488,42 +519,54 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
 .next{
   text-align: center;
     color: #fff;
-    margin-top: 30px;
-    font-size: 24px;
+    margin-top: 0px;
+    font-size: 18px;
     font-weight: 100;
     position: relative;
 }
 .second_inner .next p {
-    font-size: 20px;
-    margin-top: 60px;
+    font-size: 15px;
+    margin-top: 30px;
     font-family: 'Gill Sans MT';
 }
 .second_inner .text_box{
-    width: 65%;
+    width: 100%;
     background: no-repeat;
     border: none;
-    border-bottom: 1px solid #ffff;
+    border-bottom: 1px solid #636363;
     margin: 0 auto;
     display: inherit;
     float: none !important;
     font-size: 16px;
     color: #fff;
-    padding: 10px 10px;
+    padding: 5px 12px;
 }
 .signing p {
-    color: #fff;
-    width: 50%;
-    margin: 0 auto;
+    color: #aaa;
     font-size: 18px;
-    padding-top: 5%;
+/*    padding-top: 5%;*/
 }
+
+.signing p a{
+	color:#ddd; /* #f9dc39;*/
+    font-size: 14px !important;
+/*	text-decoration:underline; */
+}
+
+.signing p a:hover{
+	color:#f9dc39; /*fff;*/
+}
+
+
 .signing {
   width: 100%;
   float: left;
+    text-align: center;
 }
 .signing p {
-  font-size: 16px;
-  margin-bottom: 20px;
+  font-size: 14px !important;
+    text-align: left;
+  margin-bottom: 20px !important;
   font-family: 'Gill Sans MT';
 }
 .play {
@@ -532,19 +575,31 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
     bottom: -25px;
 }
 .last_inner {
-  width:50%;
-  margin:0 auto;
+  width:100%;
+    float: left;
+  margin:0 0 20px 0;
    
 }
-.last_inner h2 {
-    font-size: 16px;
+.last_inner p {
+    font-size: 14px !important;
     color: #fff;
-    width: 82%;
-    margin: 0 auto;
-    padding: 15% 0 0;
+	margin:0 !important;
     float: left;
+    padding: 0;
+    line-height: 1.1;
     font-weight: normal;
     font-family: 'Gill Sans MT';
+}
+
+.last_inner p a{
+	text-decoration:underline;
+	text-transform:uppercase;
+	font-size:12px !important;
+	color:#f9dc39;
+}
+
+.last_inner p a:hover{
+	color:#fff;
 }
 .play-botom {
     float: right;
@@ -560,10 +615,10 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
     width: 67px;
 }
 .signing p, .second_inner .text_box {
-    width: 80%;
+    /*width: 80%;*/
 }
 .last_inner {
-    width: 80%;
+    /*width: 80%;*/
 }
 }
 @media screen and (max-width: 767px) {
@@ -572,7 +627,7 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
     width: 100%;
 }
 .last_inner h2 {
-    padding: 10% 0 0;
+    /*padding: 10% 0 0;*/
 }
 .play-botom {
     top: 36px;
@@ -583,13 +638,36 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
 .heading {
     font-size: 30px;
 }
+    
+.main.main-invite{
+    display: block;
+}
+    
+    .code{
+        max-width: 100px;
+        margin: 0 auto;
+    }
+    
+    .main.main-invite .first_inner{
+        margin-right: 0;
+        margin-bottom: 1px;
+        padding: 15px;
+    }
+    
+    .main.main-invite .second_inner{
+        padding: 15px !important;
+    }
+    
+    .name{
+        margin: 0;
+    }
 .play-botom {
     top: 18px;
     right: 0px;
 }
 .last_inner h2 {
-    width: 70%;
-    text-align: left;
+/*    width: 70%;
+    text-align: left;*/
 }
 }
 .pop_up {
@@ -687,16 +765,24 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
   color: #fff;
   text-align: center;
 }
+
+.socials{
+    margin-bottom: 20px;
+}
 .login_field .pull-left label {
   font-weight: normal;
   font-size: 14px;
 }
 .login_cont p {
   text-align: left;
-  padding: 0 15%;
+  font-size:12px;
+  margin-top:10px;
+    margin-bottom: 20px;
+  /*padding: 0 15%;*/
 }
 .login_cont p a {
   color: #f9dc39;
+  font-size:12px;
 }
 .login_cont p a:hover {
     color: #fff;
@@ -708,11 +794,12 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
   max-width: 400px;
   margin: 0px auto;
   font-size: 18px;
-  min-height: 250px;
+  /*min-height: 250px;*/
 }
-.login_cont h2 {
+.main h2 {
   text-align: center;
   font-size: 30px;
+  margin-top:25px;
 }
 .login_field input[type="text"], .login_field input[type="password"] {
   width: 100%;
@@ -722,15 +809,28 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
   border-bottom: 1px solid #636363;
   margin: 10px 0;
 }
-.login_field input[type="submit"] {
+
+.login-logo{
+	position:relative;
+	width:75px;
+	height:80px;
+	left:5%;
+	z-index:500;
+	top:10px;
+	border-radius:50%;
+	background:#111;
+	padding:10px;
+	box-shadow:0px 3px 0 3px #000;
+}
+.login_field input[type="submit"],.login-btn {
   width: 100%;
   background-color: #f9dc39;
   color: #333;
   border: 0px;
-  margin: 30px 0;
+  margin: 10px 0;
   padding: 10px 0;
 }
-.login_field input[type="submit"]:hover {
+.login_field input[type="submit"]:hover,.login-btn:hover {
   background-color: #fff;
 }
 .invite_link_cont {
@@ -739,6 +839,10 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
   font-size: 18px;
   background-color: #fff;
   padding:0;
+}
+
+.login-btn{
+	margin-top:20px;
 }
 .invite_link_cont h4 {
   color: #333;
@@ -853,7 +957,8 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
 }
 
 .login_field input[type="text"], .login_field input[type="password"] {
-  padding: 12px 12px;
+  padding: 5px 12px;
+  font-size:15px;
 }
 
 @media (max-width: 767px) {
@@ -874,7 +979,7 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
 }
 @media (max-width: 991px) {
 .login_cont p {
-    padding: 0 5%;
+    /*padding: 0 5%;*/
 }
 }
 @media (max-width: 991px) and (min-width: 816px) {
@@ -884,7 +989,7 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
 }
 @media (max-width: 815px) {
 .last_inner h2 {
-    padding: 12% 0 0;
+/*    padding: 12% 0 0;*/
 }
 }
 @media (max-width: 767px) {
@@ -892,12 +997,12 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
     width: 95%;
 }
 .last_inner h2 {
-    padding: 9% 0 0;
+/*    padding: 9% 0 0;*/
 }
 }
 @media (max-width: 480px) {
 .last_inner h2 {
-    padding: 10% 0 0;
+/*    padding: 10% 0 0;*/
 }
 }
 @media (max-width: 405px) {

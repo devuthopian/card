@@ -263,13 +263,40 @@ p{
 
 
 
+.chirp-pop{
+    position: fixed;
+    top: 60px;
+    right: 1%;
+    z-index: 5000;
+    width: 60%;
+    background: #fadd19;
+    padding: 10px 0 10px 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+.chirp-pop .latest{
+    padding: 0px 10px 0px 15px;
+    font-size: 14px;
+    top: 100%;
+    position: relative;
+    height: inherit;
+    color: #000 !important;
+}
+
+.chirp-pop p{
+    font-size: 16px;
+    margin: 0;
+    line-height: 25px;
+}
+
 .content{
     padding: 50px 0px 0 0px;
 }
 
 .header{
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .header-top{
@@ -606,9 +633,6 @@ p{
     font-weight: bold;
     margin: 0;
     padding-top: 5px;
-    position: relative;
-    top: 46%;
-    transform: translateY(-50%);
 }
 
 .card-content .card-top .card-title{
@@ -1223,7 +1247,7 @@ label {
  width: 100%;
  max-width: 100%;
  display: inline-block;
- margin-bottom: 40px;
+ margin-bottom: 30px;
  padding: 0 10%;
 }
 .button_left {
@@ -1235,19 +1259,70 @@ label {
  float: right;
  text-align: right;
 }
-.button_cont a {
- background: linear-gradient(#212121, #7b7b7b);
- color: #fff;
- padding: 10px 30px;
- display: inline-block;
- border-radius: 6px;
- margin: 0 10px;
- border: 1px solid #666;
+
+.button_cont a{
+    padding: 6px 20px;
+    display: inline-block;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 0 rgba(0,0,0,0.3);
 }
-.button_cont a:hover {
- background: #fff;
- color: #333;
+
+.yellow-btn{
+    background: #fadd19;
+    color: #333;
+    border: 1px solid #efbe0b;
+/*    box-shadow: 0 0 10px 2px #e2990c;*/
 }
+
+.yellow-btn:hover{
+    background: #444;
+    color: #fff;
+    border: 1px solid #333;
+}
+
+
+.black-btn {
+    background: #444;
+    color: #fff;
+    border: 1px solid #333;
+}
+
+.black-btn:hover {
+    background: #fadd19;
+    color: #333;
+    border: 1px solid #efbe0b;
+}
+
+.white-btn{
+    background: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.white-btn:hover{
+    background: #fadd19;
+    color: #333;
+    border: 1px solid #efbe0b;
+}
+
+.bg-img{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: url(../../../images/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
 
 .navbar-right .dropdown-menu {
  background-color: #333;
@@ -1275,14 +1350,15 @@ label {
 /* Tracking, Tracker and Setting page */
 .tracking_cont {
  width: 100%;
- padding: 20px;
+/* padding: 20px;
  margin-top: 20px;
- overflow: auto;
+ overflow: auto;*/
 }
 .tracking_cont h2 {
  border-bottom: 1px solid #eee;
  padding: 10px 0;
  margin: 0 0 20px 0;
+    color: #fff;
 }
 .tracking_cont table {
  width: 100%;
@@ -1301,11 +1377,11 @@ label {
 .tracking_cont_left {
  width: 48%;
  float: left;
- padding: 50px 7%;
- background: #f5f2f2;
+ padding:30px 50px;
+ background: #333;
 }
 .tracking_cont input[type="text"], .tracking_cont input[type="password"],  .tracking_cont select {
-   padding: 12px 12px;
+   padding: 6px 12px;
    margin: 10px 0;
    width: 100%;
    border: 1px solid #ccc;
@@ -1315,10 +1391,11 @@ label {
    color: #333;
    border: 0px;
    margin: 10px 0;
-   padding: 15px 30px;
+   padding: 10px 30px;
+    transition: all 0.4s;
 }
 .tracking_cont input[type="submit"]:hover {
-   background-color: #333;
+   background-color: #1f1f1f;
    color: #fff;
 }
 .tracking_cont_right {
@@ -1665,9 +1742,12 @@ label {
     width: 100%;
 }
 .setting_wrapper .tracking_cont_left {
-    width: 60%;
+/*    width: 60%;*/
     margin: 0px auto;
     float: none;
+    border-radius: 10px;
+    border:1px solid #000;
+    box-shadow:0 10px 20px rgba(0,0,0,0.8);
 }
 #sidebar .toggle {
     position: absolute;
@@ -1682,9 +1762,11 @@ label {
 }
 #sidebar h2 {
   color: #fff;
-  font-size: 18px;
+  font-size: 12px;
+    letter-spacing: 0.5px;
   padding-left: 20px;
   margin-bottom: 20px;
+    font-weight: bold;
 }
 #sidebar {
     min-width: 200px;
@@ -1711,18 +1793,20 @@ label {
 
 #sidebar ul li a {
     padding: 15px 20px;
-    font-size: 16px;
+    font-size: 14px;
     display: block;
-    background: #292929;
+/*    background: #292929;*/
     color: #fff;
-    border-bottom: 1px solid #1f1f1f                         ;
+    border-bottom: 1px solid #292929;
 }
 #sidebar ul li a:hover {
+/*
     color: #fff;
     background: #333;
+*/
 }
 
-#sidebar ul li.active > a, a[aria-expanded="true"] {
+#sidebar ul li.active > a, a[aria-expanded="true"],#sidebar ul li a:hover {
     color: #fff;
     background: #292929;
 }
@@ -1933,9 +2017,9 @@ ul.CTAs a {
     border: 1px solid #ccc;
 }
 .card_editor_cont .card_editor_left textarea {
-    width: 75%;
+    width: 80%;
     padding: 8px 10px;
-    margin: 10px 25px;
+    margin: 10px 18px;
     border: 1px solid #ccc;
     height: 100px;
     border-radius: 4px;
@@ -1949,14 +2033,13 @@ ul.CTAs a {
 .card_editor_cont .card_editor_left span {
     width: 100%;
     display: inline-block;
-    margin: 0px;
 }
 .card_editor_cont .card_editor_left .textarea {
     position: relative;
 }
-.card_editor_cont .card_editor_left .textarea label {
+.card_editor_cont .card_editor_left .textarea #is_rewards, .card_editor_cont .card_editor_left .textarea #is_description {
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 0;
 }
 .card_editor_cont .card_editor_left .textarea i {
@@ -1999,62 +2082,6 @@ ul.CTAs a {
     float: right;
     max-width: 300px;
 }
-.n_card_editor .card_editor_left label {
-    width: auto;
-    position: relative;
-}
-.n_card_editor .card_editor_left .checkbox label::before {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  left: 0;
-  top: 30%;
-  border: 1px solid #cccccc;
-  border-radius: 3px;
-  background-color: #fff;
-  -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
-  -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
-  transition: border 0.15s ease-in-out, color 0.15s ease-in-out; 
-}
-.n_card_editor .card_editor_left .checkbox label::after {
-  display: inline-block;
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  left: 0;
-  top: 32%;
-  padding-left: 3px;
-  padding-top: 1px;
-  font-size: 11px;
-  color: #555555; 
-}
-.n_card_editor .card_editor_left .checkbox input[type="checkbox"] {
-    opacity: 0; 
-}
-.n_card_editor .card_editor_left .checkbox input[type="checkbox"]:focus + label::before {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px; 
-}
-.n_card_editor .card_editor_left .checkbox input[type="checkbox"]:checked + label::after {
-  font-family: 'FontAwesome';
-  content: "\f00d";
-  font-size: 14px; 
-  color: #fff;
-}
-.n_card_editor .card_editor_left .checkbox input[type="checkbox"]:disabled + label {
-  opacity: 0.65; 
-}
-.n_card_editor .card_editor_left .checkbox input[type="checkbox"]:disabled + label::before {
-    background-color: #eeeeee;
-  cursor: not-allowed; 
-}
-.n_card_editor .card_editor_left .checkbox input[type="checkbox"]:checked + label::before {
-  background-color: #333;
-  border-color: #333; 
-}
 
 @media (max-width: 767px) {
 .card_editor_cont .card_editor_left {
@@ -2065,13 +2092,17 @@ ul.CTAs a {
 }
 }
 #connections .tracking_cont_left {
+/*
     background: #333;
     padding: 20px;
     border-radius: 8px;
+*/
 }
 #connections .tracking_cont_left h2 {
+/*
     color: #fff;
     border-bottom: 1px solid #2b2b2b;
+*/
 }
 #connections .tracking_cont_left a {
     border-radius: 4px;
@@ -2112,7 +2143,7 @@ ul.CTAs a {
      * bootstrap-vertical-tabs - v1.2.1
      * https://dbtek.github.io/bootstrap-vertical-tabs
      * 2014-11-07
-     * Copyright (c) 2014 İsmail Demirbilek
+     * Copyright (c) 2014 Ä°smail Demirbilek
      * License: MIT
      */
     .tabs-left, .tabs-right {
@@ -2147,7 +2178,7 @@ ul.CTAs a {
       border-left-color: transparent;
     }
     .tabs-left>li>a {
-      border-radius: 0px;
+      border-radius: 4px 0 0 4px;
       margin-right: 0;
       display:block;
       color: #fff;
@@ -2222,7 +2253,7 @@ ul.CTAs a {
     margin: 0 9px 10px 9px;
 }
 .n_card_editor .editor_nav_left {
-    width: 18%;
+    width: 20%;
     float: left;
 }
 .n_card_editor .editor_content_right {
@@ -2260,7 +2291,7 @@ ul.CTAs a {
     padding: 0;
 }
 .card_editor_cont .card_editor_left input[type="text"], .card_editor_cont .card_editor_left textarea {
-    width: 91%;
+    width: 93%;
 }
 }
 
@@ -2366,7 +2397,7 @@ ul.CTAs a {
     max-width: 300px;
 }
 .n_card_editor .card_editor_cont .card_editor_left select {
-    width: 91%;
+    width: 93%;
 }
 .n_card_editor .card_editor_cont .card_editor_left .editor_button {
     width: 84%;
@@ -2380,4 +2411,3 @@ ul.CTAs a {
     position: absolute !important;
     left: 600px;
 }
-
