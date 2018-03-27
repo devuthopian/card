@@ -1030,7 +1030,7 @@ function resetProfileBackground(){
 					            type: "success"
 					        });
 					        d = new Date();
-					        $('body').css('background-image','');
+					        $('#page_background').remove();
 				    	}else{
 				    		swal("Error", data.message, "error");
 				    	}

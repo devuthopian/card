@@ -440,6 +440,9 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
     display: flex;
     max-width: 620px;
 }
+.invite_register {
+  margin: 20% auto;
+}
 
 .main.main-invite .invite-logo{
     margin-bottom: 30px;
@@ -832,6 +835,9 @@ nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li 
   margin: 10px 0;
   padding: 10px 0;
   display: inline-block;
+}
+.invite_register .login_field input[type="submit"], .invite_register .login-btn {
+  margin: 10px 0 30px;
 }
 .login_field input[type="submit"]:hover, .login-btn:hover {
   background-color: #fff;

@@ -44,7 +44,7 @@
         <?php if(!empty($profile->profile_background_image)){
             $page_background_image = URL::asset('uploads/user/profile/backgroundImages').'/'.$profile->profile_background_image; 
             ?>
-            <div class="bg-image" style="background: url({{ $page_background_image }}) no-repeat center center fixed !important"></div>
+            <div id="page_background" class="bg-img" style="background: url({{$page_background_image}}) no-repeat center center fixed;" ></div>
         <?php } ?>
         
         <!-- footer -->

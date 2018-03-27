@@ -267,7 +267,7 @@ p{
     position: fixed;
     top: 60px;
     right: 1%;
-    z-index: 5000;
+    z-index: 999;
     width: 60%;
     background: #fadd19;
     padding: 10px 0 10px 0px;
@@ -1319,10 +1319,10 @@ label {
     z-index: -1;
     width: 100%;
     height: 100vh;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  background-size: cover !important;
+  -o-background-size: cover !important;
 }
 
 
@@ -2167,8 +2167,18 @@ ul.CTAs a {
     border-radius: 4px;
     line-height: 30px;
 }
-#connections .social_icon {
+#connections .youtube_border {
     border-bottom: 1px solid #bd1918;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+#connections .twitter_border {
+    border-bottom: 1px solid #058de0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+#connections .sms_border {
+    border-bottom: 1px solid #5a5a5a;
     margin-bottom: 20px;
     padding-bottom: 10px;
 }
