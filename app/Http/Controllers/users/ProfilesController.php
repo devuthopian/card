@@ -69,7 +69,11 @@ class ProfilesController extends Controller
         return view('users.profile.index', $data);
     }
 
-
+    /**
+     * Edit Profile
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function editProfile(Request $request){
 
     	$this->validate($request, [
@@ -78,16 +82,22 @@ class ProfilesController extends Controller
 
     	$userObj = new User;
     	$profileImageObj = $request->file('profile_image');
+        $coverImageObj = $request->file('cover_image');
+        $profileBackgroundImageObj = $request->file('profile_background_image');
     	$requestArr = $request->all();
     	$logged_user_id = Auth::id();
-    	$resultArr = $userObj->updateProfile($requestArr, $profileImageObj);
+    	$resultArr = $userObj->updateProfile($requestArr, $profileImageObj, $coverImageObj, $profileBackgroundImageObj);
     	
     	if(!empty($resultArr)){
     		return redirect('user/index/'.$requestArr['profile_id']);
     	}
     }
 
-
+    /**
+     * Generate Invite URL
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function generateInviteUrl(Request $request){
         
         $profile_id = $request->profile_id;
@@ -125,7 +135,11 @@ class ProfilesController extends Controller
 
     }
 
-
+    /**
+     * Update Never Expire Invite Url
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function updateNeverExpireInviteUrl(Request $request){
         $invitationObj = new Invitation;
         $invitation_id = $request->invitation_id;
@@ -135,7 +149,11 @@ class ProfilesController extends Controller
         return response()->json($resultArr);
     }
 
-    ### My Profiles
+    /**
+     * Display User Profiles
+     * @param Request $request
+     * @return view
+     */
     public function myProfiles(Request $request){
         $userObj = new User;
         $logged_user_id = Auth::id();
@@ -144,7 +162,11 @@ class ProfilesController extends Controller
     }
 
 
-
+    /**
+     * Add Profile
+     * @param Request $request
+     * @return Redirect
+     */
     public function addProfile(Request $request){
         $this->validate($request, [
             'profile_image' => 'mimes:jpeg,bmp,png', //only allow this type extension file.
@@ -152,16 +174,22 @@ class ProfilesController extends Controller
 
         $userObj = new User;
         $profileImageObj = $request->file('profile_image');
+        $coverImageObj = $request->file('cover_image');
+        $profileBackgroundImageObj = $request->file('profile_background_image');
         $requestArr = $request->all();
         $logged_user_id = Auth::id();
-        $resultArr = $userObj->createProfile($logged_user_id, $requestArr, $profileImageObj);
+        $resultArr = $userObj->createProfile($logged_user_id, $requestArr, $profileImageObj, $coverImageObj, $profileBackgroundImageObj);
         
         if(!empty($resultArr)){
             return redirect('user/profile/myProfiles');
         }
     }
 
-
+    /**
+     * Remove Profile
+     * @param Request $request
+     * @return Redirect
+     */
     public function removeProfile(Request $request){
         $requestArr = $request->all();
         $userProfileObj = new UserProfile;
@@ -187,7 +215,11 @@ class ProfilesController extends Controller
     }
 
 
-
+    /**
+     * Set Profile to Default
+     * @param Request $request
+     * @return Redirect
+     */
     public function setDefault(Request $request){
         $logged_user_id = Auth::id();
         $requestArr = $request->all();
@@ -213,7 +245,11 @@ class ProfilesController extends Controller
         }
     }
 
-    // Tracking
+    /**
+     * Tracking Page
+     * @param Request $request
+     * @return Redirect
+     */
     public function tracking(Request $request){
         $logged_user_id = Auth::id();
         $userObj = new User;
@@ -229,7 +265,11 @@ class ProfilesController extends Controller
         return view('users.profile.tracking', $data);
     }
 
-    // Tracker
+    /**
+     * Tracker Page
+     * @param Request $request
+     * @return Redirect
+     */
     public function tracker(){
         $logged_user_id = Auth::id();
         $userObj = new User;
@@ -237,7 +277,11 @@ class ProfilesController extends Controller
         return view('users.profile.tracker', $data);
     }
 
-    // Settings
+    /**
+     * Settings
+     * @param Request $request
+     * @return Redirect
+     */
     public function settings(Request $request){
         $userObj = new User;
         $logged_user_id = Auth::id();
@@ -290,16 +334,25 @@ class ProfilesController extends Controller
         return view('users.profile.settings', $data);
     }
 
-
+    /**
+     * Settings
+     * @param Request $request
+     * @return Redirect
+     */
     public function settingsCallback(){
         return view('users.profile.settingsCallback');
     }
 
 
-    ///
+    /**
+     * Edit Card
+     * @param Request $request
+     * @return Redirect
+     */
     public function editCard(){
         return view('users.profile.editCard');
     }
+
 
 // viewcard 
 
@@ -324,7 +377,95 @@ public function viewcard(Request $request){
 
         return view('users.profile.viewcard',compact('card', 'status'));
     }
-    
+
+    /**
+     * Reset Cover Image
+     * @param Request $request
+     * @return Redirect
+     */
+    public function resetCoverImage(Request $request){
+        $requestArr = $request->all();
+        $userProfileObj = new UserProfile;
+        $result = $userProfileObj->resetCoverImage($requestArr);
+
+        if(!empty($result)){
+            ### response
+            return response()->json(array(
+                    'code' => 1, 
+                    'message' => 'Cover image has been reset successfully.',
+                    'data' => array()
+                    )
+                );
+        } else {
+            ### response
+            return response()->json(array(
+                    'code' => 0, 
+                    'message' => 'Error in reset cover image.',
+                    'data' => array()
+                    )
+                );
+        }
+    }
+
+
+    /**
+     * Reset Cover Image
+     * @param Request $request
+     * @return Redirect
+     */
+    public function resetProfileImage(Request $request){
+        $requestArr = $request->all();
+        $userProfileObj = new UserProfile;
+        $result = $userProfileObj->resetProfileImage($requestArr);
+
+        if(!empty($result)){
+            ### response
+            return response()->json(array(
+                    'code' => 1, 
+                    'message' => 'Profile image has been reset successfully.',
+                    'data' => array()
+                    )
+                );
+        } else {
+            ### response
+            return response()->json(array(
+                    'code' => 0, 
+                    'message' => 'Error in reset profile image.',
+                    'data' => array()
+                    )
+                );
+        }
+    }
+
+
+    /**
+     * Reset Background Image
+     * @param Request $request
+     * @return Redirect
+     */
+    public function resetProfileBackground(Request $request){
+        $requestArr = $request->all();
+        $userProfileObj = new UserProfile;
+        $result = $userProfileObj->resetProfileBackground($requestArr);
+        
+        if(!empty($result)){
+            ### response
+            return response()->json(array(
+                    'code' => 1, 
+                    'message' => 'Profile background has been reset successfully.',
+                    'data' => array()
+                    )
+                );
+        } else {
+            ### response
+            return response()->json(array(
+                    'code' => 0, 
+                    'message' => 'Error in reset profile background.',
+                    'data' => array()
+                    )
+                );
+        }
+    }
 }
 
 ?>

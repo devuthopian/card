@@ -70,4 +70,29 @@ class UserProfile extends Model
         $this->where('user_id', $logged_user_id)->update(['is_default'=>0]);
         return $this->where('id', $requestArr['profile_id'])->update(['is_default'=>1]);
     }
+
+    /**
+     * Reset Cover Image
+     * @return Redirect
+     */
+    public function resetCoverImage($requestArr){
+        return $this->where('id', $requestArr['profile_id'])->update(['cover_image'=>'']);
+    }
+
+    /**
+     * Reset Profile Image
+     * @return Redirect
+     */
+    public function resetProfileImage($requestArr){
+        return $this->where('id', $requestArr['profile_id'])->update(['profile_image'=>'']);
+    }
+
+    /**
+     * Reset Profile Background
+     * @return Redirect
+     */
+    public function resetProfileBackground($requestArr){
+        return $this->where('id', $requestArr['profile_id'])->update(['profile_background_image'=>'']);
+    }
+
 }

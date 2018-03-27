@@ -118,6 +118,8 @@
             </div>
         </div>
     </div>
+    <!-- SMS Popup -->
+    @include('users.profile.partials.smsVerificationPopup')
 </body>
 @endsection
 @section('scripts')

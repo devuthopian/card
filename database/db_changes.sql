@@ -32,3 +32,8 @@ ALTER TABLE `admins` ADD `remember_token` VARCHAR(100) CHARACTER SET utf8mb4 COL
 
 -- 21 March
 ALTER TABLE `card` CHANGE `gender` `type_name_id` INT NULL DEFAULT NULL, CHANGE `card_tier` `tier_name_id` INT NULL DEFAULT NULL;
+
+-- 26 March 2018
+ALTER TABLE `user_profiles` ADD `profile_background_image` VARCHAR(255) NULL AFTER `cover_image`;
+
+ALTER TABLE `user_profiles` ADD `title_color` VARCHAR(10) NULL AFTER `profile_background_image`, ADD `description_color` VARCHAR(10) NULL AFTER `title_color`;

@@ -879,9 +879,181 @@ function fineUploader(){
 }
 
 
+function editCoverImage(){
+	$('#coverImageUploadBlock').removeClass('hide');
+	$('#coverImageBlock').addClass('hide');
+}
+
+function editBackgroundImage(){
+	$('#backgroundImageUploadBlock').removeClass('hide');
+	$('#backgroundImageBlock').addClass('hide');
+}
+
+function resetCoverImage(){
+	var profile_id = $('#profile_id').val();
+	bootbox.confirm({
+	    message: "Do you want to reset cover image ?",
+	    buttons: {
+	        confirm: {
+	            label: 'Yes',
+	            className: 'btn-success'
+	        },
+	        cancel: {
+	            label: 'No',
+	            className: 'btn-danger'
+	        }
+	    },
+	    callback: function (result) {
+	        if(result){
+
+	        	$.ajaxSetup({
+				    headers: {
+				        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				    }
+				});
+
+	        	$.ajax({
+				    url: base_url+'/user/profile/resetCoverImage',
+				    dataType: 'json',
+				    type: 'post',
+				    data: {'profile_id':profile_id},
+				    success: function( data, textStatus, jQxhr ){
+				    	if(data.code == 1){
+				    		editCoverImage();
+				    		swal({
+					            title: "Success",
+					            text: data.message,
+					            type: "success"
+					        });
+					        d = new Date();
+				    		$('#cover_image_div').css('background-image', "url("+base_url+"/images/header-background.jpg?"+d.getTime());
+				    	}else{
+				    		swal("Error", data.message, "error");
+				    	}
+				    },
+				    error: function( jqXhr, textStatus, errorThrown ){
+				        console.log( errorThrown );
+				    }
+				});
+	        }
+	    }
+	});
+}
+
+// reset profile image
+function resetProfileImage(){
+	var profile_id = $('#profile_id').val();
+	bootbox.confirm({
+	    message: "Do you want to reset profile image ?",
+	    buttons: {
+	        confirm: {
+	            label: 'Yes',
+	            className: 'btn-success'
+	        },
+	        cancel: {
+	            label: 'No',
+	            className: 'btn-danger'
+	        }
+	    },
+	    callback: function (result) {
+	        if(result){
+
+	        	$.ajaxSetup({
+				    headers: {
+				        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				    }
+				});
+
+	        	$.ajax({
+				    url: base_url+'/user/profile/resetProfileImage',
+				    dataType: 'json',
+				    type: 'post',
+				    data: {'profile_id':profile_id},
+				    success: function( data, textStatus, jQxhr ){
+				    	if(data.code == 1){
+				    		editProfileImage();
+				    		swal({
+					            title: "Success",
+					            text: data.message,
+					            type: "success"
+					        });
+					        d = new Date();
+				    		$('#profile_image').attr('src', base_url+"/images/avtar.jpg?"+d.getTime());
+				    	}else{
+				    		swal("Error", data.message, "error");
+				    	}
+				    },
+				    error: function( jqXhr, textStatus, errorThrown ){
+				        console.log( errorThrown );
+				    }
+				});
+	        }
+	    }
+	});
+}
+
+// reset profile background
+function resetProfileBackground(){
+	var profile_id = $('#profile_id').val();
+	bootbox.confirm({
+	    message: "Do you want to reset profile background ?",
+	    buttons: {
+	        confirm: {
+	            label: 'Yes',
+	            className: 'btn-success'
+	        },
+	        cancel: {
+	            label: 'No',
+	            className: 'btn-danger'
+	        }
+	    },
+	    callback: function (result) {
+	        if(result){
+
+	        	$.ajaxSetup({
+				    headers: {
+				        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				    }
+				});
+
+	        	$.ajax({
+				    url: base_url+'/user/profile/resetProfileBackground',
+				    dataType: 'json',
+				    type: 'post',
+				    data: {'profile_id':profile_id},
+				    success: function( data, textStatus, jQxhr ){
+				    	if(data.code == 1){
+				    		editProfileImage();
+				    		swal({
+					            title: "Success",
+					            text: data.message,
+					            type: "success"
+					        });
+					        d = new Date();
+					        $('body').css('background-image','');
+				    	}else{
+				    		swal("Error", data.message, "error");
+				    	}
+				    },
+				    error: function( jqXhr, textStatus, errorThrown ){
+				        console.log( errorThrown );
+				    }
+				});
+	        }
+	    }
+	});
+}
+
+function openVerifyPopup(){
+	$('#verifyPopupModal').modal('toggle');
+}
+
+
 // Document Ready
 $( document ).ready(function() {
 	fineUploader();
 	setNeverExpire();
 	cardAutomation();
+	$('#title_color').colorpicker();
+	$('#description_color').colorpicker();
 });

@@ -68,17 +68,10 @@ class Card extends Model
         $saveArr['is_rewards'] = !empty($requestArr['is_rewards'])?1:0;
         $saveArr['is_description'] = !empty($requestArr['is_description'])?1:0;
 
-        
-        /*### upload Image
-        if(!empty($cardImageObj)){
-            $imageName = time().'.'.$cardImageObj->getClientOriginalExtension();
-            $cardImageObj->move(public_path('uploads/card'), $imageName); 
-            $saveArr['image'] = $imageName;
-        }*/
 
         ### upload mask Image
         if(!empty($maskImageObj)){
-            $maskImageName = time().'_mask.'.$maskImageObj->getClientOriginalExtension();
+            $maskImageName = md5(microtime()).'_mask.'.$maskImageObj->getClientOriginalExtension();
             $maskImageObj->move(public_path('uploads/card'), $maskImageName); 
             $saveArr['mask_image'] = $maskImageName;
         }
@@ -123,16 +116,9 @@ class Card extends Model
         $saveArr['is_description'] = !empty($requestArr['is_description'])?1:0;
 
 
-        ### upload Image
-        /*if(!empty($cardImageObj)){
-            $imageName = time().'.'.$cardImageObj->getClientOriginalExtension();
-            $cardImageObj->move(public_path('uploads/card'), $imageName); 
-            $saveArr['image'] = $imageName;
-        }*/
-
         ### upload mask Image
         if(!empty($maskImageObj)){
-            $maskImageName = time().'_mask.'.$maskImageObj->getClientOriginalExtension();
+            $maskImageName = md5(microtime()).'_mask.'.$maskImageObj->getClientOriginalExtension();
             $maskImageObj->move(public_path('uploads/card'), $maskImageName); 
             $saveArr['mask_image'] = $maskImageName;
         }
@@ -180,7 +166,7 @@ class Card extends Model
 
         ### upload mask Image
         if(!empty($maskImageObj)){
-            $maskImageName = time().'_mask.'.$maskImageObj->getClientOriginalExtension();
+            $maskImageName = md5(microtime()).'_mask.'.$maskImageObj->getClientOriginalExtension();
             $maskImageObj->move(public_path('uploads/card'), $maskImageName); 
             $saveArr['mask_image'] = $maskImageName;
         }
@@ -194,7 +180,7 @@ class Card extends Model
             $copy_card_image = $copyCardDetails->image;
             if(!empty($copy_card_image) && (file_exists(public_path('uploads/card').'/'.$copy_card_image))){
                 $fileNameArr = explode('.', $copy_card_image);
-                $saveArr['image'] = $new_image_name = time().'.'.end($fileNameArr);
+                $saveArr['image'] = $new_image_name = md5(microtime()).'.'.end($fileNameArr);
                 copy(public_path('uploads/card').'/'.$copy_card_image, public_path('uploads/card').'/'.$new_image_name);
             }
         }
@@ -203,7 +189,7 @@ class Card extends Model
             $copy_card_mask_image = $copyCardDetails->mask_image;
             if(!empty($copy_card_mask_image) && (file_exists(public_path('uploads/card').'/'.$copy_card_mask_image))){
                 $maskFileNameArr = explode('.', $copy_card_mask_image);
-                $saveArr['mask_image'] = $new_mask_image_name = time().'_mask.'.end($maskFileNameArr);
+                $saveArr['mask_image'] = $new_mask_image_name = md5(microtime()).'_mask.'.end($maskFileNameArr);
                 copy(public_path('uploads/card').'/'.$copy_card_mask_image, public_path('uploads/card').'/'.$new_mask_image_name);
             }
         }

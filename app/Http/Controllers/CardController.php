@@ -79,7 +79,7 @@ class CardController extends Controller
 
         $image = $request->file('image');
 
-        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+        $input['imagename'] = md5(microtime()).'.'.$image->getClientOriginalExtension();
 
         $destinationPath = public_path('/images');
 

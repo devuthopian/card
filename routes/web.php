@@ -36,7 +36,7 @@ Auth::routes();
 Route::group(['middleware' => ['web']], function () {
 
 	Route::get('/user/dashboard', 'users\CardsController@dashboard');
-
+	
 	// Profiles
 	Route::post('/user/addProfile', 'users\ProfilesController@addProfile');
 	Route::post('/user/editProfile', 'users\ProfilesController@editProfile');
@@ -46,6 +46,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/user/index/{profile?}', 'users\ProfilesController@index');
 	Route::post('/user/profile/generateInviteUrl', 'users\ProfilesController@generateInviteUrl');
 	Route::post('/user/profile/updateNeverExpireInviteUrl', 'users\ProfilesController@updateNeverExpireInviteUrl');
+	Route::post('/user/profile/resetCoverImage', 'users\ProfilesController@resetCoverImage');
+	Route::post('/user/profile/resetProfileImage', 'users\ProfilesController@resetProfileImage');
+	Route::post('/user/profile/resetProfileBackground', 'users\ProfilesController@resetProfileBackground');
+
+	
 
 	// Settings
 	//Route::get('/user/profile/settings', 'users\ProfilesController@settings');
@@ -81,6 +86,9 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::post('/sendInvitation', 'InviteController@sendInvitation');
 
+	// Mobile Verification
+	Route::post('/user/mobile_verification/sendOTP', 'users\MobileVerificationsController@sendOTP');
+	Route::post('/user/mobile_verification/verifyOTP', 'users\MobileVerificationsController@verifyOTP');
 
 	// Type Names
 	Route::post('/user/typeNames/save', 'users\TypeNamesController@save');

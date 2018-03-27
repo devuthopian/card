@@ -17,7 +17,7 @@
                 <div class="tracking_cont">
                     <div class="tracker_head">
                         <?php if(!empty($loggedUserDefaultProfile->profile_image)){ ?>
-                            <img src="{{ URL::asset('uploads/user/profile/') }}/{{$loggedUserDefaultProfile->profile_image}}">
+                            <img src="{{ URL::asset('uploads/user/profile/profileImages') }}/{{$loggedUserDefaultProfile->profile_image}}">
                         <?php }else{ ?>
                             <img src="{{ URL::asset('images/avtar.jpg') }}">
                         <?php } ?>
@@ -45,7 +45,7 @@
                                                 <span class="dropdown_icon collapsed" data-toggle="collapse" data-target="#cards<?php echo $user_inc; ?>"><i class="fas fa-angle-down"></i></span>
                                                 <div class="head_sec_img text-center">
                                                     <?php if(!empty($defaultUserProfile->profile_image)){ ?>
-                                                        <img style="cursor: pointer !important;" onclick="goToProfile(<?php echo $defaultUserProfile->id; ?>)" src="{{ URL::asset('uploads/user/profile/') }}/{{$defaultUserProfile->profile_image}}">
+                                                        <img style="cursor: pointer !important;" onclick="goToProfile(<?php echo $defaultUserProfile->id; ?>)" src="{{ URL::asset('uploads/user/profile/profileImages') }}/{{$defaultUserProfile->profile_image}}">
                                                     <?php }else{ ?>
                                                         <img style="cursor: pointer !important;" onclick="goToProfile(<?php echo $defaultUserProfile->id; ?>)" src="{{ URL::asset('images/avtar.jpg') }}">
                                                     <?php } ?><div class="clearfix"></div>

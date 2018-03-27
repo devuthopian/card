@@ -116,7 +116,7 @@ class InviteController extends Controller
 
             ### Login after registartion
             Auth::login($user, true);
-            return redirect('user/index/'.$user->reference_profile_id);
+            return redirect('user/index/'.$user->invitation->profile_id);
         }
 
         if(!empty($user->email) && !empty($user->password)){
