@@ -26,7 +26,7 @@ class ProfilesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['viewcard']]);
     }
 
     /**
@@ -351,6 +351,31 @@ class ProfilesController extends Controller
      */
     public function editCard(){
         return view('users.profile.editCard');
+    }
+
+
+// viewcard 
+
+public function viewcard(Request $request){
+        $card_request  =  explode("-",$request->id);
+        $user_id       = $card_request['0'];
+        $card_id       = $card_request['1'];
+        $card          =   Card::where('id', $card_id)->first();
+        if(!empty($card)){
+         $user_profile_id = $card->user_profile_id;
+         $user_profile_exist    =   UserProfile::where('id', $user_profile_id)->where('user_id',  $user_id)->first();
+         $status=0;
+         if(count($user_profile_exist) > 0){
+             $status=1;
+         }
+         else{
+            $status=0;
+         }
+        } else {
+            $status=0;
+        }
+
+        return view('users.profile.viewcard',compact('card', 'status'));
     }
 
     /**

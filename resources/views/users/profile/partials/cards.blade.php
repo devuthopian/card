@@ -87,6 +87,8 @@
                 </div>
                 <!--end card-bottom-->
             </div>
+
+
             <!--end card-content-->
             @if(!empty($card->cropped_image_file_name))
             <img src="{{ URL::asset('uploads/card/cropped') }}/{{$card->cropped_image_file_name}}">
@@ -98,10 +100,13 @@
             <img src="{{ URL::asset('uploads/card/') }}/{{$card->mask_image}}">
             @endif
 
+
             <!-- Options -->
             <div class="hover_pop">
+
+
                 <ul>
-                    <!-- <li><a href="javascript:void()" onclick="zoomImage('<?php echo $card->image ?>')">Zoom</a></li> -->
+                     <li><a href="/viewcard?id={{$profile->user->id}}-{{$card->id}}" >View Card</a></li> 
                     @if($profile->user->id == Auth::id())
                         <li><a href="javascript:void()" onclick="editCard('<?php echo $card->id ?>')">Edit</a></li>
                         @if(empty($card->is_released))

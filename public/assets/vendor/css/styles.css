@@ -2411,3 +2411,9 @@ ul.CTAs a {
     position: absolute !important;
     left: 600px;
 }
+
+.view_card {
+    margin: 0 auto;
+    display: block;
+    margin-top: 60px;
+}

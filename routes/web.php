@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get('/share/{invitation_hash}', 'InviteController@index');
 Route::get('auth/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
 
+Route::get('viewcard',['as' => 'card.view','uses' => 'users\ProfilesController@viewcard']);
+
 Route::group(['middleware' => ['guest']], function () {
 	Route::get('/configureUserInfo/{user}', 'InviteController@configureUserInfo');
 	Route::post('/configureUserInfo/{user}', 'InviteController@configureUserInfo');
