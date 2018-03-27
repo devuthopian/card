@@ -1,13 +1,18 @@
-@if(count($cardsObj)>0)
-<?php $i=0; ?>
-<div class="row card-parent">
-    @foreach ($cardsObj as $key => $card)
-        <?php $margin_class = ''; ?>
-        @if(in_array($i, [4,7,9]))
-        <div class="clearfix"></div>
-        @endif
-
-        <div class="card bordered shadowed {{$margin_class}}" id="card_<?php echo $card->id ?>">
+@extends('users.layouts.profile')
+@section('content')
+<body onload="sizing()" onresize="sizing()">
+    <div class="wrapper">
+      
+        <div class="content">
+            <div class="container">
+            @if(empty($status))
+                <div class="alert alert-danger">
+                <strong>No card Available</strong>
+                </div>
+              @else
+                <div class="card_editor_cont">
+                 <?php $margin_class = ''; ?>
+              <div class="view_card card bordered shadowed {{$margin_class}}" id="card_<?php echo $card->id ?>">
             <div class="card-content">
                 <div class="card-top">
 
@@ -87,8 +92,6 @@
                 </div>
                 <!--end card-bottom-->
             </div>
-
-
             <!--end card-content-->
             @if(!empty($card->cropped_image_file_name))
             <img src="{{ URL::asset('uploads/card/cropped') }}/{{$card->cropped_image_file_name}}">
@@ -99,29 +102,11 @@
             @if($card->mask_image)
             <img src="{{ URL::asset('uploads/card/') }}/{{$card->mask_image}}">
             @endif
-
-
-            <!-- Options -->
-            <div class="hover_pop">
-
-
-                <ul>
-                     <li><a href="/viewcard?id={{$profile->user->id}}-{{$card->id}}" >View Card</a></li> 
-                    @if($profile->user->id == Auth::id())
-                        <li><a href="javascript:void()" onclick="editCard('<?php echo $card->id ?>')">Edit</a></li>
-                        @if(empty($card->is_released))
-                        <li><a href="javascript:void()" id="released_option_<?php echo $card->id ?>" onclick="releaseCard('<?php echo $card->id ?>')">Release</a></li>
-                        @endif
-                        <li><a href="javascript:void()" onclick="duplicateCard('<?php echo $card->id ?>')">Duplicate</a></li>
-                        <li><a href="javascript:void()" onclick="removeCard('<?php echo $card->id ?>')">Remove</a></li>
-                    @endif
-                </ul>
-            </div>
-
         </div>
-        <?php $i++; ?>
-    @endforeach
-</div>
-@else
-    <div class="text-center">Cards not available</div>
-@endif
+        </div>
+        @endif
+            </div>
+        </div>
+    </div>
+</body>
+@endsection
