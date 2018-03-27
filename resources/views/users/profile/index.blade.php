@@ -62,11 +62,18 @@
     <!-- Edit Profile -->
     @include('users.profile.partials.zoomImage')
 
+    <!-- Crop Image Popup -->
+    @include('users.profile.partials.verifyPopup')
+
     <!-- Create Card -->
     @include('users.profile.partials.createCardPopup')
 
     <!-- Crop Image Popup -->
     @include('users.profile.partials.cropImagePopup')
+
+    <!-- SMS Popup -->
+    @include('users.profile.partials.smsVerificationPopup')
+
 </body>
 @endsection
 @section('scripts')

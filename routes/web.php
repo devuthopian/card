@@ -84,6 +84,9 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::post('/sendInvitation', 'InviteController@sendInvitation');
 
+	// Mobile Verification
+	Route::post('/user/mobile_verification/sendOTP', 'users\MobileVerificationsController@sendOTP');
+	Route::post('/user/mobile_verification/verifyOTP', 'users\MobileVerificationsController@verifyOTP');
 
 	// Type Names
 	Route::post('/user/typeNames/save', 'users\TypeNamesController@save');

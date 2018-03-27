@@ -7,8 +7,10 @@
 style="background-image: url({{ $background_image }}); ">
         <div class="header-content left">
             <div class="header-right right">
-                @if(!empty($profile->user->is_profile_approved))
-                <a href="#" class="verify-btn">verify</a>
+                @if(!empty($profile->user->linked_social_accounts) && (count($profile->user->linked_social_accounts)>0))
+                    <a class="verify-btn" onclick="openVerifyPopup()" href="javascript:void(0)" >
+                        verify
+                    </a>
                 @endif
                 <div class="header-image">
                     <?php $profile_image = $profile->profile_image; ?>

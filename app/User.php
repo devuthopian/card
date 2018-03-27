@@ -81,6 +81,14 @@ class User extends Authenticatable
         return $this->hasMany('App\Card', 'created_by')->where('is_released', 1);
     }
 
+
+    /**
+     * mobile verification
+     */
+    public function mobile_verified() {
+        return $this->hasOne('App\MobileVerification')->where('verified', 1);
+    }
+
     public function updateProfile($requestArr, $profileImageObj, $coverImageObj, $profileBackgroundImageObj){
 
         $saveArr['name'] = $requestArr['name'];

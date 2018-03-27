@@ -1044,6 +1044,10 @@ function resetProfileBackground(){
 	});
 }
 
+function openVerifyPopup(){
+	$('#verifyPopupModal').modal('toggle');
+}
+
 
 // Document Ready
 $( document ).ready(function() {
